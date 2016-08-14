@@ -11,20 +11,20 @@
 					templateUrl: 'main.html',
 					controller: "MainCtrl as ctrl"
 				})
-				.when('/billWatch',{
+				.when('/billWatch', {
 					templateUrl: 'billWatch.html',
 					controller: "BillWatchCtrl as ctrl"
 				})
-				.wehn('/about',{
-					templateUrl: 'about.html'
+				.when('/about', {
+					templateUrl: 'about.html',
 					controller: "AboutCtrl as ctrl"
 				})
 				.when('/privacy', {
-					templateUrl: 'privacy.html'
+					templateUrl: 'privacy.html',
 					controller: "PrivacyCtrl as ctrl"
 				})
-				.wehn('/terms', {
-					templateUrl: 'terms.html'
+				.when('/terms', {
+					templateUrl: 'terms.html',
 					controller: "TermsCtrl as ctrl"
 				});
 		})
