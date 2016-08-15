@@ -1,28 +1,20 @@
-<html>
-
-<head>
-    <script type="text/javascript" src="js/jq.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-
-    <link rel="stylesheet" type="text/css" href='css/reset.css'>
-    <link rel="stylesheet" type="text/css" href='css/styles.css'>
-</head>
-
-<body>
     <header>
-        <a href="#">
+        <a ng-click="ctrl.toMainPage()">
             <img alt="Citizens Of Canada Logo" src="images/logo.png">
         </a>
         <nav>
             <ul>
-                <a href="#">
+                <a ng-click='ctrl.toAboutPage()'>
                     <li>About</li>
                 </a>
-                <a href='#'>
+                <a ng-click='ctrl.toBillWatchPage()'>
                     <li>Bill Watch</li>
                 </a>
-                <a href='#'>
-                    <li>Credits</li>
+                <a ng-click='ctrl.toPrivacyPage()' >
+                    <li>Privacy</li>
+                </a>
+                <a ng-click='ctrl.toTermsPage()'>
+                    <li>Terms</li>
                 </a>
             </ul>
         </nav>
@@ -112,18 +104,18 @@
     <footer class="grass-footer">
         <nav>
             <ul>
-                <a href="#">
+                <a ng-click='ctrl.toAboutPage()'>
                     <li>About</li>
                 </a>
-                <a href='#'>
+                <a ng-click='ctrl.toBillWatchPage()'>
                     <li>Bill Watch</li>
                 </a>
-                <a href='#'>
-                    <li>Credits</li>
+                <a ng-click='ctrl.toPrivacyPage()' >
+                    <li>Privacy</li>
+                </a>
+                <a ng-click='ctrl.toTermsPage()'>
+                    <li>Terms</li>
                 </a>
             </ul>
         </nav>
     </footer>
-</body>
-
-</html>
