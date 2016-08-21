@@ -13,7 +13,12 @@
 				})
 				.when('/billWatch', {
 					templateUrl: 'site/partials/billWatch.html',
-					controller: "BillWatchCtrl as ctrl"
+					controller: "BillWatchCtrl as ctrl",
+					resolve: {
+						bills: function(billSrv) {
+							return billSrv.getBills();
+						}
+					}
 				})
 				.when('/about', {
 					templateUrl: 'site/partials/about.html',
@@ -26,6 +31,13 @@
 				.when('/terms', {
 					templateUrl: 'site/partials/terms.html',
 					controller: "TermsCtrl as ctrl"
+				})
+				.when('/init', {
+					resolve:{
+						bills: function(billSrv){
+							billSrv.initBills();
+						}
+					}
 				})
 				.otherwise({
 					redirectTo: '/home'

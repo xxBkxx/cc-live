@@ -3,8 +3,11 @@
 		.module('ccApp')
 		.controller('BillWatchCtrl', BillWatchCtrl);
 
-	function BillWatchCtrl($location){
+	function BillWatchCtrl($location, bills){
 		var billWatchVm = this;
+		// billWatchVm.bills = billSrv.getBills();
+		billWatchVm.bills = bills;
+		console.log(billWatchVm.bills[0].title);
 
 		billWatchVm.toMainPage = toMainPage;
 		billWatchVm.toAboutPage = toAboutPage;
@@ -31,7 +34,5 @@
 		function toTermsPage(){
 			$location.url('/terms');
 		}
-
-
 	}
 })();

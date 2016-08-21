@@ -22,20 +22,20 @@
 
     <section>
         <a href="#"><img src="images/page-header-bill-watch.png"></a>
-        <div class='bill-container'>
+        <div ng-repeat='bill in ctrl.bills' class='bill-container'>
             <div class='bill-data'>
                 <ul class="bill-data">
-                    <li>Parliament: 42</li>
-                    <li>Session: 2</li>
-                    <li>Intro Date: 42</li>
-                    <li>Bill Number: C-1</li>
-                    <li>Sponsor:Prime Minister Justin Trudeau</li>
-                    <li>Publications: None</li>
-                    <li>Coming Into Force: Not Yet</li>
+                    <li>Parliament: {{bill.parliament}}</li>
+                    <li>Session: {{bill.session}} </li>
+                    <li>Intro Date: {{bill.introduced}}</li>
+                    <li>Bill Number: {{bill.number}}</li>
+                    <li>Sponsor: {{bill.sponsorer}}</li>
+                    <li>Event: {{bill.event}}</li>
+                    <li>Type: {{bill.type}}</li>
                 </ul>
-                <h1>C-1 An Act respecting the administration of oaths of office</h1>
+                <h1>{{bill.number}} {{bill.title}}</h1>
             </div>
-            <h1>Load More...</h1>
+
         </div>
     </section>
 
