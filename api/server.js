@@ -1,6 +1,7 @@
 var express  = require('express');
 var bodyParser = require('body-parser');
 var app 	 = express();
+var bcrypt   = require('bcrypt-nodejs');
 
 var fs 		 = require('fs');
 var parse    = require('xml-parser');
@@ -46,30 +47,54 @@ app.post('/login', function(req,res){
 		if (err){
 
 		}
-	}
+	});
 
 	//console.log(user);
 });
 app.post('/signup', function(req,res){
-	// var newUser = req.body
-	var newUser = users({
-		email: req.body.email,
-		name: req.body.name,
-		password: req.body.newPassword,
-		bill_vote: undefined
-	})
+	var newUser = req.body
+	// var newUser = users({
+	// 	email: req.body.email,
+	// 	name: req.body.name,
+	// 	password: req.body.newPassword,
+	// 	bill_vote: undefined
+	// })
 	bcrypt.genSalt(10, function(err,salt){
-		
+		bcrypt.hash(newUser.newPassword, salt, null, function(err, hash){
+			if (!err){
+				// newUser.newPassword = hash;
+
+				var _newUser = users({
+					email: req.body.email,
+					name: req.body.name,
+					password: hash,
+					bill_vote: undefined
+				});
+				console.log("------");
+				console.log(_newUser.password);
+
+				_newUser.save(function(err){
+					if(err){
+						console.log(err);
+						res.status(400)
+							.json({err:err})
+					} else{
+						delete _newUser.password;
+						res.json(_newUser)
+					}
+				})
+			}
+		})
 	})
-	console.log("--------");
-	console.log(newUser);
-	newUser.save(function(err) {
-	    if (err) {
-	        console.log(err);
-	    } else {
-	        console.log('new user created!');
-	    }
-	});
+	// console.log("--------");
+	// console.log(newUser);
+	// newUser.save(function(err) {
+	//     if (err) {
+	//         console.log(err);
+	//     } else {
+	//         console.log('new user created!');
+	//     }
+	// });
 
 });
 app.get('/billWatch', function(req,res){
