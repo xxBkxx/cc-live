@@ -1,11 +1,21 @@
 var express  = require('express');
+var bodyParser = require('body-parser');
 var app 	 = express();
+
 var fs 		 = require('fs');
 var parse    = require('xml-parser');
 var xml 	 = fs.readFileSync('download.xml', 'utf8');
 var inspect  = require('util').inspect;
 var mongoose = require('mongoose');
 var bill 	 = require('./models/bill');
+var users    = require('./models/users');
+
+
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json())
+
+
 app.use(express.static('../app/'));
 
 mongoose.connect('mongodb://localhost/data/db');
@@ -27,7 +37,41 @@ db.once('open', function(){
 //   console.log(err);
 //   process.exit(0);
 // });
+// app.get('/')
 
+app.post('/login', function(req,res){
+	var _user = req.body;
+
+	users.findOne({"email":_user.email},function(err,user){
+		if (err){
+
+		}
+	}
+
+	//console.log(user);
+});
+app.post('/signup', function(req,res){
+	// var newUser = req.body
+	var newUser = users({
+		email: req.body.email,
+		name: req.body.name,
+		password: req.body.newPassword,
+		bill_vote: undefined
+	})
+	bcrypt.genSalt(10, function(err,salt){
+		
+	})
+	console.log("--------");
+	console.log(newUser);
+	newUser.save(function(err) {
+	    if (err) {
+	        console.log(err);
+	    } else {
+	        console.log('new user created!');
+	    }
+	});
+
+});
 app.get('/billWatch', function(req,res){
 	bill.find({}, function(err, bills){
 		if (err){
@@ -151,7 +195,7 @@ app.get('/init', function(req,res){
 			sponsorer: 	       sponsorer_title + ',' + sponsorer_name + ',' + sponsorer_party,
 			publications: 	   publications,
 			publications_link: publications_link,
-			event: 			   event,
+			event: 			   event ? event : "No Event",
 			yea: 			   undefined,
 			nay: 			   undefined
 		});

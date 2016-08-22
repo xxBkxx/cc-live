@@ -39,6 +39,14 @@
 						}
 					}
 				})
+				.when('/signup', {
+					templateUrl: 'site/partials/signup.html',
+					controller: 'SignUpCtrl as ctrl'
+				})
+				.when('/login', {
+					templateUrl: 'site/partials/signup.html',
+					controller: 'SignUpCrtl as ctrl'	
+				})
 				.otherwise({
 					redirectTo: '/home'
 				});

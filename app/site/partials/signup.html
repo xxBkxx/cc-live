@@ -1,0 +1,65 @@
+    <header>
+        <a ng-click="ctrl.toMainPage()">
+            <img alt="Citizens Of Canada Logo" src="images/logo.png">
+        </a>
+    </header>
+
+    <section>
+        <h1>Track Government</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at nisl non metus sollicitudin facilisis. Vivamus ut urna euismod, elementum urna non, vehicula orci. Curabitur eleifend vehicula commodo. Donec maximus nisi nec enim convallis, posuere pretium elit tincidunt. Etiam quis tempor felis, malesuada malesuada ipsum. Aenean at aliquam velit. 
+        </p>
+    </section>
+    <section>
+        <form>
+            <section>
+                <ul>
+                    <li>
+                        <h1>Welcome Back.</h1>
+                        <input ng-model='ctrl.username' type="text" placeholder="Username"></input>
+                    </li>
+                    <li>
+                        <input ng-model='ctrl.password' type="password" placeholder="Password"></input>
+                        
+                    </li>
+                    <li><button ng-click='ctrl.login()'>Login</button></li>
+                </ul> 
+            </section>
+            <section>
+                <ul>
+                    <li>
+                        <h1>New? Signup, be heard.</h1>
+                        <input ng-model='ctrl.name' type="text" placeholder="Name"></input>
+                    </li>
+                    <li>   
+                        <input ng-model='ctrl.email' type="text" placeholder="Email"></input>
+                    </li>
+                    <li>   
+                        <input ng-model='ctrl.newPassword' type="password" placeholder="Password"></input>
+                    </li>
+                    <li>   
+                        <input ng-model='ctrl.password_two' type="Password" placeholder="Re-Enter Password"></input>
+                    </li>  
+                    <li><button ng-click='ctrl.signup()'>Sign-Up</button></li>                  
+                </ul>
+            </section>
+        </form>
+    </section>
+    <footer class="grass-footer">
+        <nav>
+            <ul>
+                <a ng-click='ctrl.toAboutPage()'>
+                    <li>About</li>
+                </a>
+                <a ng-click='ctrl.toBillWatchPage()'>
+                    <li>Bill Watch</li>
+                </a>
+                <a ng-click='ctrl.toPrivacyPage()' >
+                    <li>Privacy</li>
+                </a>
+                <a ng-click='ctrl.toTermsPage()'>
+                    <li>Terms</li>
+                </a>
+            </ul>
+        </nav>
+    </footer>
