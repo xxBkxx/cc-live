@@ -3,7 +3,6 @@
             <img alt="Citizens Of Canada Logo" src="images/logo.png">
         </a>
     </header>
-
     <section>
         <h1>Track Government</h1>
         <p>
@@ -15,20 +14,15 @@
             <section>
                 <ul>
                     <li>
-                        <h1>New? Signup, be heard.</h1>
-                        <input ng-model='ctrl.name' type="text" placeholder="Name"></input>
+                        <h1>Welcome Back.</h1>
+                        <input ng-model='ctrl.email' type="text" placeholder="Username"></input>
                     </li>
-                    <li>   
-                        <input ng-model='ctrl.newEmail' type="text" placeholder="Email"></input>
+                    <li>
+                        <input ng-model='ctrl.password' type="password" placeholder="Password"></input>
+                        
                     </li>
-                    <li>   
-                        <input ng-model='ctrl.newPassword' type="password" placeholder="Password"></input>
-                    </li>
-                    <li>   
-                        <input ng-model='ctrl.password_two' type="Password" placeholder="Re-Enter Password"></input>
-                    </li>  
-                    <li><button ng-click='ctrl.signup()'>Sign-Up</button></li>                  
-                </ul>
+                    <li><button ng-click='ctrl.login()'>Login</button></li>
+                </ul> 
             </section>
         </form>
     </section>

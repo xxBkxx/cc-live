@@ -44,8 +44,8 @@
 					controller: 'SignUpCtrl as ctrl'
 				})
 				.when('/login', {
-					templateUrl: 'site/partials/signup.html',
-					controller: 'SignUpCrtl as ctrl'	
+					templateUrl: 'site/partials/login.html',
+					controller: 'LoginCtrl as ctrl'	
 				})
 				.otherwise({
 					redirectTo: '/home'

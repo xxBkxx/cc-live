@@ -41,18 +41,63 @@ db.once('open', function(){
 // app.get('/')
 
 app.post('/login', function(req,res){
+	// console.log('loggdd in!');
 	var _user = req.body;
-
-	users.findOne({"email":_user.email},function(err,user){
-		if (err){
-
+	console.log("----");	
+	console.log(_user.password);
+	console.log(_user.email);
+	users.findOne({ "email": _user.email}, function(err, user){
+		console.log("user");
+		console.log(user);
+		if(err){
+			console.log(err)
+			res.status(400)
+				.json({err:err});
+		} else{
+			bcrypt.compare(_user.password, user.password, function(err,result){
+				console.log(err);	
+				console.log(_user.password);
+				console.log(user.password);
+				if (result == true){
+					console.log(result);
+					delete users.password;
+					res.json({email: user.email});
+					console.log('youre in! :-)');
+				} else{
+					res.status(403)
+						.json({err:'youre not allowed in!'});
+					console.log('something went wrong');
+				}
+			})
 		}
 	});
+	// users.findOne({"email":_user.newEmail},function(err,user){
+	// 	// console.log(_user.email);
+	// 	// console.log(users.password);
+	// 	if (err){
+	// 		console.log(err);
+	// 		res.status(400)
+	// 			.json({err:err})
+	// 	} else{
+	// 		bcrypt.compare(_user.newPassword, users.password, function(err, result){
+	// 			if (result == true){
+	// 				console.log(result);
+	// 				delete users.password;
+	// 				res.json({email: user.email});
+	// 				console.log("you're in :)");
+	// 			} else {
+	// 				res.status(403)
+	// 					.json({err:'unauhthorized'});
 
-	//console.log(user);
+	// 			}
+	// 		})
+	// 	}	
+	// });
+	// //console.log(user);
 });
+
 app.post('/signup', function(req,res){
-	var newUser = req.body
+	var rawPw = req.body.newPassword;
 	// var newUser = users({
 	// 	email: req.body.email,
 	// 	name: req.body.name,
@@ -60,17 +105,17 @@ app.post('/signup', function(req,res){
 	// 	bill_vote: undefined
 	// })
 	bcrypt.genSalt(10, function(err,salt){
-		bcrypt.hash(newUser.newPassword, salt, null, function(err, hash){
+		bcrypt.hash(rawPw, salt, null,function(err, hash){
 			if (!err){
-				// newUser.newPassword = hash;
 
+				
 				var _newUser = users({
-					email: req.body.email,
+					email: req.body.newEmail,
 					name: req.body.name,
 					password: hash,
 					bill_vote: undefined
 				});
-				console.log("------");
+				console.log("____________________")
 				console.log(_newUser.password);
 
 				_newUser.save(function(err){
@@ -79,7 +124,7 @@ app.post('/signup', function(req,res){
 						res.status(400)
 							.json({err:err})
 					} else{
-						delete _newUser.password;
+						// delete _newUser.password;
 						res.json(_newUser)
 					}
 				})
