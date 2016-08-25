@@ -1,40 +1,32 @@
     <header>
         <a ng-click="ctrl.toMainPage()">
-            <img alt="Citizens Of Canada Logo" src="images/logo.png">
+            <img class="logo vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
         </a>
-        <nav>
-            <ul>
-                <a ng-click='ctrl.toAboutPage()'>
-                    <li>About</li>
-                </a>
-                <a ng-click='ctrl.toBillWatchPage()'>
-                    <li>Bill Watch</li>
-                </a>
-                <a ng-click='ctrl.toPrivacyPage()' >
-                    <li>Privacy</li>
-                </a>
-                <a ng-click='ctrl.toTermsPage()'>
-                    <li>Terms</li>
-                </a>
-            </ul>
-        </nav>
+            <nav class="global-nav">
+                <ul class="nav-links">
+                    <a ng-click='ctrl.toAboutPage()'>
+                        <li>About</li>
+                    </a>
+                    <a ng-click='ctrl.toBillWatchPage()'>
+                        <li>Bill Watch</li>
+                    </a>
+
+                </ul>
+            </nav>
     </header>
-    <section>
-        <a href="#"><img src="images/page-header-privacy.png"></a>
+    <section class="privacy">
+        <img class="horizontal-centre page-header img-responsive" src="assets/img/page-header-privacy.png">
         <!--        -->
         <h6>Privacy Statement</h6>
         <p>
-            Citizens of Canada is a group of people that like to analyze politics, economics, and well, other people. Users can view, share and discuss the tools we use to study things and the results they bring.
-        </p>
-        <p>
-            Hello this is CC’s privacy statement, it outlines what information we collect from our visitors, who sees it, and what we use that information for. This is an important read so please do.
+            Citizens of Canada is a website made by a guy that likes to analyze politics, economics, and, well, other people. Users can view, share and discuss the tools we use to study things and the results they bring.
         </p>
         <!---->
         <h6>What personal information do you collect about me?</h6>
 
         <p>Here’s a list of the information we collect about you, your:</p>
 
-        <ul>
+        <ul class="privacy-ul">
             <li>Name</li>
             <li>Postal Code</li>
             <li>Phone Number</li>
@@ -49,9 +41,9 @@
         <h6>When you visit us, we also collect:</h6>
 
         <ul>
-            <li>Information about your computer, including your IP address, the type of operation system and browser you use</li>
-            <li>What pages you visit on our site and what links you click on</li>
-            <li>What other sites you’re visited recently</li>
+            <li><p>Information about your computer, including your IP address, the type of operation system and browser you use</p></li>
+            <li><p>What pages you visit on our site and what links you click on</p></li>
+            <li><p>What other sites you’re visited recently</p></li>
 
         </ul>
         <!---->
@@ -84,21 +76,24 @@
         <!--        -->
     </section>
 
-    <footer class="grass-footer">
-        <nav>
-            <ul>
-                <a ng-click='ctrl.toAboutPage()'>
-                    <li>About</li>
-                </a>
-                <a ng-click='ctrl.toBillWatchPage()'>
-                    <li>Bill Watch</li>
-                </a>
-                <a ng-click='ctrl.toPrivacyPage()' >
-                    <li>Privacy</li>
-                </a>
-                <a ng-click='ctrl.toTermsPage()'>
-                    <li>Terms</li>
-                </a>
-            </ul>
-        </nav>
-    </footer>
+      <footer>
+        <div class="vertical-centre">
+            <nav>
+                <ul>
+                    <a ng-click='ctrl.toAboutPage()'>
+                        <li>About </li>
+                    </a>
+                    <a ng-click='ctrl.toBillWatchPage()'>
+                        <li> | Bill Watch | </li>
+                    </a>
+                    <a ng-click='ctrl.toPrivacyPage()' >
+                        <li>Privacy</li>
+                    </a>
+                    <a ng-click='ctrl.toTermsPage()'>
+                        <li> | Terms</li>
+                    </a>
+                </ul>
+                
+            </nav>
+        </div>
+</footer>

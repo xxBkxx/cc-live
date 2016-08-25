@@ -1,0 +1,225 @@
+/*cc Styles*/
+
+header{
+	height: 50px;
+	background-color: black;
+}
+
+header a{
+	color: white;
+}
+header ul li{
+	display: inline;
+	padding: 0 10px 0 0;
+}
+
+.privacy{
+	margin:0 auto;
+}
+
+.global-nav{
+	margin: -24px 0 0 0;
+}
+
+.logo{
+	margin:0 0 0 10px;
+}
+
+.nav-links{
+	float: right;
+	margin-right:;
+}
+
+.page-header{
+	margin-top: 28px;
+	margin-bottom: 50px;
+}
+
+.header-note{
+	width: 30%;
+}
+
+.section-height{
+	height: 592px;
+}
+
+.about-section{
+	width: 100%;
+	margin:0 auto;
+}
+
+.about-section-img{
+	position: relative;
+	left: 50%;
+	margin-left: -800px;
+}
+
+#section-img-caption {
+    width: 20%;
+    height: 70px;
+    background-color: black;
+    color: white;
+    opacity: 0.5;
+    position: relative;
+    float: right;
+    top: 277px;
+    margin-right: 10px;
+    padding: 10px;
+}
+#img-caption{
+	opacity: 1;
+}
+
+#main-section{
+	background-image: url("../img/trainstation.jpg");
+	background-size: cover;
+}
+
+footer{
+	background-image: url("../img/footer-grass.png");
+	background-color: black;
+	background-repeat: repeat-x;
+	/*background-attachment: fixed;*/
+	width: 100%;
+	height: 100px;
+}
+footer div{
+	position: relative;
+	bottom: 0;
+	color: white;
+}
+
+footer div li{
+	display: inline;
+}
+
+.horizontal-centre{
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+
+}
+.vertical-centre{
+	position: relative;
+	margin-top: 25px;
+	top: calc(50% + 25px);
+	transform: translateY(-50%);
+}
+.about-vertical-centre{
+	top: calc(50%);
+	transform: translateY(-50%);
+}
+.footer-nav{
+	bottom: 0;
+}
+
+#about-footer-nav{
+	background: black;
+	background-image: none;
+	height: 50px;
+}
+
+.header-note{
+
+}
+/*bill watch*/
+
+.bill-container{
+	border: 1px solid white;
+	text-align: center;
+}
+
+.bill-container:hover{
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+	border-left-style: none; 
+	border-right-style: none; 
+	background-color: #f1f1f1;
+}
+
+.bill-data li{
+	display: inline;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.bill-data{
+	margin-bottom: 28px;
+	visibility: hidden;
+}
+.bill-container:hover ul{
+	visibility: visible;
+}
+
+.bill-title{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 48px;
+	color: #222222;
+	font-style: italic;
+}
+.border-and-bg{
+	border:1px solid #a4a4a4;
+
+	background-color: #f1f1f1;
+}
+.read-unordered-list{
+	width: 100px;
+	display: inline-block;
+	margin-top: 22px;
+	margin-bottom: 11px;
+	display:hidden;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	visibility: hidden;
+}
+
+.bill-link-font{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;	
+}
+
+.vote-unordered-list{
+	width: 75px;
+	display: inline-block;
+	visibility: hidden;
+
+}
+
+.text{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #222;
+	/*margin-left: 40px;*/
+}
+.bold{
+	font-weight: bold;
+	line-height: 1.57;
+}
+
+.privacy p{
+	margin: 0 0 15px 0;
+	line-height: 1.57;
+	width: 75%;
+}
+
+.privacy ul{
+	list-style-type:disc;
+	margin: 0 0 15px 40px;
+}
+
+.terms{
+	display: block;
+	margin:20 auto;
+	max-width: 960px;
+	line-height: 22px;
+}
+
+.terms ul{
+		margin: 0 0 22px 40px;
+		list-style-type:disc;
+}
+.terms h6{
+	font-weight: bold;
+	margin-bottom: 22px;
+}
+

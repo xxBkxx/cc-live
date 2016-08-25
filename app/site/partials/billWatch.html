@@ -1,59 +1,61 @@
     <header>
         <a ng-click="ctrl.toMainPage()">
-            <img alt="Citizens Of Canada Logo" src="images/logo.png">
+            <img class="logo vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
         </a>
-        <nav>
-            <ul>
-                <a ng-click='ctrl.toAboutPage()'>
-                    <li>About</li>
-                </a>
-                <a ng-click='ctrl.toBillWatchPage()'>
-                    <li>Bill Watch</li>
-                </a>
-                <a ng-click='ctrl.toPrivacyPage()' >
-                    <li>Privacy</li>
-                </a>
-                <a ng-click='ctrl.toTermsPage()'>
-                    <li>Terms</li>
-                </a>
-            </ul>
-        </nav>
-    </header>
+            <nav class="global-nav">
+                <ul class="nav-links">
+                    <a ng-click='ctrl.toAboutPage()'>
+                        <li>About</li>
+                    </a>
+                    <a ng-click='ctrl.toBillWatchPage()'>
+                        <li>Bill Watch</li>
+                    </a>
 
+                </ul>
+            </nav>
+    </header>
     <section>
-        <a href="#"><img src="images/page-header-bill-watch.png"></a>
+        <img class="horizontal-centre page-header img-responsive" src="assets/img/page-header-bill-watch.png">
         <div ng-repeat='bill in ctrl.bills' class='bill-container'>
-            <div class='bill-data'>
+            <div class='bill-data-container'>
                 <ul class="bill-data">
                     <li>Parliament: {{bill.parliament}}</li>
-                    <li>Session: {{bill.session}} </li>
+                    <li>Session: {{bill.session}}</li>
                     <li>Intro Date: {{bill.introduced}}</li>
                     <li>Bill Number: {{bill.number}}</li>
                     <li>Sponsor: {{bill.sponsorer}}</li>
                     <li>Event: {{bill.event}}</li>
                     <li>Type: {{bill.type}}</li>
                 </ul>
-                <h1>{{bill.number}} {{bill.title}}</h1>
+                <h1 class="bill-title">{{bill.number}} {{bill.title}}</h1>
+                <ul class='border-and-bg read-unordered-list bill-link-font'>
+                    <li>Read | Fançais</li>
+                </ul>
+                <ul class="border-and-bg vote-unordered-list bill-link-font">    
+                    <li>Yea | Nay</li> 
+                </ul>
             </div>
 
         </div>
     </section>
-
-    <footer class="grass-footer">
-        <nav>
-            <ul>
-                <a ng-click='ctrl.toAboutPage()'>
-                    <li>About</li>
-                </a>
-                <a ng-click='ctrl.toBillWatchPage()'>
-                    <li>Bill Watch</li>
-                </a>
-                <a ng-click='ctrl.toPrivacyPage()' >
-                    <li>Privacy</li>
-                </a>
-                <a ng-click='ctrl.toTermsPage()'>
-                    <li>Terms</li>
-                </a>
-            </ul>
-        </nav>
+    <footer>
+        <div class="vertical-centre">
+            <nav>
+                <ul>
+                    <a ng-click='ctrl.toAboutPage()'>
+                        <li>About </li>
+                    </a>
+                    <a ng-click='ctrl.toBillWatchPage()'>
+                        <li> | Bill Watch | </li>
+                    </a>
+                    <a ng-click='ctrl.toPrivacyPage()' >
+                        <li>Privacy</li>
+                    </a>
+                    <a ng-click='ctrl.toTermsPage()'>
+                        <li> | Terms</li>
+                    </a>
+                </ul>
+                
+            </nav>
+        </div>
     </footer>
