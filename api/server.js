@@ -10,8 +10,7 @@ var inspect  = require('util').inspect;
 var mongoose = require('mongoose');
 var bill 	 = require('./models/bill');
 var users    = require('./models/users');
-
-
+var jwt		 = require('jsonwebtoken');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json())
@@ -20,15 +19,13 @@ app.use(bodyParser.json())
 app.use(express.static('../app/'));
 
 mongoose.connect('mongodb://localhost/data/db');
-var db 		= mongoose.connection;
+var db 		 = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection Error:'));
 db.once('open', function(){
 	console.log('Connected to db at /data/db/')
-		console.log(db);
 	mongoose.connection.db.dropDatabase(function (err) {
 	  console.log('db dropped');
-	  console.log(err);
 	  // process.exit(0);
 	});
 });
@@ -40,28 +37,36 @@ db.once('open', function(){
 // });
 // app.get('/')
 
+// app.post('/authenticate',function(req,res){ 
+// 	console.log("auth EP");
+// });
+
 app.post('/login', function(req,res){
 	// console.log('loggdd in!');
 	var _user = req.body;
-	console.log("----");	
-	console.log(_user.password);
-	console.log(_user.email);
+	// console.log("----");	
+	// console.log(_user.password);
+	// console.log(_user.email);
 	users.findOne({ "email": _user.email}, function(err, user){
-		console.log("user");
-		console.log(user);
+		// console.log("user");
+		// console.log(user);
 		if(err){
 			console.log(err)
 			res.status(400)
 				.json({err:err});
 		} else{
 			bcrypt.compare(_user.password, user.password, function(err,result){
-				console.log(err);	
-				console.log(_user.password);
-				console.log(user.password);
+				// console.log(err);	
+				// console.log(_user.password);
+				// console.log(user.password);
 				if (result == true){
-					console.log(result);
+					// console.log(result);
 					delete users.password;
-					res.json({email: user.email});
+					var user_obj = {email: user.email};
+					var token = jwt.sign(user_obj, 'expropositovivo' )
+					res.set('authentication', token);
+					// res.json({email: user.email});
+					res.json(user_obj);
 					console.log('youre in! :-)');
 				} else{
 					res.status(403)
@@ -95,6 +100,59 @@ app.post('/login', function(req,res){
 	// });
 	// //console.log(user);
 });
+
+app.post('/vote', function(req,res){
+	console.log("post");
+	// req.body.yea++;
+	console.log(req.body.vote.yea);
+	var currYea = req.body.vote.yea;
+	var newYea = currYea + 1;
+	// var userVote   = req.body.yea;
+	var voteBillId = req.body.vote.bill_id;
+	console.log(voteBillId);
+	// var yeaUp = 2;
+	// var currVal =0;
+	// bill.findOne({"id":voteBillId},'yea', function(err, doc){
+	// 	// var billObj = doc.toObject();
+	// 	// console.log(billObj);
+	// 	// var currVal = billObj.yea++;
+	// 	// console.log("____");
+	// 	// console.log(doc.yea);
+	// 	// currVal = doc.yea;
+	// 	// yeaUp = currVal + 1;
+	// 	// console.log(yeaUp);
+	// }).lean()
+	bill.findOneAndUpdate({"id":voteBillId}, {$set:{yea: currYea}}, {new:true}, function(err, item){
+		// console.log(yeaUp);
+		if (err){
+			return console.log(err);
+		}else{
+			// console.log(item)
+			res.status(200);
+			console.log("___");
+			console.log(item);
+			return  res.send(item);
+		}
+	})
+	// bill.findOne({id: voteBillId}, function(err, item){
+	// 	if(err){
+	// 		console.log(err)
+	// 		res.status(400)
+	// 			.json({err:err});
+	// 	} else{
+	// 		if (userVote){
+
+	// 			 	var _newVote = item({
+	// 				yea: userVote;
+	// 			});
+	// 			console.log('its yea');
+	// 		}
+			
+	// 	}
+	// })
+	// console.log(userVote);
+});
+
 
 app.post('/signup', function(req,res){
 	var rawPw = req.body.newPassword;
@@ -150,8 +208,8 @@ app.get('/billWatch', function(req,res){
 				.json({err:err});
  		} else{
  			res.json(bills);
- 			console.log("$$$$");
- 			console.log(bills);
+ 			// console.log("$$$$");
+ 			// console.log(bills);
  		}
  		// mongoose.connection.close();
 	});
@@ -227,8 +285,8 @@ var event 				='';
 app.get('/init', function(req,res){
 
 	for (var i = 0; i<object.root.children.length; i++){
-	// console.log(object.root.children[i].attributes.id);
-	// console.log('``````````');
+		console.log(object.root.children[i].children[9].children[0]);
+		console.log('``````````');
 
 		bill_id 			 = object.root.children[i].attributes.id;
 		// TODO format lastUpdated string
@@ -243,7 +301,15 @@ app.get('/init', function(req,res){
 		sponsorer_title 	 = object.root.children[i].children[6].children[0].content;
 		sponsorer_name 		 = object.root.children[i].children[6].children[2].children[0].content;
 		sponsorer_party 	 = object.root.children[i].children[6].children[3].children[0].content;
-		bill_type            = object.root.children[7].children[5].children[0].content;
+		bill_type            = object.root.children[i].children[5].children[0].content;
+		if (object.root.children[i].children[9].children[0] == undefined){
+			console.log("undefined");
+			publications      = "No publications available";
+			publications_link = "No publications link available";
+		}else{
+			publications      = object.root.children[i].children[9].children[0].children[0].content;
+			publications_link = object.root.children[i].children[9].children[0].children[2].children[0].attributes.relativePath;
+		}
 		// publications 		 = object.root.children[i].children[9].children[0].children[0].content;
 		// publications_link    = object.root.children[i].children[9].children[0].children[2].children[0].attributes.relativePath;
 		event				 = object.root.children[i].children[10].attributes.laagCurrentStage;
@@ -263,11 +329,11 @@ app.get('/init', function(req,res){
 			number: 	  	   bill_prefix + '-' + bill_number,
 			type:    	  	   bill_type, 
 			sponsorer: 	       sponsorer_title + ',' + sponsorer_name + ',' + sponsorer_party,
-			publications: 	   publications,
-			publications_link: publications_link,
-			event: 			   event ? event : "No Event",
-			yea: 			   undefined,
-			nay: 			   undefined
+			publications: 	   publications ? publications : "No publications available",
+			publications_link: publications_link ? publications_link : "No links available",
+			event: 			   event ? event : "No Event"
+			// yea: 			   0,
+			// nay: 			   0
 		});
 
 		newBill.save(function(err) {
@@ -331,6 +397,10 @@ app.listen(8080, function(){
 // 			res.json(bills);
 // 		}
 // 	});
+// });
+
+// app.get('*', function(req, res){
+//   res.send('what???', 404);
 // });
 
 app.delete('/delete', function(req,res){

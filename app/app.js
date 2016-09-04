@@ -16,6 +16,7 @@
 					controller: "BillWatchCtrl as ctrl",
 					resolve: {
 						bills: function(billSrv) {
+							billSrv.initBills()
 							return billSrv.getBills();
 						}
 					}
@@ -32,13 +33,6 @@
 					templateUrl: 'site/partials/terms.html',
 					controller: "TermsCtrl as ctrl"
 				})
-				.when('/init', {
-					resolve:{
-						bills: function(billSrv){
-							billSrv.initBills();
-						}
-					}
-				})
 				.when('/signup', {
 					templateUrl: 'site/partials/signup.html',
 					controller: 'SignUpCtrl as ctrl'
@@ -46,6 +40,9 @@
 				.when('/login', {
 					templateUrl: 'site/partials/login.html',
 					controller: 'LoginCtrl as ctrl'	
+				})
+				.when('/vote', {
+					templateUrl: 'site/partials/billWatch.htmll',
 				})
 				.otherwise({
 					redirectTo: '/home'

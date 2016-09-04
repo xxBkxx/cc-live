@@ -15,6 +15,11 @@
 					data = JSON.stringify(data);
 					return $http.get(endpoint, data)
 				}
+
+				if (method == "POST"){
+					data = JSON.stringify(data);
+					return $http.post(endpoint, data)
+				}
 			}
 
 	        function formatGetData(data){

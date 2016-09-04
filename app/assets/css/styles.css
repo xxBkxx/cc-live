@@ -36,7 +36,18 @@ header ul li{
 }
 
 .header-note{
-	width: 30%;
+	width: 40%;
+	font-size: 1.2857em;
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	line-height: 1.57em;
+	text-align:  
+}
+
+.inpYea{
+	border: none;
+	background-color: #f1f1f1;
+	color: black;
 }
 
 .section-height{
@@ -62,7 +73,7 @@ header ul li{
     opacity: 0.5;
     position: relative;
     float: right;
-    top: 277px;
+    top: 200px;
     margin-right: 10px;
     padding: 10px;
 }

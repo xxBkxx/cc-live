@@ -18,8 +18,14 @@ var billSchema = new Schema({
 	publications:      String,
 	publications_link: String,
 	event: 		  	   String,
-	yea:  		       Number,
-	nay: 		       Number
+	yea:  		       {
+		type:   Number,
+		default: 0
+	},
+	nay: 		       {
+		type:   Number,
+		default:0
+	}
 });
 
 billSchema.pre('save', function(next){

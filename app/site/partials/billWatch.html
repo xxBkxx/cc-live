@@ -26,13 +26,15 @@
                     <li>Sponsor: {{bill.sponsorer}}</li>
                     <li>Event: {{bill.event}}</li>
                     <li>Type: {{bill.type}}</li>
+                    <li>Publications:{{bill.publications}}</li>
+                    <li>Publications_link:{{bill.publications_link}}
                 </ul>
                 <h1 class="bill-title">{{bill.number}} {{bill.title}}</h1>
                 <ul class='border-and-bg read-unordered-list bill-link-font'>
                     <li>Read | Fançais</li>
                 </ul>
                 <ul class="border-and-bg vote-unordered-list bill-link-font">    
-                    <li>Yea | Nay</li> 
+                    <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(bill.id,bill.yea)'>Yea:{{bill.yea}} | Nay</a></li> 
                 </ul>
             </div>
 

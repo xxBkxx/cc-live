@@ -3,17 +3,20 @@
 		.module('ccApp')
 		.controller('BillWatchCtrl', BillWatchCtrl);
 
-	function BillWatchCtrl($location, bills){
+	function BillWatchCtrl($location, billSrv, bills, $http){
 		var billWatchVm = this;
+
+
 		// billWatchVm.bills = billSrv.getBills();
 		billWatchVm.bills = bills;
-		console.log(billWatchVm.bills[0].title);
 
-		billWatchVm.toMainPage = toMainPage;
-		billWatchVm.toAboutPage = toAboutPage;
+		billWatchVm.toMainPage      = toMainPage;
+		billWatchVm.toAboutPage     = toAboutPage;
 		billWatchVm.toBillWatchPage = toBillWatchPage;
-		billWatchVm.toPrivacyPage = toPrivacyPage;
-		billWatchVm.toTermsPage = toTermsPage;
+		billWatchVm.toPrivacyPage   = toPrivacyPage;
+		billWatchVm.toTermsPage 	= toTermsPage;
+		billWatchVm.voteYea 		= voteYea;
+		billWatchVm.voteNay			= voteNay;
 
 		//Link Pages
 		function toMainPage(){
@@ -33,6 +36,40 @@
 
 		function toTermsPage(){
 			$location.url('/terms');
+		}
+
+		function voteYea(bill_id, yea){
+			// for (var i = 0; billWatchVm.bills.length; i++){
+			// 		console.log(billWatchVm.bills.length);
+			// 	if (billWatchVm.bills[i].id == bill_id){
+			// 		console.log(billWatchVm.bills[i].yea)
+			// 	}
+
+			// }
+			console.log(yea);
+			billWatchVm.upYea = yea + 1;
+			var vote  = { 
+
+				yea: yea,
+				bill_id: bill_id 
+			};
+			billSrv.vote(vote);
+			billWatchVm.currYeaValue = billSrv.updateBillVote();
+			console.log(billWatchVm.currYeaValue);
+			// $http.post('/vote', vote)
+			// 	.then(function success(response){
+			// 		console.log(response);
+			// 		billWatchVm.bills.yea = response.data.yea;
+			// 	}, function err(err){
+			// 		console.log(err);
+			// 	})
+		}
+		function voteNay(){
+			console.log("nay");
+		}
+
+		function updateYea(){
+
 		}
 	}
 })();
