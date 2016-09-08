@@ -6,7 +6,6 @@
 	function BillWatchCtrl($location, billSrv, bills, $http){
 		var billWatchVm = this;
 
-
 		// billWatchVm.bills = billSrv.getBills();
 		billWatchVm.bills = bills;
 
@@ -46,17 +45,21 @@
 			// 	}
 
 			// }
-			console.log(yea);
-			billWatchVm.upYea = yea + 1;
-			var vote  = { 
-
-				yea: yea,
-				bill_id: bill_id 
-			};
-			billSrv.vote(vote);
-			billWatchVm.currYeaValue = billSrv.updateBillVote();
-			console.log(billWatchVm.currYeaValue);
-			// $http.post('/vote', vote)
+			if( localStorage.auth_token =='' || 
+				localStorage.auth_token == undefined){
+					$location.url('/login');
+				} else{
+					console.log(yea);
+					billWatchVm.upYea = yea + 1;
+					var vote  = { 
+						yea: yea,
+						bill_id: bill_id 
+					};
+						billSrv.vote(vote);
+						billWatchVm.currYeaValue = billSrv.updateBillVote();
+						console.log(billWatchVm.currYeaValue);
+				}
+					// $http.post('/vote', vote)
 			// 	.then(function success(response){
 			// 		console.log(response);
 			// 		billWatchVm.bills.yea = response.data.yea;

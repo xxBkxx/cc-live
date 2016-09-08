@@ -1,11 +1,11 @@
 (function(){
 
 	angular
-		.module('ccApp', ['ngRoute']);
+		.module('ccApp', ['ngRoute','angular-jwt']);
 
 	angular
 		.module('ccApp')
-		.config(function($routeProvider){
+		.config(function($routeProvider, $httpProvider){
 			$routeProvider
 				.when('/home', {
 					templateUrl: "site/partials/main.html",
@@ -43,10 +43,32 @@
 				})
 				.when('/vote', {
 					templateUrl: 'site/partials/billWatch.htmll',
+
 				})
 				.otherwise({
 					redirectTo: '/home'
 				});
+
+			$httpProvider.interceptors.push(function(jwtHelper){
+				return {
+					request: function(config){
+						if (localStorage.authToken != undefined){
+							config.header.authentication = localStorage.authToken;
+						}
+						return config;
+					},
+					response: function(response){
+						var auth_token = response.headers('authentication');
+						if (auth_token){
+							var decrypt_token = jwtHelper.decodeToken(auth_token);
+							if (decrypt_token.email){
+								localStorage.authToken = auth_token;
+							}
+						}
+						return response;
+					}
+				}
+			})
 		});
 	
 })();

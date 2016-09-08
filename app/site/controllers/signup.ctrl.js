@@ -3,13 +3,14 @@
 		.module('ccApp')
 		.controller('SignUpCtrl', SignUpCtrl );
 
-	function SignUpCtrl ($location, $http){
+	function SignUpCtrl ($location, apiSrv){
 		var signUpVm = this;
 
 
 		signUpVm.signup = signup;
 
 		function signup(){
+
 			var user = {
 				name: 		  signUpVm.name,
 				newEmail: 	  signUpVm.newEmail,
@@ -17,7 +18,7 @@
 				password_two: signUpVm.password_two
 			}
 			console.log(user);
-			$http.post('/signup', user);
+			apiSrv.request("/signup", user, "POST");
 		}
 	}
 })();
