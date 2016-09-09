@@ -9,7 +9,7 @@ var billCommentSchema = new Schema({
 	user_name:         String
 });
 
-var billComment = mongoose.model('billComment', billSchema);
+var billComment = mongoose.model('billComment', billCommentSchema);
 
 module.exports = billComment;
 

@@ -42,8 +42,11 @@
 					controller: 'LoginCtrl as ctrl'	
 				})
 				.when('/vote', {
-					templateUrl: 'site/partials/billWatch.htmll',
+					templateUrl: 'site/partials/billWatch.html'
 
+				})
+				.when('/billComment', {
+					templateUrl: 'site/partials/billWatch.html'
 				})
 				.otherwise({
 					redirectTo: '/home'

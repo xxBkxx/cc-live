@@ -49,6 +49,7 @@
 
 			}
 			console.log(commentPkg);
+			billSrv.billComment(commentPkg);
 		}
 
 		function voteYea(bill_id, yea){

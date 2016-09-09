@@ -7,11 +7,12 @@
 
 			var self = this;
 
-			self.updatedBill = {};
-			self.getBills = getBills;
-			self.vote 	  = vote;
+			self.updatedBill 	= {};
+			self.getBills 		= getBills;
+			self.vote 	  		= vote;
 			self.updateBillVote = updateBillVote;
-			self.initBills = initBills;
+			self.initBills 		= initBills;
+			self.billComment 	= billComment;
 
 			function getBills(){
 				return apiSrv.request('/billWatch', {}, 'GET')
@@ -24,18 +25,17 @@
 			}
 			function initBills(){
 				return apiSrv.request('/init',{}, "GET")
-					.then(function(res){
-						return res;
-					})
 			}
-
+			function billComment(commentPkg){
+				apiSrv.request('/billComment', {commentPkg}, 'POST');
+			}
 			function vote(vote){
 				// console.log(vote);
 				 apiSrv.request('/vote', {vote}, 'POST')
-					.then(function(res){
-						self.updatedBill = res.data.yea;
-						// console.log(self.updatedBill);
-					})
+					// .then(function(res){
+					// 	self.updatedBill = res.data.yea;
+					// 	// console.log(self.updatedBill);
+					// })
 			}
 
 			function updateBillVote(){
