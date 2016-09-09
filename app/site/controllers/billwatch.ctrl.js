@@ -38,9 +38,17 @@
 			$location.url('/terms');
 		}
 
-		function comment(){
+		function comment(bill_id){
 			var comment = billWatchVm.billComment;
-			console.log(comment);
+			billWatchVm.billComment = '';
+
+			var commentPkg = {
+
+				billId: bill_id,
+				comment: comment
+
+			}
+			console.log(commentPkg);
 		}
 
 		function voteYea(bill_id, yea){
