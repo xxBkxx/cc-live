@@ -34,7 +34,10 @@
                     <li>Read | Fançais</li>
                 </ul>
                 <ul class="border-and-bg vote-unordered-list bill-link-font">    
-                    <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(bill.id,bill.yea)'>Yea:{{bill.yea}} | Nay</a></li> 
+                    <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(bill.id,bill.yea)'>Yea:{{bill.yea}} | Nay</a></li>
+                </ul>
+                <ul class="comment-ul">
+                    <li><input ng-model='ctrl.billComment' placeholder="Comment" type="text"></input><button class ='commentBtn' ng-click='ctrl.comment()'>Send</button></li>
                 </ul>
             </div>
 

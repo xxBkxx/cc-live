@@ -196,6 +196,14 @@ footer div li{
 
 }
 
+.comment-ul{
+	visibility: hidden;
+}
+
+.commentBtn{
+	width: 50px;
+}
+
 .text{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;

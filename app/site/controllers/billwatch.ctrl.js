@@ -16,6 +16,7 @@
 		billWatchVm.toTermsPage 	= toTermsPage;
 		billWatchVm.voteYea 		= voteYea;
 		billWatchVm.voteNay			= voteNay;
+		billWatchVm.comment         = comment;
 
 		//Link Pages
 		function toMainPage(){
@@ -37,6 +38,11 @@
 			$location.url('/terms');
 		}
 
+		function comment(){
+			var comment = billWatchVm.billComment;
+			console.log(comment);
+		}
+
 		function voteYea(bill_id, yea){
 			// for (var i = 0; billWatchVm.bills.length; i++){
 			// 		console.log(billWatchVm.bills.length);
@@ -48,6 +54,7 @@
 			if( localStorage.auth_token =='' || 
 				localStorage.auth_token == undefined){
 					$location.url('/login');
+				window.alert("please login to vote")
 				} else{
 					console.log(yea);
 					billWatchVm.upYea = yea + 1;

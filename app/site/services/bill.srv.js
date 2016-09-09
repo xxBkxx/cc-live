@@ -16,7 +16,6 @@
 			function getBills(){
 				return apiSrv.request('/billWatch', {}, 'GET')
 					.then(function(res){
-						console.log(res.data);
 						return res.data;
 					});// }, function(res){
 					// 	console.log(res);
@@ -26,7 +25,6 @@
 			function initBills(){
 				return apiSrv.request('/init',{}, "GET")
 					.then(function(res){
-						console.log(res);
 						return res;
 					})
 			}
@@ -36,7 +34,7 @@
 				 apiSrv.request('/vote', {vote}, 'POST')
 					.then(function(res){
 						self.updatedBill = res.data.yea;
-						console.log(self.updatedBill);
+						// console.log(self.updatedBill);
 					})
 			}
 

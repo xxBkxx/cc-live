@@ -3,7 +3,7 @@
 		.module('ccApp')
 		.controller('LoginCtrl', LoginCtrl);
 
-		function LoginCtrl(apiSrv){
+		function LoginCtrl(apiSrv, $location){
 			var loginVm = this;
 
 			loginVm.login = login;
@@ -21,6 +21,9 @@
 
 				// credentials = JSON.stringify(credentials)
 				apiSrv.request("/login", credentials, "POST");
+
+				$location.url('/home');
+
 			}
 		}
 })();
