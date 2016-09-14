@@ -1,46 +1,61 @@
     <header>
         <a ng-click="ctrl.toMainPage()">
-            <img alt="Citizens Of Canada Logo" src="images/logo.png">
+            <img class="logo vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
         </a>
+        
+            <nav class="global-nav">
+                <ul class="nav-links">
+               
+
+                </ul>
+            </nav>
     </header>
-    <section>
-        <h1>Track Government</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at nisl non metus sollicitudin facilisis. Vivamus ut urna euismod, elementum urna non, vehicula orci. Curabitur eleifend vehicula commodo. Donec maximus nisi nec enim convallis, posuere pretium elit tincidunt. Etiam quis tempor felis, malesuada malesuada ipsum. Aenean at aliquam velit. 
-        </p>
-    </section>
-    <section>
-        <form>
-            <section>
+    <div class="login-container">
+        <div>
+            <h1 class="centre-text">Have Your Say, Be Heard</h1 >
+            <p class="horizontal-centre header-note centre-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at nisl non metus sollicitudin facilisis.  
+            </p>
+        </div>
+        <div class="form-container">
+            <div class="centre">
+                <h2 class="centre-text" >Welcome back</h2>
+                <form class="signup-form">
+                    <div>
+                    <ul>
+
+                        <li>   
+                            <input ng-model='ctrl.email' type="text" placeholder="Email"></input>
+                        </li>
+                        <li>   
+                            <input ng-model='ctrl.password' type="password" placeholder="Password"></input>
+                        </li>
+ 
+                        <li><button ng-click='ctrl.login()'>Log in</button></li>                  
+                    </ul>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer id='about-footer-nav'>
+        <div class="about-vertical-centre footer-nav">
+            <nav>
                 <ul>
-                    <li>
-                        <h1>Welcome Back.</h1>
-                        <input ng-model='ctrl.email' type="text" placeholder="Username"></input>
-                    </li>
-                    <li>
-                        <input ng-model='ctrl.password' type="password" placeholder="Password"></input>
-                        
-                    </li>
-                    <li><button ng-click='ctrl.login()'>Login</button></li>
-                </ul> 
-            </section>
-        </form>
-    </section>
-    <footer class="grass-footer">
-        <nav>
-            <ul>
-                <a ng-click='ctrl.toAboutPage()'>
-                    <li>About</li>
-                </a>
-                <a ng-click='ctrl.toBillWatchPage()'>
-                    <li>Bill Watch</li>
-                </a>
-                <a ng-click='ctrl.toPrivacyPage()' >
-                    <li>Privacy</li>
-                </a>
-                <a ng-click='ctrl.toTermsPage()'>
-                    <li>Terms</li>
-                </a>
-            </ul>
-        </nav>
+                    <a ng-click='ctrl.toAboutPage()'>
+                        <li>About </li>
+                    </a>
+                     <a ng-click='ctrl.toBillWatchPage()'>
+                        <li> | Bill Watch | </li>
+                    </a>
+                    <a ng-click='ctrl.toPrivacyPage()' >
+                        <li>Privacy</li>
+                    </a>
+                    <a ng-click='ctrl.toTermsPage()'>
+                        <li> | Terms</li>
+                    </a>
+                </ul>
+                
+            </nav>
+        </div>
     </footer>

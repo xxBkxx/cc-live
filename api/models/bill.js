@@ -25,7 +25,8 @@ var billSchema = new Schema({
 	nay: 		       {
 		type:   Number,
 		default:0
-	}
+	},
+	comments:  			Object
 });
 
 billSchema.pre('save', function(next){

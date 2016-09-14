@@ -4,13 +4,13 @@
         </a>
             <nav class="global-nav">
                 <ul class="nav-links">
+                <li>    {{ctrl.userName}}</li>
                     <a ng-click='ctrl.toAboutPage()'>
                         <li>About</li>
                     </a>
                     <a ng-click='ctrl.toBillWatchPage()'>
                         <li>Bill Watch</li>
                     </a>
-
                 </ul>
             </nav>
     </header>
@@ -30,17 +30,22 @@
                     <li>Publications_link:{{bill.publications_link}}
                 </ul>
                 <h1 class="bill-title">{{bill.number}} {{bill.title}}</h1>
-                <ul class='border-and-bg read-unordered-list bill-link-font'>
+ <!--                <ul class='border-and-bg read-unordered-list bill-link-font'>
                     <li>Read | Fançais</li>
-                </ul>
+                </ul> -->
                 <ul class="border-and-bg vote-unordered-list bill-link-font">    
-                    <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(bill.id,bill.yea)'>Yea:{{bill.yea}} | Nay</a></li>
+                    <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'>Yea</a>:{{bill.yea}} | <a ng-click='bill.nay = bill.nay + 1; ctrl.voteYea(0, bill.id,bill.nay)'>Nay:{{bill.nay}}</a></li>
                 </ul>
-                <ul class="comment-ul">
-                    <li><input ng-model='ctrl.billComment' placeholder="Comment" type="text"></input><button class ='commentBtn' ng-click='ctrl.comment(bill.id)'>Send</button></li>
+<!--                 <ul class="comment-ul">
+                    <li><input ng-model='ctrl.billComment' placeholder="Comment" type="text"></input><button class ='commentBtn' ng-click='ctrl.comment(bill.id)'>Send</button>{{ctrl.userName}}</li>
                 </ul>
+                <div>
+                    <div class="comments-container">
+                    {{bill.comments}}
+                    {{bill.comments.user_name}}
+                    </div> -->
+                </div>
             </div>
-
         </div>
     </section>
     <footer>

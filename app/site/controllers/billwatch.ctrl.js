@@ -3,12 +3,12 @@
 		.module('ccApp')
 		.controller('BillWatchCtrl', BillWatchCtrl);
 
-	function BillWatchCtrl($location, billSrv, bills, $http){
+	function BillWatchCtrl($location, billSrv, billComments, bills, $http){
 		var billWatchVm = this;
 
 		// billWatchVm.bills = billSrv.getBills();
-		billWatchVm.bills = bills;
-
+		billWatchVm.bills 			= bills;
+		billWatchVm.billComments    = billComments;
 		billWatchVm.toMainPage      = toMainPage;
 		billWatchVm.toAboutPage     = toAboutPage;
 		billWatchVm.toBillWatchPage = toBillWatchPage;
@@ -17,7 +17,7 @@
 		billWatchVm.voteYea 		= voteYea;
 		billWatchVm.voteNay			= voteNay;
 		billWatchVm.comment         = comment;
-
+		console.log(billComments);
 		//Link Pages
 		function toMainPage(){
 			$location.url('/home');
@@ -41,18 +41,21 @@
 		function comment(bill_id){
 			var comment = billWatchVm.billComment;
 			billWatchVm.billComment = '';
+			 var token = localStorage.getItem('auth_token');
 
 			var commentPkg = {
 
-				billId: bill_id,
-				comment: comment
-
+				billId:  bill_id,
+				comment: comment,
+				token:   token
 			}
-			console.log(commentPkg);
-			billSrv.billComment(commentPkg);
-		}
 
-		function voteYea(bill_id, yea){
+			billSrv.billComment(commentPkg);
+			billWatchVm.userName = billSrv.updateCommentName();
+			console.log(billWatchVm.userName);
+		}	
+
+		function voteYea(decision, bill_id, billVote){
 			// for (var i = 0; billWatchVm.bills.length; i++){
 			// 		console.log(billWatchVm.bills.length);
 			// 	if (billWatchVm.bills[i].id == bill_id){
@@ -63,17 +66,31 @@
 			if( localStorage.auth_token =='' || 
 				localStorage.auth_token == undefined){
 					$location.url('/login');
+
 				window.alert("please login to vote")
 				} else{
-					console.log(yea);
-					billWatchVm.upYea = yea + 1;
-					var vote  = { 
-						yea: yea,
-						bill_id: bill_id 
-					};
-						billSrv.vote(vote);
+					if(decision == 1){
+						console.log(billVote);
+
+						var vote  = { 
+							yea: billVote,
+							bill_id: bill_id 
+						};
+
+						billSrv.vote(1,vote);
+
+					} else if(decision == 0){
+						console.log(billVote);
+						
+						var vote = {
+							nay: billVote,
+							bill_id: bill_id
+						};
+
+						billSrv.vote(0,vote);
+					}
 						billWatchVm.currYeaValue = billSrv.updateBillVote();
-						console.log(billWatchVm.currYeaValue);
+						// console.log(billWatchVm.currYeaValue);
 				}
 					// $http.post('/vote', vote)
 			// 	.then(function success(response){
@@ -88,7 +105,6 @@
 		}
 
 		function updateYea(){
-
 		}
 	}
 })();

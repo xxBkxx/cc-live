@@ -15,8 +15,11 @@
 					templateUrl: 'site/partials/billWatch.html',
 					controller: "BillWatchCtrl as ctrl",
 					resolve: {
-						bills: function(billSrv) {
-							billSrv.initBills()
+						billComments: function(billSrv){
+							return billSrv.initBillComments();
+						},
+						bills: 		  function(billSrv) {
+							billSrv.initBills();
 							return billSrv.getBills();
 						}
 					}
@@ -48,15 +51,19 @@
 				.when('/billComment', {
 					templateUrl: 'site/partials/billWatch.html'
 				})
-				.otherwise({
+				.when('/initComments', {
+					templateUrl: 'site/partials/billwatch.html'
+				})
+				.otherwise({ 
 					redirectTo: '/home'
 				});
 
 			$httpProvider.interceptors.push(function(jwtHelper){
 				return {
 					request: function(config){
-						if (localStorage.authToken != undefined){
-							config.header.authentication = localStorage.authToken;
+						if (localStorage.auth_token != undefined){
+							console.log(config);
+							config.headers.authentication = localStorage.auth_token;
 						}
 						return config;
 					},
@@ -65,7 +72,7 @@
 						if (auth_token){
 							var decrypt_token = jwtHelper.decodeToken(auth_token);
 							if (decrypt_token.email){
-								localStorage.authToken = auth_token;
+								localStorage.auth_token = auth_token;
 							}
 						}
 						return response;

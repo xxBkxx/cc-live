@@ -22,7 +22,7 @@
 				// credentials = JSON.stringify(credentials)
 				apiSrv.request("/login", credentials, "POST");
 
-				$location.url('/home');
+				// $location.url('/home');
 
 			}
 		}

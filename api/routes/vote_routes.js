@@ -7,15 +7,27 @@ var bill             = require('.././models/bill');
 // app.use()
 
 router.post('/vote', urlencodedParser,jsonParser, function(req,res){
-	console.log("post");
-	console.log(req.body)
+	// console.log("post");
+	// console.log(req.body)
 	// req.body.yea++;
 	// console.log(req.body.vote.yea);
-	var currYea = req.body.vote.yea;
-	var newYea = currYea + 1;
+
+	var decision = req.body.decision == 1 ? 'yea' : 'nay';
+
+	console.log(decision);
+
+	if (decision == 'yea'){
+
+		var currYea = req.body.vote.yea;
+
+	} else if (decision == 'nay'){
+
+		var currYea = req.body.vote.nay;
+	}
+	//var newYea = currYea + 1;
 	// var userVote   = req.body.yea;
-	var voteBillId = req.body.vote.bill_id;
-	console.log(voteBillId);
+    var voteBillId = req.body.vote.bill_id;
+	// console.log(voteBillId);
 	// var yeaUp = 2;
 	// var currVal =0;
 	// bill.findOne({"id":voteBillId},'yea', function(err, doc){
@@ -28,15 +40,15 @@ router.post('/vote', urlencodedParser,jsonParser, function(req,res){
 	// 	// yeaUp = currVal + 1;
 	// 	// console.log(yeaUp);
 	// }).lean()
-	bill.findOneAndUpdate({"id":voteBillId}, {$set:{yea: currYea}}, {new:true}, function(err, item){
-		// console.log(yeaUp);
+	bill.findOneAndUpdate({"id":voteBillId}, {$set:{[decision]: currYea}}, {new:true}, function(err, item){
+		console.log(item);
 		if (err){
 			return console.log(err);
 		}else{
 			// console.log(item)
 			res.status(200);
-			console.log("___");
-			console.log(item);
+			// console.log("___");
+			// console.log(item);
 			return  res.send(item);
 		}
 	})

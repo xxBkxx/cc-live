@@ -3,7 +3,6 @@ var bcrypt 	   = require('bcrypt-nodejs');
 var bodyParser = require('body-parser');
 var users      = require('.././models/users');
 var jwt		   = require('jsonwebtoken');
-
 var urlencodedParser = bodyParser.urlencoded({extended: true});
 var jsonParser 		 = bodyParser.json();
 
@@ -11,9 +10,10 @@ var jsonParser 		 = bodyParser.json();
 	// console.log('loggdd in!');
 	var _user = req.body;
 	// console.log("----");	
-	// console.log(_user.password);
+	console.log(_user.password);
 	// console.log(_user.email);
 	users.findOne({ "email": _user.email}, function(err, user){
+		console.log(user);
 		if(err){
 			console.log(err)
 			res.status(400)
@@ -23,7 +23,8 @@ var jsonParser 		 = bodyParser.json();
 			bcrypt.compare(_user.password, user.password, function(err,result){
 				// console.log(err);	
 				// console.log(_user.password);
-				// console.log(user.password);
+				console.log(result);
+
 				if (result == true){
 					// console.log(result);
 					users.password = '';

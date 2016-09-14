@@ -22,8 +22,8 @@ var prime_minister_name ='';
 var event 				='';
 
 	for (var i = 0; i<object.root.children.length; i++){
-		console.log(object.root.children[i].children[9].children[0]);
-		console.log('``````````');
+		// console.log(object.root.children[i].children[9].children[0]);
+		// console.log('``````````');
 
 		bill_id 			 = object.root.children[i].attributes.id;
 		// TODO format lastUpdated string

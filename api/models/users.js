@@ -9,7 +9,7 @@ var userSchema = new Schema({
 	},
 	name: String,
 	password: String,
-	bill_vote: String
+	comment: String
 });
 
 userSchema.pre('save', function(next){
