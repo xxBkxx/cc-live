@@ -374,7 +374,7 @@ db.once('open', function(){
 // });
 
 // Was 8080
-app.listen(80, function(){
+app.listen(54.70.100.116:80, function(){
 	console.log('Listening on Port 80');
 	console.log('Press CTRL + C to stop server');
 });
