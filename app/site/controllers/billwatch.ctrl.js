@@ -3,7 +3,7 @@
 		.module('ccApp')
 		.controller('BillWatchCtrl', BillWatchCtrl);
 
-	function BillWatchCtrl($location, billSrv, billComments, bills, $http){
+	function BillWatchCtrl($window, $location, billSrv, billComments, bills, $http, commentSrv){
 		var billWatchVm = this;
 
 		// billWatchVm.bills = billSrv.getBills();
@@ -15,8 +15,10 @@
 		billWatchVm.toPrivacyPage   = toPrivacyPage;
 		billWatchVm.toTermsPage 	= toTermsPage;
 		billWatchVm.voteYea 		= voteYea;
-		billWatchVm.voteNay			= voteNay;
+		// billWatchVm.voteNay			= voteNay;
 		billWatchVm.comment         = comment;
+		billWatchVm.readBill  		= readBill;
+
 		console.log(billComments);
 		//Link Pages
 		function toMainPage(){
@@ -50,7 +52,7 @@
 				token:   token
 			}
 
-			billSrv.billComment(commentPkg);
+			commentSrv.billComment(commentPkg);
 			billWatchVm.userName = billSrv.updateCommentName();
 			console.log(billWatchVm.userName);
 		}	
@@ -81,7 +83,7 @@
 
 					} else if(decision == 0){
 						console.log(billVote);
-						
+
 						var vote = {
 							nay: billVote,
 							bill_id: bill_id
@@ -100,8 +102,11 @@
 			// 		console.log(err);
 			// 	})
 		}
-		function voteNay(){
-			console.log("nay");
+		function readBill(bill_id){
+			var billLink = 'http://www.parl.gc.ca/HousePublications/Redirector.aspx?RefererUrl=%2fHousePublications%2fPublication.aspx%3fLanguage%3dE%26Mode%3d1%26DocId%3d' +
+				bill_id + '&File=4';
+			$window.alert(billLink);
+			$window.location.href = billLink;
 		}
 
 		function updateYea(){

@@ -14,9 +14,9 @@
 			self.vote 	  		= vote;
 			self.updateBillVote = updateBillVote;
 			self.initBills 		= initBills;
-			self.billComment 	= billComment;
+			// self.billComment 	= billComment;
 			self.updateCommentName = updateCommentName;
-			self.initBillComments  = initBillComments;
+			// self.initBillComments  = initBillComments;
 
 			function getBills(){
 				return apiSrv.request('/billWatch', {}, 'GET')
@@ -31,23 +31,23 @@
 				return apiSrv.request('/init',{}, "GET")
 			}
 
-			function initBillComments(){
-				return apiSrv.request('/initComments', {}, "GET")
-				.then(function(res){
-					console.log(res.data);
-					return res.data;
-				});
-			}
+			// function initBillComments(){
+			// 	return apiSrv.request('/initComments', {}, "GET")
+			// 	.then(function(res){
+			// 		console.log(res.data);
+			// 		return res.data;
+			// 	});
+			// }
 
-			function billComment(commentPkg){
-				apiSrv.request('/billComment', {commentPkg}, 'POST')
-					.then(function(res){
-						console.log(res);
-						var userE = res.data;
-						self.updatedUserName = userE;
-						console.log(self.updatedUserName);
-					})
-			}
+			// function billComment(commentPkg){
+			// 	apiSrv.request('/billComment', {commentPkg}, 'POST')
+			// 		.then(function(res){
+			// 			console.log(res);
+			// 			var userE = res.data;
+			// 			self.updatedUserName = userE;
+			// 			console.log(self.updatedUserName);
+			// 		})
+			// }
 			function vote(decision, vote){
 				// console.log(vote);
 				 apiSrv.request('/vote', {decision, vote}, 'POST')

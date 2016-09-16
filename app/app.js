@@ -15,8 +15,8 @@
 					templateUrl: 'site/partials/billWatch.html',
 					controller: "BillWatchCtrl as ctrl",
 					resolve: {
-						billComments: function(billSrv){
-							return billSrv.initBillComments();
+						billComments: function(commentSrv){
+							return commentSrv.initBillComments();
 						},
 						bills: 		  function(billSrv) {
 							billSrv.initBills();
