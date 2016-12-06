@@ -92,7 +92,8 @@
                         </form>
                     </div>
                     <div class="comment-button">
-                          <button ng-disabled='frmComment.txtAreaComment.$invalid && frmComment.txtAreaComment.$pristine' class='commentBtn' ng-click='ctrl.comment(bill.id);updateComments()'>Send</button>{{ctrl.userName}}
+                    <!-- todo #∞: disable the button if there's no user inputed text in the texttarea, thanks -->
+                          <button ng-disabled='frmComment.txtAreaComment.$invalid || frmComment.txtAreaComment.$pristine' class='commentBtn' ng-click='ctrl.comment(bill.id);updateComments()'>Send</button>{{ctrl.userName}}
                     </div>
                 </div>
 
