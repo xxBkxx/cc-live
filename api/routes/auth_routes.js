@@ -10,10 +10,11 @@ var jsonParser 		 = bodyParser.json();
 	// console.log('loggdd in!');
 	var _user = req.body;
 	// console.log("----");	
-	console.log(_user.password);
+	// console.log(_user.password);
 	// console.log(_user.email);
 	users.findOne({ "email": _user.email}, function(err, user){
-		console.log(user);
+		// console.log('auth routes');
+		// console.log(user);
 		if(err){
 			console.log(err)
 			res.status(400)
@@ -23,16 +24,18 @@ var jsonParser 		 = bodyParser.json();
 			bcrypt.compare(_user.password, user.password, function(err,result){
 				// console.log(err);	
 				// console.log(_user.password);
-				console.log(result);
+				// console.log(result);
 
 				if (result == true){
 					// console.log(result);
 					users.password = '';
 					delete users.password;
-					var user_obj = {email: user.email};
+					var user_obj = {email: user.email, name: user.name};
+					// console.log('user_obj');
+					// console.log(user_obj.name);
 					var token = jwt.sign(user_obj, 'expropositovivo' );
 					res.set('authentication', token);
-					res.json(user_obj);
+					res.json(user_obj.name);
 					console.log('youre in! :-)');
 				} else{  
 					res.status(403)

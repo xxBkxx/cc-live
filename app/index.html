@@ -1,16 +1,25 @@
 <html>
 	<head>
 		<script type="text/javascript" src='assets/js/jquery/jq.js'></script>
+		<!-- <script type="text/javascript" src="assets/js/bootstrap/bootstrap.js"></script> -->
 		<script type="text/javascript" src='assets/js/angular/angular.js'> </script>
 		<script type="text/javascript" src='assets/js/angular/angular-route.js'></script>
+		<script type="text/javascript" src='assets/js/angular/angular-messages.js'></script>
 		<script type="text/javascript" src='assets/js/modernizr/modernizr.custom.js'></script>
 		<script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+		<script type="text/javascript" src="assets/js/angular/angular-messages.min.js"></script>
+		<script type="text/javascript" src="assets/js/angular/angular-sanitize.js"></script>
+		<!-- <script type="text/javascript" src="site/filters/reverseComments.js"></script>	 -->	
+
 
 	<!-- 	<script type="text/javascript" src="xml.handler.js"></script> -->
 		<script type="text/javascript" src='app.js'></script>
 		<script type="text/javascript" src="site/services/api.srv.js"></script>
 		<script type="text/javascript" src='site/services/bill.srv.js'></script>
 		<script type="text/javascript" src='site/services/comment.srv.js'></script>
+		<script type="text/javascript" src='site/services/user.srv.js'></script>
+		<script type="text/javascript" src='site/services/auth.srv.js'></script>
+
 		<script type="text/javascript" src='site/controllers/main.ctrl.js'></script>
 		<script type="text/javascript" src='site/controllers/about.ctrl.js'></script>
 		<script type="text/javascript" src='site/controllers/billwatch.ctrl.js'></script>
@@ -18,8 +27,20 @@
 		<script type="text/javascript" src='site/controllers/terms.ctrl.js'></script>
 		<script type="text/javascript" src='site/controllers/signup.ctrl.js'></script>
 		<script type="text/javascript" src='site/controllers/login.ctrl.js'></script>
+		<script type="text/javascript" src='site/controllers/signup.frm.ctrl.js'></script>
+
+		<script type="text/javascript" src='site/directives/myComment.dir.js'></script>
+		<script type="text/javascript" src='site/directives/myCommentPicture.dir.js'></script>
+		<script type="text/javascript" src='site/directives/showComment.dir.js'></script>
+		
+		<script type="text/javascript" src='site/filters/reverseComments.fil.js'></script>
+		<script type="text/javascript" src='site/filters/commentsByBillId.fil.js'></script>
+		
 		<link rel="stylesheet" href="assets/css/reset.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<!-- <link rel='stylesheet' href="assets/css/bootstrap.css"> -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 
 	</head>
 	<body ng-app='ccApp'>

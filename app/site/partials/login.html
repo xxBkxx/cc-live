@@ -20,15 +20,23 @@
         <div class="form-container">
             <div class="centre">
                 <h2 class="centre-text" >Welcome back</h2>
-                <form class="signup-form">
+                <form name='frmLogin' class="signup-form">
                     <div>
                     <ul>
-
                         <li>   
-                            <input ng-model='ctrl.email' type="text" placeholder="Email"></input>
+                            <input ng-model='ctrl.email' name='myEmail' type="email" placeholder="Email" ng-maxlength='100' required/>
+                            <span ng-messages='frmLogin.myEmail.$dirty && frmLogin.myEmail.$error'>
+                                <span ng-message='required'>Required</span>
+                                <span ng-message='email'>Please your email address</span>
+                                <span ng-message='maxlength'>Too many characters (100)</span>
+                            </span>
                         </li>
                         <li>   
-                            <input ng-model='ctrl.password' type="password" placeholder="Password"></input>
+                            <input name='password' ng-model='ctrl.password' type="password" placeholder="Password" required ng-minlength='8'/>
+                            <span ng-messages='frmLogin.password.$dirty && frmLogin.password.$error'>
+                                <span ng-message='required'>Required</span>
+                                <span ng-message='minlength'>Not enough characters(8)</span>
+                            </span>
                         </li>
  
                         <li><button ng-click='ctrl.login()'>Log in</button></li>                  

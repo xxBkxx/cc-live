@@ -1,71 +1,157 @@
-    <header>
-        <a ng-click="ctrl.toMainPage()">
-            <img class="logo vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
-        </a>
-            <nav class="global-nav">
-                <ul class="nav-links">
-                <li>    {{ctrl.userName}}</li>
-                    <a ng-click='ctrl.toAboutPage()'>
-                        <li>About</li>
-                    </a>
-                    <a ng-click='ctrl.toBillWatchPage()'>
-                        <li>Bill Watch</li>
-                    </a>
-                </ul>
-            </nav>
-    </header>
-    <section>
-        <img class="horizontal-centre page-header img-responsive" src="assets/img/page-header-bill-watch.png">
-        <div ng-repeat='bill in ctrl.bills' class='bill-container'>
-            <div class='bill-data-container'>
-                <ul class="bill-data">
-                    <li>Bill ID: {{bill.id}}</li>
-                    <li>Parliament: {{bill.parliament}}</li>
-                    <li>Session: {{bill.session}}</li>
-                    <li>Intro Date: {{bill.introduced}}</li>
-                    <li>Bill Number: {{bill.number}}</li>
-                    <li>Sponsor: {{bill.sponsorer}}</li>
-                    <li>Event: {{bill.event}}</li>
-                    <li>Type: {{bill.type}}</li>
-                    <li>Publications:{{bill.publications}}</li>
-                    <li>Publications_link:{{bill.publications_link}}
-                </ul>
-                <h1 class="bill-title">{{bill.number}} {{bill.title}}</h1>
-                <ul class='border-and-bg read-unordered-list bill-link-font'>
-                    <li><a ng-click='ctrl.readBill(bill.id)'>Read</a></li>
-                </ul>
-                <ul class="border-and-bg vote-unordered-list bill-link-font">    
-                    <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'>Yea</a>:{{bill.yea}} | <a ng-click='bill.nay = bill.nay + 1; ctrl.voteYea(0, bill.id,bill.nay)'>Nay:{{bill.nay}}</a></li>
-                </ul>
-                <ul class="comment-ul">
-                    <li><input ng-model='ctrl.billComment' placeholder="Comment" type="text"></input><button class ='commentBtn' ng-click='ctrl.comment(bill.id)'>Send</button>{{ctrl.userName}}</li>
-                </ul>
-                <div>
-                    <div ng-repeat='comment in ctrl.billComments | filter: comment.bill_id = bill.id' class="comments-container">
-                    {{comment.comment}} | {{comment.bill_id}} | {{comment.user_name}}
+<header>
+    <a ng-click="ctrl.toMainPage()">
+        <img class="logo vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+    </a>
+    <nav class="global-nav">
+        <ul class="nav-links">
+<!--             <li> <a hfre="#">{{ctrl.initUser}}</a></li>
+            <li> -->
+            <li>
+                <div class="dropdown">
+                    <span>{{ctrl.initUser}}</span>
+                    <div class="dropdown-content">
+                    <ul>
+                        <li>Sign-out</li>
+                    </ul>
                     </div>
                 </div>
+            </a>
+
+<!--             <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Dropdown
+                <span class="caret"></span>
+                </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div> -->
+            <a ng-click='ctrl.toAboutPage()'>
+                <li>About</li>
+            </a>
+            <a ng-click='ctrl.toBillWatchPage()'>
+                <li>Bill Watch</li>
+            </a>
+        </ul>
+    </nav>
+</header>
+<section>
+    <img class="horizontal-centre page-header img-responsive" src="assets/img/page-header-bill-watch.png">
+    <div ng-repeat='bill in ctrl.bills' class='bill-container'>
+        <div class='bill-data-container'>
+            <ul class="bill-data">
+                <li><span class="bill-element-title">Bill ID:</span> {{bill.id}}</li> |
+                <li><span class="bill-element-title">Parliament:</span> {{bill.parliament}}</li> |
+                <li><span class="bill-element-title">Session:</span> {{bill.session}}</li> |
+                <li><span class="bill-element-title">Intro Date:</span>{{bill.introduced}}</li> |
+                <li><span class="bill-element-title">Bill Number:</span> {{bill.number}}</li> | 
+                <li><span class="bill-element-title">Sponsor:</span> {{bill.sponsorer}}</li> | 
+                <li><span class="bill-element-title">Event:</span> {{bill.event}}</li> |
+                <li><span class="bill-element-title">Type:</span> {{bill.type}}</li> |
+                <li><span class="bill-element-title">Publications:</span> {{bill.publications}}</li> |
+                <li><span class="bill-element-title">Publications_link:</span> {{bill.publications_link}}
+            </ul>
+            <h1 class="bill-title">{{bill.number}} {{bill.title}}</h1>
+
+
+            <ul class="vote-unordered-list bill-link-font">
+                <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'>Yea</a>:&nbsp{{bill.yea}} |<b> <a ng-click='bill.nay = bill.nay + 1; ctrl.vdoteYea(0, bill.id,bill.nay)'>Nay</a>:&nbsp{{bill.nay}} | {{filtered.length}} <a ng-click="showComments()"> comments</a>
+                </li>
+            </ul>
+
+                <div ng-show='pleaseShow' class="comments-container horizontal-centre">
+
+                <div class="comment-input-container">
+                    <div class="comment-profile-picture">   
+                        <my-comment-picture></my-comment-picture>
+                    </div>
+
+                    <!-- TODO #∞: Add swear filter to this thing -->
+                    <div class="input-send-container">
+                        <form name=frmComment>
+
+                        <textarea class="comment-textarea" ng-model-options="{ debounce: 1000 }" ng-model='ctrl.billComment' placeholder="Have your say" type="text"
+                        name="txtAreaComment"
+                        minlength='3'
+                        maxlength='120'
+                        ng-pattern='regex'
+                        ></textarea>
+
+                        <span ng-messages='frmComment.txtAreaComment.$dirty && frmComment.txtAreaComment.$error '>
+                     
+                            <span class="comment-box-errmsg" ng-message='minlength'>please leave a comment that's more than 2 characters long</span>
+                            <span class="comment-box-errmsg" ng-show='frmComment.txtAreaComment.$error.pattern'>
+                                Please type only alphanumberic and/or the special characters, ,.'"!$*(), including whitespace
+                            </span >
+
+                        </span>
+                        </form>
+                    </div>
+                    <div class="comment-button">
+                          <button ng-disabled='frmComment.txtAreaComment.$invalid && frmComment.txtAreaComment.$pristine' class='commentBtn' ng-click='ctrl.comment(bill.id);updateComments()'>Send</button>{{ctrl.userName}}
+                    </div>
+                </div>
+
+                    <div class="new-comment-container">
+                           <my-comment>
+                                <div></div>
+                           </my-comment>
+                           <show-comment></show-comment>            
+                    </div>
+      <!--<div><a ng-click='ctrl.numberOfCommentsById(bill.id)'>comments</a></div> -->
+                    <div ng-mdoel='ctrl.commentsSection' ng-repeat='($index, comment) in ctrl.billComments | reverseComments | filter: comment.bill_id = bill.id as filtered' class="horizontal-centre" >
+                    
+                        <div>
+                            <ul>
+                                <li>
+                                <div >
+                                    <div class="old-comment-picture">
+                                        <my-comment-picture></my-comment-picture>
+                                    </div>
+                                    <div class="comment-user-name">
+                                       <span>{{comment.user_name}}</span> 
+                                    </div>
+                                    <div class="user-comment">
+                                        <p>{{comment.comment}}</p>
+                                    </div>
+                                </div>
+                                </li>
+                            </ul>
+    <!--                         <ul>
+                                <li ng-bing-html>
+                                    <my-comment></my-comment>
+                                </li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
-    <footer>
-        <div class="vertical-centre">
-            <nav>
-                <ul>
-                    <a ng-click='ctrl.toAboutPage()'>
-                        <li>About </li>
-                    </a>
-                    <a ng-click='ctrl.toBillWatchPage()'>
-                        <li> | Bill Watch | </li>
-                    </a>
-                    <a ng-click='ctrl.toPrivacyPage()' >
-                        <li>Privacy</li>
-                    </a>
-                    <a ng-click='ctrl.toTermsPage()'>
-                        <li> | Terms</li>
-                    </a>
-                </ul>
-                
-            </nav>
-        </div>
-    </footer>
+    </div>
+</section>
+<footer>
+    <div class="vertical-centre">
+        <nav>
+            <ul>
+                <a ng-click='ctrl.toAboutPage()'>
+                    <li>About </li>
+                </a>
+                <a ng-click='ctrl.toBillWatchPage()'>
+                    <li> | Bill Watch | </li>
+                </a>
+                <a ng-click='ctrl.toPrivacyPage()'>
+                    <li>Privacy</li>
+                </a>
+                <a ng-click='ctrl.toTermsPage()'>
+                    <li> | Terms</li>
+                </a>
+            </ul>
+
+        </nav>
+    </div>
+</footer>

@@ -1,6 +1,6 @@
 var router = require('express').Router();
 
-router.get('/init', function(req,res){
+router.post('/init', function(req,res){
 var object = parse(xml);
 
 var bill_id 		    = 0;
@@ -78,6 +78,7 @@ var event 				='';
 		    if (err) {
 		        console.log(err);
 		    } else {
+		    	res.send(newBill);
 		        // console.log('new Bill created!');
 		    }
 		});

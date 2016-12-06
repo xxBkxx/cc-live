@@ -41,7 +41,7 @@ router.post('/vote', urlencodedParser,jsonParser, function(req,res){
 	// 	// console.log(yeaUp);
 	// }).lean()
 	bill.findOneAndUpdate({"id":voteBillId}, {$set:{[decision]: currYea}}, {new:true}, function(err, item){
-		console.log(item);
+		// console.log(item);
 		if (err){
 			return console.log(err);
 		}else{

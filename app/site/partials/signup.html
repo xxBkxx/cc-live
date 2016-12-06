@@ -5,7 +5,6 @@
         
             <nav class="global-nav">
                 <ul class="nav-links">
-               
 
                 </ul>
             </nav>
@@ -20,22 +19,41 @@
         <div class="form-container">
             <div class="centre">
                 <h2 class="centre-text" >Signup, be heard.</h2>
-                <form class="signup-form">
+                <form name='frm'  class="signup-form">
                     <div>
                     <ul>
                         <li>
-                            <input ng-model='ctrl.name' type="text" placeholder="User Name"></input>
+                            <input name='uname' ng-model='ctrl.uname' type="text" placeholder="User Name" ng-minlength ="5" ng-maxlength ="20" required 
+                            />
+                            <span ng-messages="frm.uname.$dirty && frm.uname.$error">
+                                <span ng-message="required">Required</span>
+                                <span ng-message="minlength">Not enough characters (2)</span>
+                                <span ng-message='maxlength'>Too many characters (20)</span>
+                            </span>
                         </li>
                         <li>   
-                            <input ng-model='ctrl.newEmail' type="text" placeholder="Email"></input>
+                            <input ng-model='ctrl.newEmail' type="email" name='myEmail' placeholder="Email" ng-minlength='2' required/><span ng-messages='frm.myEmail.$dirty && frm.myEmail.$error'>
+                               <span ng-message="required">Required</span>
+                               <span ng-message='email'>This is not an email</span>
+                                <span ng-message="minlength">Not enough characters (2)</span>
+                                <span ng-message='maxlength'>Too many characters (20)</span>
+                            </span>
                         </li>
                         <li>   
-                            <input ng-model='ctrl.newPassword' type="password" placeholder="Password"></input>
+                            <input name='password' ng-model='ctrl.newPassword' type="password" placeholder="Password" ng-minlength='8' required/>
+                            <span ng-messages='frm.password.$dirty && frm.password.$error'>
+                               <span ng-message="required">Required</span>
+                                <span ng-message="minlength">Not enough characters (8)</span>
+                            </span>
                         </li>
                         <li>   
-                            <input ng-model='ctrl.password_two' type="Password" placeholder="Re-Enter Password"></input>
+                            <input name='pwMatch' ng-model='ctrl.password_two' type="Password" placeholder="Re-Enter Password" ng-minlength='8' required/>
+                            <span ng-messages='frm.pwMatch.$dirty && frm.pwMatch.$error'>
+                                <span ng-message="required">Required</span>
+                                <span ng-message="minlength">Not enough characters (8)</span>
+                            </span>
                         </li>  
-                        <li><button ng-click='ctrl.signup()'>Sign-Up</button></li>                  
+                        <li><button ng-disabled='frm.$invalid' ng-click='ctrl.signup(frm.$valid)'>Sign-Up</button></li>                  
                     </ul>
                 </div>
                 </form>

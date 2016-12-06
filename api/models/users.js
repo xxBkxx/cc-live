@@ -9,7 +9,8 @@ var userSchema = new Schema({
 	},
 	name: String,
 	password: String,
-	comment: String
+	comment: String,
+	picture: String
 });
 
 userSchema.pre('save', function(next){

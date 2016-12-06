@@ -1,7 +1,7 @@
 (function(){
 
 	angular
-		.module('ccApp', ['ngRoute','angular-jwt']);
+		.module('ccApp', ['ngRoute','angular-jwt', 'ngMessages', 'ngSanitize']);
 
 	angular
 		.module('ccApp')
@@ -15,12 +15,33 @@
 					templateUrl: 'site/partials/billWatch.html',
 					controller: "BillWatchCtrl as ctrl",
 					resolve: {
+
 						billComments: function(commentSrv){
 							return commentSrv.initBillComments();
 						},
-						bills: 		  function(billSrv) {
+						bills: 		  function(billSrv){
+
+							// TODO#1: Don't allow the function to run twice
+							// /////////////////////////////////////////////
+							// var bills = billSrv.getBills();
+							// billSrv.getBills().then(function(data){
+							// 	console.log(data.length);
+
+							// 	if (data.length == 0){
+							// 		console.log('zero');
+							// 		billSrv.initBills();
+							// 	}
+							// })
+							// 	.then(function(){
+							// 		console.log('getting Bills');
+							// 		return billSrv.getBills();
+							// 	});
 							billSrv.initBills();
 							return billSrv.getBills();
+
+						},
+						initUser:    function(authSrv){
+							return authSrv.initUser();
 						}
 					}
 				})
@@ -62,7 +83,8 @@
 				return {
 					request: function(config){
 						if (localStorage.auth_token != undefined){
-							console.log(config);
+							// $window.username= jwtHelper.decodeToken(localStorage.auth_token);
+							// console.log(this.username);
 							config.headers.authentication = localStorage.auth_token;
 						}
 						return config;
@@ -71,6 +93,7 @@
 						var auth_token = response.headers('authentication');
 						if (auth_token){
 							var decrypt_token = jwtHelper.decodeToken(auth_token);
+							console.log(decrypt_token.email);
 							if (decrypt_token.email){
 								localStorage.auth_token = auth_token;
 							}

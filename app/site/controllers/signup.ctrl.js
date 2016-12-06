@@ -5,14 +5,13 @@
 
 	function SignUpCtrl ($location, apiSrv){
 		var signUpVm = this;
-
-
 		signUpVm.signup = signup;
 
-		function signup(){
-
+		function signup(isValid){
+			if(!isValid) return;
+			
 			var user = {
-				name: 		  signUpVm.name,
+				name: 		  signUpVm.uname,
 				newEmail: 	  signUpVm.newEmail,
 				newPassword:  signUpVm.newPassword,
 				password_two: signUpVm.password_two

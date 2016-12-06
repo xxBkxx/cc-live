@@ -21,6 +21,7 @@
 			function getBills(){
 				return apiSrv.request('/billWatch', {}, 'GET')
 					.then(function(res){
+						// console.log(res.data);
 						return res.data;
 					});// }, function(res){
 					// 	console.log(res);
@@ -28,7 +29,12 @@
 					// })
 			}
 			function initBills(){
-				return apiSrv.request('/init',{}, "GET")
+
+				return apiSrv.request('/init',{}, "POST")
+						.then(function(res){
+							console.log(res.data);
+							return res.data
+					})
 			}
 
 			// function initBillComments(){

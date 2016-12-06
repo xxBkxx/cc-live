@@ -13,14 +13,20 @@
 				apiSrv.request('/billComment', {commentPkg}, 'POST' )
 					.then(function(res){
 						var userE = res.data;
-						self.updatedUserName = userE;
-						console.log(self.updatedUserName);
+						self.comment = userE;
+						console.log(self.comment.comment);
+						return self.comment.comment;
 					})
+			}
+
+			function userComment(){
+				apiSrv.requrest('')
 			}
 
 			function initBillComments(){
 				return apiSrv.request('/initComments', {}, "GET")
 				.then(function(res){
+					// console.log(res.data);
 					return res.data;
 				});
 			}

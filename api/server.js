@@ -16,7 +16,7 @@ var jwt		 = require('jsonwebtoken');
 var authentication = require("./middleware/auth");
 
 var vote_routes    	   	   = require('./routes/vote_routes');
-var init_routes    	   	   = require('./routes/init_routes');
+var bill_init_routes    	   	   = require('./routes/bill_init_routes');
 var bill_routes    	   	   = require('./routes/bill_routes');
 var user_routes    	   	   = require('./routes/user_routes');
 var auth_routes    	   	   = require('./routes/auth_routes');
@@ -24,6 +24,7 @@ var billComment_routes 	   = require('./routes/billComment_routes');
 var initBillComment_routes = require('./routes/initComments_routes');
 
 app.use('/', initBillComment_routes);
+app.use('/', bill_init_routes);
 app.use('/', user_routes);
 app.use('/', vote_routes);
 app.use('/', bill_routes);

@@ -8,20 +8,20 @@ var jsonParser 		 = bodyParser.json();
 var user 	 		 = require('.././models/users');
 
 router.post('/billComment', urlencodedParser, jsonParser, function (req,res) {
-	console.log(req.body);
+	// console.log(req.body);
 
 	var bill_id = req.body.commentPkg.billId;
 	var comment = req.body.commentPkg.comment;
 	var token   = req.body.commentPkg.token;
 
-	console.log(comment);
+	// console.log(comment);
 
 	jwt.verify(token, 'expropositovivo', function(err, decoded){
-		console.log(decoded.email);
+		// console.log(decoded.email);
 		var userEmail = decoded.email;
 
 		user.findOne({"email": userEmail}, 'name', function(err, name){
-			console.log(name);
+			// console.log(name);
 
 			// var _billComment={
 			// 	comment: comment,
@@ -49,7 +49,7 @@ router.post('/billComment', urlencodedParser, jsonParser, function (req,res) {
 				user_email: userEmail,
 				user_name:  name.name
 			});
-			console.log(_billComment);
+			// console.log(_billComment);
 
 			_billComment.save(function(err){
 				if(err){
@@ -57,7 +57,7 @@ router.post('/billComment', urlencodedParser, jsonParser, function (req,res) {
 					res.status(400)
 						.json({err:err})
 				} else{
-					res.send(name.name);
+					res.send(_billComment);
 				}
 			})
 				
