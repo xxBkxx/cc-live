@@ -15,7 +15,7 @@
                     </ul>
                     </div>
                 </div>
-            </a>
+            <!-- </a> -->
 
 <!--             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -39,7 +39,7 @@
         </ul>
     </nav>
 </header>
-<section>
+<div>
     <img class="horizontal-centre page-header img-responsive" src="assets/img/page-header-bill-watch.png">
     <div ng-repeat='bill in ctrl.bills' class='bill-container'>
         <div class='bill-data-container'>
@@ -73,7 +73,7 @@
                     <div class="input-send-container">
                         <form name=frmComment>
 
-                        <textarea class="comment-textarea" ng-model-options="{ debounce: 1000 }" ng-model='ctrl.billComment' placeholder="Have your say" type="text"
+                        <textarea class="comment-textarea" ng-model-options="{ debounce: 700 }" ng-model='ctrl.billComment' placeholder="Have your say" type="text"
                         name="txtAreaComment"
                         minlength='3'
                         maxlength='120'
@@ -135,7 +135,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 <footer>
     <div class="vertical-centre">
         <nav>
