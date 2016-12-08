@@ -8,7 +8,7 @@
             <li> -->
             <li>
                 <div class="dropdown">
-                    <span>{{ctrl.initUser}}</span>
+                    <span><my-comment-picture></my-comment-picture>{{ctrl.initUser}}</span>
                     <div class="dropdown-content">
                     <ul>
                         <li>Sign-out</li>
@@ -44,22 +44,21 @@
     <div ng-repeat='bill in ctrl.bills' class='bill-container'>
         <div class='bill-data-container'>
             <ul class="bill-data">
-                <li><span class="bill-element-title">Bill ID:</span> {{bill.id}}</li> |
-                <li><span class="bill-element-title">Parliament:</span> {{bill.parliament}}</li> |
-                <li><span class="bill-element-title">Session:</span> {{bill.session}}</li> |
-                <li><span class="bill-element-title">Intro Date:</span>{{bill.introduced}}</li> |
-                <li><span class="bill-element-title">Bill Number:</span> {{bill.number}}</li> | 
-                <li><span class="bill-element-title">Sponsor:</span> {{bill.sponsorer}}</li> | 
-                <li><span class="bill-element-title">Event:</span> {{bill.event}}</li> |
-                <li><span class="bill-element-title">Type:</span> {{bill.type}}</li> |
-                <li><span class="bill-element-title">Publications:</span> {{bill.publications}}</li> |
-                <li><span class="bill-element-title">Publications_link:</span> {{bill.publications_link}}
+                <li><span class="bill-element-title">Bill ID:</span>&nbsp{{bill.id}}</li> |
+                <li><span class="bill-element-title">Parliament:</span>&nbsp{{bill.parliament}}</li> |
+                <li><span class="bill-element-title">Session:</span>&nbsp{{bill.session}}</li> |
+                <li><span class="bill-element-title">Intro Date:</span>&nbsp{{bill.introduced}}</li> |
+                <li><span class="bill-element-title">Bill Number:</span>&nbsp{{bill.number}}</li> | 
+                <li><span class="bill-element-title">Sponsor:</span>&nbsp{{bill.sponsorer}}</li> | 
+                <li><span class="bill-element-title">Event:</span>&nbsp{{bill.event}}</li> |
+                <li><span class="bill-element-title">Type:</span>&nbsp{{bill.type}}</li> |
+                <li><span class="bill-element-title">Publications:</span>&nbsp{{bill.publications}}</li> |
+                <li><span class="bill-element-title">Publications_link:</span>&nbsp{{bill.publications_link}}
             </ul>
-            <h1 class="bill-title">{{bill.number}} {{bill.title}}</h1>
-
+            <h1 class="bill-title">{{bill.number}}:&nbsp{{bill.title}}</h1>
 
             <ul class="vote-unordered-list bill-link-font">
-                <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'>Yea</a>:&nbsp{{bill.yea}} |<b> <a ng-click='bill.nay = bill.nay + 1; ctrl.vdoteYea(0, bill.id,bill.nay)'>Nay</a>:&nbsp{{bill.nay}} | {{filtered.length}} <a ng-click="showComments()"> comments</a>
+                <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-up.png'/>&nbspYea</a>:&nbsp{{bill.yea}} |<b> <a ng-click='bill.nay = bill.nay + 1; ctrl.vdoteYea(0, bill.id,bill.nay)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-down.png'/>&nbspNay</a>:&nbsp{{bill.nay}} | <a ng-click="showComments()"><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/comment.png'/> Comments</a> {{filtered.length}}
                 </li>
             </ul>
 
@@ -83,17 +82,19 @@
 
                         <span ng-messages='frmComment.txtAreaComment.$dirty && frmComment.txtAreaComment.$error '>
                      
-                            <span class="comment-box-errmsg" ng-message='minlength'>please leave a comment that's more than 2 characters long</span>
+                            <span class="comment-box-errmsg" ng-message='minlength'>*please leave a comment that's more than 2 characters long</span>
                             <span class="comment-box-errmsg" ng-show='frmComment.txtAreaComment.$error.pattern'>
-                                Please type only alphanumberic and/or the special characters, ,.'"!$*(), including whitespace
+                                *Please type only alphanumberic and/or the special characters, ,.'"!$, including whitespace
                             </span >
 
                         </span>
                         </form>
                     </div>
                     <div class="comment-button">
+
+                    <!-- you were working on the form val for user comments -->
                     <!-- todo #∞: disable the button if there's no user inputed text in the texttarea, thanks -->
-                          <button ng-disabled='frmComment.txtAreaComment.$invalid || frmComment.txtAreaComment.$pristine' class='commentBtn' ng-click='ctrl.comment(bill.id);updateComments()'>Send</button>{{ctrl.userName}}
+                          <button ng-disabled='frmComment.txtAreaComment.$invalid || frmComment.txtAreaComment.$pristine || !ctrl.billComment' class='commentBtn' ng-click='ctrl.comment(bill.id);updateComments()'>Send</button>{{ctrl.userName}}
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@
 		.controller('BillWatchCtrl', function BillWatchCtrl($scope, $rootScope, $sce, $location, billSrv, billComments, bills, initUser, $http, commentSrv, authSrv){
 		 	
 		 	var billWatchVm = this;
-		 	console.log(bills);
+		 	// console.log(bills);
 			// billWatchVm.bills = billSrv.getBills();
 			billWatchVm.bills 			= bills;
 			billWatchVm.billComments    = billComments;
@@ -27,11 +27,11 @@
 			// $scope.pleaseShow = true;
 			billWatchVm.toShow = false;
 			$scope.activeIndex;
-			console.log($scope.user);
-			console.log(billWatchVm.billComments);
+			// console.log($scope.user);
+			// console.log(billWatchVm.billComments);
 			$scope.billComments = billWatchVm.billComments;
 
-			$scope.regex = '[a-zA-Z0-9 .,!\$\'\"\*\(\)]+';
+			$scope.regex = '[a-zA-Z0-9 .,!\$\'\"]+';
 			// console.log(billWatchVm.billComments[0].user_name);
 			// console.log(billWatchVm.commentUSerName);
 			//Link Pages
