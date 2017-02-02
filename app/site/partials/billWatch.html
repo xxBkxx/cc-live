@@ -1,20 +1,24 @@
-<header>
+
+<header class='header-content'>
+<div class="logo-container">
     <a ng-click="ctrl.toMainPage()">
-        <img class="logo vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+        <img class="horizontal-centre vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
     </a>
+</div>
     <nav class="global-nav">
         <ul class="nav-links">
 <!--             <li> <a hfre="#">{{ctrl.initUser}}</a></li>
             <li> -->
             <li>
                 <div class="dropdown">
-                    <span><my-comment-picture></my-comment-picture>{{ctrl.initUser}}</span>
+                    <a><span><my-comment-picture></my-comment-picture>{{ctrl.initUser}}</span></a>
                     <div class="dropdown-content">
                     <ul>
                         <li>Sign-out</li>
                     </ul>
                     </div>
                 </div>
+            </li>
             <!-- </a> -->
 
 <!--             <div class="dropdown">
@@ -39,23 +43,26 @@
         </ul>
     </nav>
 </header>
-<div>
-    <img class="horizontal-centre page-header img-responsive" src="assets/img/page-header-bill-watch.png">
+
+<div class='main-container'>
+    <div class="page-header">
+    <img class="horizontal-centre img-responsive" src="assets/img/page-header-bill-watch.png">
+    </div>
     <div ng-repeat='bill in ctrl.bills' class='bill-container'>
         <div class='bill-data-container'>
-            <ul class="bill-data">
-                <li><span class="bill-element-title">Bill ID:</span>&nbsp{{bill.id}}</li> |
-                <li><span class="bill-element-title">Parliament:</span>&nbsp{{bill.parliament}}</li> |
-                <li><span class="bill-element-title">Session:</span>&nbsp{{bill.session}}</li> |
-                <li><span class="bill-element-title">Intro Date:</span>&nbsp{{bill.introduced}}</li> |
-                <li><span class="bill-element-title">Bill Number:</span>&nbsp{{bill.number}}</li> | 
-                <li><span class="bill-element-title">Sponsor:</span>&nbsp{{bill.sponsorer}}</li> | 
-                <li><span class="bill-element-title">Event:</span>&nbsp{{bill.event}}</li> |
-                <li><span class="bill-element-title">Type:</span>&nbsp{{bill.type}}</li> |
-                <li><span class="bill-element-title">Publications:</span>&nbsp{{bill.publications}}</li> |
-                <li><span class="bill-element-title">Publications_link:</span>&nbsp{{bill.publications_link}}
+            <ul class="bill-data horizontal-centre">
+                <li><span class="bill-element-title">Bill ID:</span><span class="bill-element-content">&nbsp{{bill.id}}</span></li> |
+                <li><span class="bill-element-title">Parliament:</span><span class="bill-element-content">&nbsp{{bill.parliament}}</span></li> |
+                <li><span class="bill-element-title">Session:</span><span class="bill-element-content">&nbsp{{bill.session}}</span></li> |
+                <li><span class="bill-element-title">Intro Date:</span><span class="bill-element-content">&nbsp{{bill.introduced}}</span></li> |
+                <li><span class="bill-element-title">Bill Number:</span><span class="bill-element-content">&nbsp{{bill.number}}</span></li> | 
+                <li><span class="bill-element-title">Sponsor:</span><span class="bill-element-content">&nbsp{{bill.sponsorer}}</span></li> | 
+                <li><span class="bill-element-title">Event:</span><span class="bill-element-content">&nbsp{{bill.event}}</span></li> |
+                <li><span class="bill-element-title">Type:</span><span class="bill-element-content">&nbsp{{bill.type}}</span></li> |
+                <li><span class="bill-element-title">Publications:</span><span class="bill-element-content">&nbsp{{bill.publications}}</span></li> |
+                <li><span class="bill-element-title">Publications_link:</span><span class="bill-element-content">&nbsp{{bill.publications_link}}</span>
             </ul>
-            <h1 class="bill-title">{{bill.number}}:&nbsp{{bill.title}}</h1>
+            <h1 class="bill-title"><span class="bill-element-content">{{bill.number}}:&nbsp{{bill.title}}</span></h1>
 
             <ul class="vote-unordered-list bill-link-font">
                 <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-up.png'/>&nbspYea</a>:&nbsp{{bill.yea}} |<b> <a ng-click='bill.nay = bill.nay + 1; ctrl.vdoteYea(0, bill.id,bill.nay)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-down.png'/>&nbspNay</a>:&nbsp{{bill.nay}} | <a ng-click="showComments()"><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/comment.png'/> Comments</a> {{filtered.length}}
@@ -80,6 +87,8 @@
                         ng-pattern='regex'
                         ></textarea>
 
+                        <button ng-disabled='frmComment.txtAreaComment.$invalid || frmComment.txtAreaComment.$pristine || !ctrl.billComment' class='commentBtn' ng-click='ctrl.comment(bill.id);updateComments()'>Send</button>
+
                         <span ng-messages='frmComment.txtAreaComment.$dirty && frmComment.txtAreaComment.$error '>
                      
                             <span class="comment-box-errmsg" ng-message='minlength'>*please leave a comment that's more than 2 characters long</span>
@@ -90,12 +99,8 @@
                         </span>
                         </form>
                     </div>
-                    <div class="comment-button">
-
-                    <!-- you were working on the form val for user comments -->
-                    <!-- todo #∞: disable the button if there's no user inputed text in the texttarea, thanks -->
-                          <button ng-disabled='frmComment.txtAreaComment.$invalid || frmComment.txtAreaComment.$pristine || !ctrl.billComment' class='commentBtn' ng-click='ctrl.comment(bill.id);updateComments()'>Send</button>{{ctrl.userName}}
-                    </div>
+<!--                     <div class="comment-button">
+                    </div> -->
                 </div>
 
                     <div class="new-comment-container">
@@ -106,20 +111,21 @@
                     </div>
       <!--<div><a ng-click='ctrl.numberOfCommentsById(bill.id)'>comments</a></div> -->
                     <div ng-mdoel='ctrl.commentsSection' ng-repeat='($index, comment) in ctrl.billComments | reverseComments | filter: comment.bill_id = bill.id as filtered' class="horizontal-centre" >
-                    
                         <div>
                             <ul>
                                 <li>
-                                <div >
+                                <div class='cf' >
                                     <div class="old-comment-picture">
                                         <my-comment-picture></my-comment-picture>
                                     </div>
                                     <div class="comment-user-name">
-                                       <span>{{comment.user_name}}</span> 
+                                       <p>{{comment.user_name}}</p>
+
                                     </div>
                                     <div class="user-comment">
                                         <p>{{comment.comment}}</p>
                                     </div>
+                                    
                                 </div>
                                 </li>
                             </ul>
@@ -135,7 +141,6 @@
             </div>
         </div>
     </div>
-</div>
 <footer>
     <div class="vertical-centre">
         <nav>

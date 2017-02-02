@@ -23,9 +23,9 @@
 			billWatchVm.initUser		= initUser;
 			billWatchVm.showComments    = showComments;
 			// billWatchVm.numberOfCommentsById = numberOfCommentsById;
-			$scope.user = initUser;
+			$scope.user                 = initUser;
 			// $scope.pleaseShow = true;
-			billWatchVm.toShow = false;
+			billWatchVm.toShow          = false;
 			$scope.activeIndex;
 			// console.log($scope.user);
 			// console.log(billWatchVm.billComments);
@@ -35,6 +35,7 @@
 			// console.log(billWatchVm.billComments[0].user_name);
 			// console.log(billWatchVm.commentUSerName);
 			//Link Pages
+			
 			function toMainPage(){
 				$location.url('/home');
 			}

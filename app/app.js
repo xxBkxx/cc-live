@@ -9,7 +9,12 @@
 			$routeProvider
 				.when('/home', {
 					templateUrl: "site/partials/main.html",
-					controller: "MainCtrl as ctrl"
+					controller: "MainCtrl as ctrl",
+					resolve: {
+							initUser: function(authSrv){
+							return authSrv.initUser();
+						}
+					}
 				})
 				.when('/billWatch', {
 					templateUrl: 'site/partials/billWatch.html',
@@ -47,15 +52,30 @@
 				})
 				.when('/about', {
 					templateUrl: 'site/partials/about.html',
-					controller: "AboutCtrl as ctrl"
+					controller: "AboutCtrl as ctrl",
+					resolve: {
+							initUser: function(authSrv){
+							return authSrv.initUser();
+						}
+					}
 				})
 				.when('/privacy', {
 					templateUrl: 'site/partials/privacy.html',
-					controller: "PrivacyCtrl as ctrl"
+					controller: "PrivacyCtrl as ctrl",
+					resolve: {
+							initUser: function(authSrv){
+							return authSrv.initUser();
+						}
+					}
 				})
 				.when('/terms', {
 					templateUrl: 'site/partials/terms.html',
-					controller: "TermsCtrl as ctrl"
+					controller: "TermsCtrl as ctrl",
+					resolve: {
+							initUser: function(authSrv){
+							return authSrv.initUser();
+						}
+					}
 				})
 				.when('/signup', {
 					templateUrl: 'site/partials/signup.html',

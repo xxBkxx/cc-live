@@ -2,6 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang='en'>
 	<head>
+
 		<script type="text/javascript" src='assets/js/jquery/jq.js'></script>
 		<!-- <script type="text/javascript" src="assets/js/bootstrap/bootstrap.js"></script> -->
 		<script type="text/javascript" src='assets/js/angular/angular.js'> </script>
@@ -43,12 +44,24 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<!-- <link rel='stylesheet' href="assets/css/bootstrap.css"> -->
 		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body ng-app='ccApp'>
 		<div ng-view>
 
 		</div>
+				<script type="text/javascript">
+			var docWidth = document.documentElement.offsetWidth;
+			console.log(docWidth);
+			[].forEach.call(
+			  document.querySelectorAll('*'),
+			  function(el) {
+			    if (el.offsetWidth > docWidth) {
+			      console.log(el);
+			    }
+			  }
+			);
+		</script>
 	</body>
 
 </html>

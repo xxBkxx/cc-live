@@ -1,22 +1,38 @@
     <header>
         <a ng-click="ctrl.toMainPage()">
-            <img class="logo vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+            <img class="logo horizontal-centre vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
         </a>
         
             <nav class="global-nav">
                 <ul class="nav-links">
-                    <a ng-click='ctrl.toAboutPage()'>
-                        <li>About</li>
-                    </a>
-                    <a ng-click='ctrl.toBillWatchPage()'>
-                        <li>Bill Watch</li>
-                    </a>
+            <li>
+                <div class="dropdown">
+                    <a><span><my-comment-picture></my-comment-picture>{{ctrl.initUser}}</span></a>
+                    <div class="dropdown-content">
+                    <ul>
+                        <li>Sign-out</li>
+                    </ul>
+                    </div>
+                </div>
+            </li>
+                     <li>
+                         <a ng-click='ctrl.toAboutPage()'>
+                           About
+                        </a>
+                    </li>
+                    <li>
+                        <a ng-click='ctrl.toBillWatchPage()'>
+                            Bill Watch
+                        </a>
+                    </li>
 
                 </ul>
             </nav>
     </header>
     <div id='main-section' class="section-height">
-        <img class="horizontal-centre page-header img-responsive" src="assets/img/page-header-cc.png">
+        <div class="page-header">
+           <img class="horizontal-centre img-responsive" src="assets/img/page-header-cc.png">
+        </div>
         <p class="horizontal-centre header-note">We’re interesting in Canadain politics. We like to gather interesting information and pass it along to you so you can be better informed.</p>
         <div id='section-img-caption'>
                 <div id='img-caption'>
@@ -26,7 +42,7 @@
         </div>
     </div>
     <div class="section-height">
-        <img class="horizontal-centre page-header img-responsive" src="assets/img/page-header-bill-watch.png">
+        <img class="horizontal-centre img-responsive" src="assets/img/page-header-bill-watch.png">
         <p class="horizontal-centre header-note">
                 Read Govenrment Bills.
         </p>
@@ -34,7 +50,7 @@
 <footer>
     <div class="vertical-centre">
         <nav>
-            <ul>
+            <ul class="centre-text">
                 <a ng-click='ctrl.toAboutPage()'>
                     <li>About </li>
                 </a>

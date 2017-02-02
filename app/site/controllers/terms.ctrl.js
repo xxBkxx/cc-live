@@ -3,14 +3,16 @@
 		.module('ccApp')
 		.controller('TermsCtrl', TermsCtrl);
 
-	function TermsCtrl($location){
+	function TermsCtrl($scope, $location, initUser){
 		var termsVm = this;
 
-		termsVm.toMainPage = toMainPage;
-		termsVm.toAboutPage = toAboutPage;
+		termsVm.toMainPage      = toMainPage;
+		termsVm.toAboutPage     = toAboutPage;
 		termsVm.toBillWatchPage = toBillWatchPage;
-		termsVm.toPrivacyPage = toPrivacyPage;
-		termsVm.toTermsPage = toTermsPage;
+		termsVm.toPrivacyPage   = toPrivacyPage;
+		termsVm.toTermsPage     = toTermsPage;
+		termsVm.initUser        = initUser;
+		$scope.user 			= initUser;
 
 		function toMainPage(){
 			$location.url('/home');

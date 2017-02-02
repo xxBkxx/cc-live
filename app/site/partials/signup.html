@@ -1,29 +1,23 @@
-    <header>
+    <header class="ng-scope">
         <a ng-click="ctrl.toMainPage()">
-            <img class="logo vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+            <img class="logo horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
         </a>
-        
-            <nav class="global-nav">
-                <ul class="nav-links">
-
-                </ul>
-            </nav>
     </header>
     <div class="signup-container">
-        <div>
-            <h1 class="centre-text">Track Government</h1 >
-            <p class="horizontal-centre header-note centre-text">
+        <div class='tag-container'>
+            <h1 class="tag-title centre-text">Track Government</h1>
+            <p class="horizontal-centre logo-vertical-centre header-note centre-text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at nisl non metus sollicitudin facilisis. Vivamus ut urna euismod, elementum urna non, vehicula orci. 
             </p>
         </div>
         <div class="form-container">
             <div class="centre">
-                <h2 class="centre-text" >Signup, be heard.</h2>
-                <form name='frm'  class="signup-form">
+                <h1 class=" tag-title centre-text">Signup, be heard.</h1>
+                <form name='frm'  class="signup-form horizontal-centre">
                     <div>
                     <ul>
                         <li>
-                            <input name='uname' ng-model='ctrl.uname' type="text" placeholder="User Name" ng-minlength ="5" ng-maxlength ="20" required 
+                            <input class="horizontal-centre" name='uname' ng-model='ctrl.uname' type="text" placeholder="User Name" ng-minlength ="5" ng-maxlength ="20" required 
                             />
                             <span ng-messages="frm.uname.$dirty && frm.uname.$error">
                                 <span ng-message="required">Required</span>
@@ -32,7 +26,7 @@
                             </span>
                         </li>
                         <li>   
-                            <input ng-model='ctrl.newEmail' type="email" name='myEmail' placeholder="Email" ng-minlength='2' required/><span ng-messages='frm.myEmail.$dirty && frm.myEmail.$error'>
+                            <input class="horizontal-centre" ng-model='ctrl.newEmail' type="email" name='myEmail' placeholder="Email" ng-minlength='2' required/><span ng-messages='frm.myEmail.$dirty && frm.myEmail.$error'>
                                <span ng-message="required">Required</span>
                                <span ng-message='email'>This is not an email</span>
                                 <span ng-message="minlength">Not enough characters (2)</span>
@@ -40,30 +34,31 @@
                             </span>
                         </li>
                         <li>   
-                            <input name='password' ng-model='ctrl.newPassword' type="password" placeholder="Password" ng-minlength='8' required/>
+                            <input class="horizontal-centre" name='password' ng-model='ctrl.newPassword' type="password" placeholder="Password" ng-minlength='8' required/>
                             <span ng-messages='frm.password.$dirty && frm.password.$error'>
                                <span ng-message="required">Required</span>
                                 <span ng-message="minlength">Not enough characters (8)</span>
                             </span>
                         </li>
                         <li>   
-                            <input name='pwMatch' ng-model='ctrl.password_two' type="Password" placeholder="Re-Enter Password" ng-minlength='8' required/>
+                            <input class="horizontal-centre" name='pwMatch' ng-model='ctrl.password_two' type="Password" placeholder="Re-Enter Password" ng-minlength='8' required/>
                             <span ng-messages='frm.pwMatch.$dirty && frm.pwMatch.$error'>
                                 <span ng-message="required">Required</span>
                                 <span ng-message="minlength">Not enough characters (8)</span>
                             </span>
                         </li>  
-                        <li><button ng-disabled='frm.$invalid' ng-click='ctrl.signup(frm.$valid)'>Sign-Up</button></li>                  
+                        <li><button class="horizontal-centre" ng-disabled='frm.$invalid' ng-click='ctrl.signup(frm.$valid)'>Sign-Up</button></li>                  
                     </ul>
                 </div>
                 </form>
             </div>
+            <div class="signup-push"></div>
         </div>
     </div>
     <footer id='about-footer-nav'>
         <div class="about-vertical-centre footer-nav">
             <nav>
-                <ul>
+                <ul class='centre-text'>
                     <a ng-click='ctrl.toAboutPage()'>
                         <li>About </li>
                     </a>

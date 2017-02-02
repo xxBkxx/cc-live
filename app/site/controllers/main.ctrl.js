@@ -3,14 +3,17 @@
 		.module('ccApp')
 		.controller('MainCtrl', MainCtrl);
 
-	function MainCtrl($location){
+	function MainCtrl($location, $scope, initUser){
 		var mainVm = this;
 
-		mainVm.toMainPage = toMainPage;
-		mainVm.toAboutPage = toAboutPage;
+		mainVm.toMainPage      = toMainPage;
+		mainVm.toAboutPage     = toAboutPage;
 		mainVm.toBillWatchPage = toBillWatchPage;
-		mainVm.toPrivacyPage = toPrivacyPage;
-		mainVm.toTermsPage = toTermsPage;
+		mainVm.toPrivacyPage   = toPrivacyPage;
+		mainVm.toTermsPage     = toTermsPage;
+		mainVm.initUser        = initUser;
+		$scope.user            = initUser;
+
 
 		function toMainPage(){
 			$location.url('/home');

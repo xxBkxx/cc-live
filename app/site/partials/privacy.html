@@ -1,21 +1,28 @@
     <header>
         <a ng-click="ctrl.toMainPage()">
-            <img class="logo vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+            <img class="logo vertical-centre horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
         </a>
             <nav class="global-nav">
                 <ul class="nav-links">
-                    <a ng-click='ctrl.toAboutPage()'>
-                        <li>About</li>
-                    </a>
-                    <a ng-click='ctrl.toBillWatchPage()'>
-                        <li>Bill Watch</li>
-                    </a>
-
+                    <li>
+                        <div class="dropdown">
+                            <a><my-comment-picture></my-comment-picture>{{ctrl.initUser}}</a>
+                            <div class="dropdown-content">
+                            <ul>
+                                <li>Sign-out</li>
+                            </ul>
+                            </div>
+                        </div>
+                    </li>
+                <li><a ng-click='ctrl.toAboutPage()'>About</a></li>
+                <li><a ng-click='ctrl.toBillWatchPage()'>Bill Watch</a></li>
                 </ul>
             </nav>
     </header>
     <section class="privacy">
-        <img class="horizontal-centre page-header img-responsive" src="assets/img/page-header-privacy.png">
+    <div class="page-header">
+        <img class="horizontal-centre img-responsive" src="assets/img/page-header-privacy.png">
+        </div>
         <!--        -->
         <h6>Privacy Statement</h6>
         <p>
@@ -27,14 +34,10 @@
         <p>Here’s a list of the information we collect about you, your:</p>
 
         <ul class="privacy-ul">
-            <li>Name</li>
-            <li>Postal Code</li>
-            <li>Phone Number</li>
-            <li>Email Address</li>
-            <li>Date of Birth</li>
-            <li>Gender</li>
-            <li>Opinions</li>
-            <li>Hobbies and Interests</li>
+            <li><p>Name</p></li>
+            <li><p>Email Address</p></li>
+            <li><p>Date of Birth</p></li>
+            <li><p>Opinions</p></li>
         </ul>
         <!---->
 
@@ -50,9 +53,9 @@
         <h6>How do you use this information?</h6>
         <p>The main reasons we collect personal information from you are:</p>
         <ul>
-            <li>Surveys</li>
-            <li>Customer service</li>
-            <li>Research</li>
+            <li><p>Surveys</p></li>
+            <li><p>Customer service</p></li>
+            <li><p>Research</p></li>
         </ul>
 
         <p>
@@ -62,13 +65,13 @@
         <h6>Use of Person Information for Secondary Reasons:</h6>
         <p>We may also use your personal information for other, secondary reasons, including:</p>
         <ul>
-            <li>Marketing</li>
+            <li><p>Marketing</p></li>
         </ul>
         <!---->
         <h6>Sharing of Personal Information with Third Parties:</h6>
         <p>Sometimes we may also share your personal information with other companies, including:</p>
         <ul>
-            <li>Google</li>
+            <li><p>Google</p></li>
         </ul>
         <p>
             We share with Google for website analytics
@@ -79,7 +82,7 @@
       <footer>
         <div class="vertical-centre">
             <nav>
-                <ul>
+                <ul class="centre-text">
                     <a ng-click='ctrl.toAboutPage()'>
                         <li>About </li>
                     </a>

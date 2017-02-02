@@ -1,11 +1,12 @@
 angular.module('ccApp')
 	.directive('myCommentPicture', function(){
 
-		function link(scope,element,attrs){
+		function link($scope,element,attrs){
 
 				// var commVals = scope.commentsArray;
-				var comment = scope.userComm;
-				var user    = scope.user;
+				// var comment = scope.userComm;
+				var user    = $scope.user;
+				console.log(user);
 				// angular.forEach(commVals, function(){
 				// 	console.log(commVals);
 				// });
@@ -16,11 +17,11 @@ angular.module('ccApp')
 				for (var i= 0; i<27; i++){
 					numberLetter = {fileNumer:i, letter:String.fromCharCode(96+i)};
 					if (first_username_letter == numberLetter.letter){
-						scope.picture = numberLetter.fileNumer;
+						$scope.picture = numberLetter.fileNumer;
 					}
 				}
 				// TODO: # (∞) Make a template handle this
-				element.prepend("<img class='' height='50' width='50' alt='Citizens Of Canada Logo' src='assets/img/"+scope.picture+ ".png'> ");
+				element.prepend("<img class='' height='50' width='50' alt='Citizens Of Canada Logo' src='assets/img/"+$scope.picture+ ".png'> ");
 		}
 		return {
 			restrict: 'EA',
