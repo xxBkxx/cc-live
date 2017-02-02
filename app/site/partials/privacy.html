@@ -1,24 +1,27 @@
-    <header>
-        <a ng-click="ctrl.toMainPage()">
-            <img class="logo vertical-centre horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+<header class="header ng-scope">
+        <a ng-click="ctrl.toMainPage()"> 
+           
+              <img class="logo horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
         </a>
+    </header>
+        <div>
             <nav class="global-nav">
-                <ul class="nav-links">
-                    <li>
-                        <div class="dropdown">
-                            <a><my-comment-picture></my-comment-picture>{{ctrl.initUser}}</a>
-                            <div class="dropdown-content">
-                            <ul>
-                                <li>Sign-out</li>
-                            </ul>
-                            </div>
+                <ul class="nav-links centre-text">
+                <li>
+                    <a><div class="dropdown">
+                        <my-comment-picture></my-comment-picture>{{ctrl.initUser}}
+                        <div class="dropdown-content">
+                        <ul>
+                            <li>Sign-out</li>
+                        </ul>
                         </div>
-                    </li>
+                    </div></a>
+                </li>
                 <li><a ng-click='ctrl.toAboutPage()'>About</a></li>
                 <li><a ng-click='ctrl.toBillWatchPage()'>Bill Watch</a></li>
                 </ul>
             </nav>
-    </header>
+        </div>
     <section class="privacy">
     <div class="page-header">
         <img class="horizontal-centre img-responsive" src="assets/img/page-header-privacy.png">
@@ -79,8 +82,8 @@
         <!--        -->
     </section>
 
-      <footer>
-        <div class="vertical-centre">
+         <footer id='about-footer-nav'>
+        <div class="about-vertical-centre footer-nav">
             <nav>
                 <ul class="centre-text">
                     <a ng-click='ctrl.toAboutPage()'>
@@ -99,4 +102,4 @@
                 
             </nav>
         </div>
-</footer>
+    </footer>

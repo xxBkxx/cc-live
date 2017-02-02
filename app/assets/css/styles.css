@@ -1,12 +1,13 @@
 @media (min-width: 360px){
-	.header{
+	
+	body .header{
 		width: 100%;
-		min-height: 50px;
+		height: 50px;
 	}
 
 	body .vertical-centre{
 		position: relative;
-		/* margin-top: 0px; */
+		/* margin-top: 25px; */
 		top: calc(50% + 0px);
 		transform: translateY(-50%);
 	}
