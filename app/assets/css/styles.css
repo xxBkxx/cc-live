@@ -1,5 +1,59 @@
-@@ -1,453 +0,0 @@
-/*cc Styles*/
+@media (min-width: 360px){
+	.header{
+		width: 100%;
+		height: 50px;
+	}
+
+	body .vertical-centre{
+		position: relative;
+		margin-top: 0px;
+		top: calc(50% + 0px);
+		transform: translateY(-50%);
+	}
+
+	.header-note{
+		max-width: 320px;
+	}
+
+	.signup-form input{
+		width: 100%;
+		margin-bottom: 10px;
+		max-width: 320px;
+		padding: 5px;
+		border-radius: 5px;
+		border: 1px solid grey;
+	}
+	.signup-form button{
+		width: 100%;
+		max-width: 330px;
+		padding: 5px;
+		border: 1px solid grey;
+	}
+
+	.signup-push{
+		height: 200px;
+	}
+
+	.login-push{
+		height: 100px;
+	}
+
+
+	.login-form input{
+		width: 100%;
+		margin-bottom: 10px;
+		max-width: 320px;
+		padding: 5px;
+		border: 1px solid grey;
+	}
+	.login-form button{
+		width: 100%;
+		max-width: 332px;
+		padding: 5px;
+		border: 1px solid grey;
+	}
+}
+
 
 header{
 	height: 50px;
@@ -28,7 +82,6 @@ a{
 }
 
 .logo{
-	margin:0 0 0 10px;
 }
 
 .icon{
@@ -82,12 +135,11 @@ a{
 }
 
 .header-note{
-	width: 40%;
 	font-size: 1.2857em;
 	font-family: "Times New Roman", Times, serif;
 	font-style: italic;
 	line-height: 1.57em;
-	text-align:  
+	text-align:;
 }
 
 .inpYea{
@@ -158,7 +210,7 @@ footer div li{
 .vertical-centre{
 	position: relative;
 	margin-top: 25px;
-	top: calc(50% + 25px);
+	top: calc(50% + 0px);
 	transform: translateY(-50%);
 }
 .about-vertical-centre{
@@ -352,11 +404,10 @@ ul.bill-data li:hover {
 
 .signup-container{
 	width: 100%;
-	height: 592px;
+	/* height: 592px; */
 	background-image: url("../img/signup-bg.png");
 	background-position: center;
 	background-size: cover;
-	align:;
 }
 .login-container{
 	width: 100%;
@@ -366,28 +417,15 @@ ul.bill-data li:hover {
 	background-size: cover;
 	align:;
 }
-.signup-form input{
-	width: 400px;
-	padding: 5px;
-	margin:0 50px 10px;
-	border-radius: 5px;
-	border: 1px solid grey;
-}
-.signup-form button{
-	width: 400px;
-	padding: 5px;
-	margin:auto 50px;
-}
 
 .centre{
 	margin: 0 auto;
-	width: 500px;
+	/* width: 500px; */
 	align:center;
 	padding: auto;
 }
 
 .centre-text{
-
 text-align: center;
 }
 
@@ -431,7 +469,7 @@ body {
   line-height: 1.45;
 }
 
-p {margin-bottom: 1.3em;}
+p {/* margin-bottom: 1.3em; */}
 
 h1, h2, h3, h4 {
   /*margin: 1.414em 0 0.5em;*/
@@ -440,7 +478,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  margin-top: 0;
+  /* margin-top: 0; */
   font-size: 4.236em;
 }
 
@@ -451,4 +489,4 @@ h3 {font-size: 1.618em;}
 h4 {font-size: 1em;}
 
 small, .font_small {font-size: 0.618em;}
-\ No newline at end of file
+/*\ No newline at end of file*/
