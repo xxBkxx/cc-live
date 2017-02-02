@@ -1,47 +1,40 @@
-    <header>
-        <a ng-click="ctrl.toMainPage()">
-            <img class="logo horizontal-centre vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+<header class="header">
+        <a ng-click="ctrl.toMainPage()"> 
+           
+              <img class="logo horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
         </a>
-        
-            <nav class="global-nav">
-                <ul class="nav-links">
+    </header>
+    <div>
+        <nav class="global-nav">
+            <ul class="nav-links centre-text">
             <li>
-                <div class="dropdown">
-                    <a><span><my-comment-picture></my-comment-picture>{{ctrl.initUser}}</span></a>
+                <a><div class="dropdown">
+                    <my-comment-picture></my-comment-picture>{{ctrl.initUser}}
                     <div class="dropdown-content">
                     <ul>
                         <li>Sign-out</li>
                     </ul>
                     </div>
-                </div>
+                </div></a>
             </li>
-                     <li>
-                         <a ng-click='ctrl.toAboutPage()'>
-                           About
-                        </a>
-                    </li>
-                    <li>
-                        <a ng-click='ctrl.toBillWatchPage()'>
-                            Bill Watch
-                        </a>
-                    </li>
-
-                </ul>
-            </nav>
-    </header>
+            <li><a ng-click='ctrl.toAboutPage()'>About</a></li>
+            <li><a ng-click='ctrl.toBillWatchPage()'>Bill Watch</a></li>
+            </ul>
+        </nav>
+    </div>
     <div id='main-section' class="section-height">
         <div class="page-header">
            <img class="horizontal-centre img-responsive" src="assets/img/page-header-cc.png">
         </div>
-        <p class="horizontal-centre header-note">We’re interesting in Canadain politics. We like to gather interesting information and pass it along to you so you can be better informed.</p>
-        <div id='section-img-caption'>
+        <p class="horizontal-centre centre-text header-note">We’re interesting in Canadain politics. We like to gather interesting information and pass it along to you so you can be better informed.</p>
+        <div class='section-img-caption'>
                 <div id='img-caption'>
                 <p>1941 Grain inspection
                 Dept. of Trade and Commerce McGill, R</p>
                 </div>
         </div>
     </div>
-    <div class="section-height">
+    <div class="page-header">
         <img class="horizontal-centre img-responsive" src="assets/img/page-header-bill-watch.png">
         <p class="horizontal-centre header-note">
                 Read Govenrment Bills.
