@@ -1,27 +1,27 @@
-<header class="header vertical-centre ng-scope">
+    <header class="header ng-scope">
         <a ng-click="ctrl.toMainPage()"> 
            
               <img class="logo horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
         </a>
     </header>
-        <div>
-            <nav class="global-nav">
-                <ul class="nav-links centre-text">
-                <li>
-                    <a><div class="dropdown">
-                        <my-comment-picture></my-comment-picture>{{ctrl.initUser}}
-                        <div class="dropdown-content">
-                        <ul>
-                            <li>Sign-out</li>
-                        </ul>
-                        </div>
-                    </div></a>
-                </li>
-                <li><a ng-click='ctrl.toAboutPage()'>About</a></li>
-                <li><a ng-click='ctrl.toBillWatchPage()'>Bill Watch</a></li>
-                </ul>
-            </nav>
-        </div>
+    <div>
+        <nav class="global-nav">
+            <ul class="nav-links centre-text">
+            <li>
+                <a><div class="dropdown">
+                    <my-comment-picture></my-comment-picture>{{ctrl.initUser}}
+                    <div class="dropdown-content">
+                    <ul>
+                        <li>Sign-out</li>
+                    </ul>
+                    </div>
+                </div></a>
+            </li>
+            <li><a ng-click='ctrl.toAboutPage()'>About</a></li>
+            <li><a ng-click='ctrl.toBillWatchPage()'>Bill Watch</a></li>
+            </ul>
+        </nav>
+    </div>
     <div class="about-img-container">
     <div class="about-section about">
         <div class="about-content">
