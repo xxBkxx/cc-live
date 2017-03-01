@@ -29,7 +29,7 @@ angular.module('ccApp')
 
 				//console.log(user);
 				//console.log("<li>" +  "<img class='' alt='Citizens Of Canada Logo' src='assets/img/"+scope.picture+ ".png'> " + user + " | " + comment+ "</li>");
-				element.prepend("<div class='old-comment-picture'>" +  "<img class='' height='50px' width='50px' alt='Citizens Of Canada Logo' src='assets/img/"+scope.picture+ ".png'>" + "</div>" + "<div class='comment-user-name'>" + user + "</div>" + "<div class='user-comment'>" + "<p>" + comment+ "</p>" + "</div>");
+				element.prepend("<div class='new-comment'><div class='old-comment-picture'>" +  "<img class='' height='50px' width='50px' alt='Citizens Of Canada Logo' src='assets/img/"+scope.picture+ ".png'>" + "</div>" + "<div class='comment-user-name'>" + user + "</div>" + "<div class='user-comment'>" + "<p>" + comment+ "</p>" + "</div></div>");
 			}
 
 		}

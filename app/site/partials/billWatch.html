@@ -44,7 +44,7 @@
             <h1 class="bill-title"><span class="bill-element-content">{{bill.number}}:&nbsp{{bill.title}}</span></h1>
 
             <ul class="vote-unordered-list bill-link-font">
-                <li><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-up.png'/>&nbspYea</a>:&nbsp{{bill.yea}} |<b> <a ng-click='bill.nay = bill.nay + 1; ctrl.vdoteYea(0, bill.id,bill.nay)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-down.png'/>&nbspNay</a>:&nbsp{{bill.nay}} | <a ng-click="showComments()"><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/comment.png'/> Comments</a> {{filtered.length}}
+                <li class='comment-section-height'><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-up.png'/>&nbspYea</a>:&nbsp{{bill.yea}} |<b> <a ng-click='bill.nay = bill.nay + 1; ctrl.vdoteYea(0, bill.id,bill.nay)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-down.png'/>&nbspNay</a>:&nbsp{{bill.nay}} | <a ng-click="showComments()"><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/comment.png'/> Comments</a> {{filtered.length}}
                 </li>
             </ul>
 
@@ -90,7 +90,7 @@
                     </div>
       <!--<div><a ng-click='ctrl.numberOfCommentsById(bill.id)'>comments</a></div> -->
                     <div ng-mdoel='ctrl.commentsSection' ng-repeat='($index, comment) in ctrl.billComments | reverseComments | filter: comment.bill_id = bill.id as filtered' class="horizontal-centre" >
-                        <div>
+                        <div class='old-comment-container'>
                             <ul>
                                 <li>
                                 <div class='cf' >

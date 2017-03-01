@@ -103,6 +103,28 @@
 	.push{
 		height: 200px;
 	}
+
+	body .main-container{
+		overflow: hidden;
+	}
+
+	body .comments-container{
+		max-width: 330px;
+		background: #f0f0f0;
+		text-align: left;
+
+	}
+	body .new-comment-container{
+		
+	}
+
+	body .new-comment{
+		height: 80px;
+	}
+
+	body .old-comment-container{
+		height: 80px;
+	}
 }
 /*end of 360px*/
 
@@ -339,8 +361,7 @@ ul.bill-data li:hover {
 	font-style: italic;
 }
 
-.comments-container{
-	width: 25%;
+.comments-container{ 
 	background-color: #f0f0f0;
 	/*visibility: hidden; */
 	text-align: left;
