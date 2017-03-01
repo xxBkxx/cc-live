@@ -1,78 +1,32 @@
     <header class="header ng-scope">
-        <a ng-click="ctrl.toMainPage()"> 
-           
-              <img class="logo horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
-        </a>
+        <div class="vertical-centre">
+            <a ng-click="ctrl.toMainPage()"> 
+                  <img class="logo horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+            </a>
+        </div>
     </header>
-    <div>
-        <nav class="global-nav">
+
+       <nav>
             <ul class="nav-links centre-text">
             <li>
-                <a><div class="dropdown">
+                <a>
+                <div class="dropdown">
                     <my-comment-picture></my-comment-picture>{{ctrl.initUser}}
-                    <div class="dropdown-content">
+                <div class="dropdown-content">
                     <ul>
-                        <li>Sign-out</li>
-                    </ul>
+                <li>Sign-out</li>
+            </ul>
                     </div>
                 </div></a>
             </li>
             <li><a ng-click='ctrl.toAboutPage()'>About</a></li>
             <li><a ng-click='ctrl.toBillWatchPage()'>Bill Watch</a></li>
             </ul>
-        </nav>
-    </div>
+            </nav>
     <div class="about-img-container">
     <div class="about-section about">
-        <div class="about-content">
-            <img class='about-section-img' src="assets/img/about-section-bg.png">
-        </div>
+        <img class='about-section-img' src="assets/img/CC_about_final.png">
     </div>
-    <section class="about-section maple-leaf">
-        <div class="maple-leaf-content">
-            <img class='about-section-img' src="assets/img/maple-leaf-section-bg.png">
-        </div>
-    </section>
-    <section class="about-section document">
-        <div class="document-content">
-            <img class='about-section-img' src="assets/img/document-section-bg.png">
-        </div>
-    </section>
-    <section class="about-section missing">
-        <div class="">
-            <img class='about-section-img' src="assets/img/missing-section-bg.png">
-        </div>
-    </section>
-    <section class="about-section pointer">
-        <div class="">
-            <img class='about-section-img' src="assets/img/pointer-section-bg.png">
-        </div>
-    </section>
-    <section class="about-section bulb">
-        <div class="">
-            <img class='about-section-img' src="assets/img/bulb-section-bg.png">
-        </div>
-    </section>
-    <section class="about-section check">
-        <div>
-            <img class='about-section-img' src="assets/img/check-section-bg.png">
-        </div>
-    </section>
-    <section class="about-section question">
-        <div>
-            <img class='about-section-img' src="assets/img/check-section-bg.png">
-        </div>
-    </section>
-    <section  class="about-section crane">
-        <div>
-            <img class='about-section-img' src="assets/img/crane-section-bg.png">
-        </div>
-    </section>
-    <section class="about-section head">
-        <div>
-            <img class='about-section-img' src="assets/img/head-section-bg.png">
-        </div>
-    </section></div>
     <footer id='about-footer-nav'>
         <div class="about-vertical-centre footer-nav">
             <nav>

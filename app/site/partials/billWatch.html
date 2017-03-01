@@ -1,48 +1,27 @@
-
-<header class='header-content'>
-<div class="logo-container">
-    <a ng-click="ctrl.toMainPage()">
-        <img class="horizontal-centre vertical-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
-    </a>
-</div>
-    <nav class="global-nav">
-        <ul class="nav-links">
-<!--             <li> <a hfre="#">{{ctrl.initUser}}</a></li>
-            <li> -->
-            <li>
-                <div class="dropdown">
-                    <a><span><my-comment-picture></my-comment-picture>{{ctrl.initUser}}</span></a>
-                    <div class="dropdown-content">
-                    <ul>
-                        <li>Sign-out</li>
-                    </ul>
-                    </div>
+    <header class="header ng-scope">
+        <div class="vertical-centre">
+            <a ng-click="ctrl.toMainPage()"> 
+                  <img class="logo horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+            </a>
+        </div>
+    </header>
+    <nav>
+        <ul class="nav-links centre-text">
+        <li>
+            <a>
+            <div class="dropdown">
+                <my-comment-picture></my-comment-picture>{{ctrl.initUser}}
+            <div class="dropdown-content">
+                <ul>
+            <li>Sign-out</li>
+        </ul>
                 </div>
-            </li>
-            <!-- </a> -->
-
-<!--             <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Dropdown
-                <span class="caret"></span>
-                </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
-            </div> -->
-            <a ng-click='ctrl.toAboutPage()'>
-                <li>About</li>
-            </a>
-            <a ng-click='ctrl.toBillWatchPage()'>
-                <li>Bill Watch</li>
-            </a>
+            </div></a>
+        </li>
+        <li><a ng-click='ctrl.toAboutPage()'>About</a></li>
+        <li><a ng-click='ctrl.toBillWatchPage()'>Bill Watch</a></li>
         </ul>
     </nav>
-</header>
 
 <div class='main-container'>
     <div class="page-header">
