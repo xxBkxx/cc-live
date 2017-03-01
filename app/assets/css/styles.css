@@ -58,7 +58,17 @@
 		min-width: 48px;
 		min-height: 48px;
 	}
-	
+	body .nav-links{
+		float:none;
+	    float: none;
+	    color: white;
+	    /* display: table; */
+	    background: black;
+	    padding: 10px 0 0 0;
+		}
+	body .nav-links li{
+			vertical-align: middle;
+		}
 	.nav-links a {
 		min-height: 48px;
 		min-width: 48px;
@@ -73,18 +83,25 @@
 		width: 100%;
 		max-width: 360px;
 	}
-	.about-content{
+	.about-img-container{
+		max-width: 360px;
+		overflow: hidden;
 		/* margin-top: 144px; */
 	}
 
 	.img-responsive{
 		width: 100%;
+		max-width: 320px;
 		height:auto;
 
 	}
 
 	.section-img-caption, .section-img-caption p{
 		visibility: hidden;
+	}
+
+	.push{
+		height: 200px;
 	}
 }
 /*end of 360px*/
@@ -125,8 +142,7 @@ a{
 }
 
 .nav-links{
-	/* float: right; */
-	=:
+	 float: right; 
 	text-align: right
 }
 
@@ -218,9 +234,15 @@ a{
 	background-size: cover;
 }
 
+.second-section{
+/*	background-image: url("../img/charter.jpeg");
+	background-size: cover;
+
+*/}
+
 footer{
 	background-image: url("../img/footer-grass.png");
-	background-color: black;
+	/*background-color: black;*/
 	background-repeat: repeat-x;
 	/*background-attachment: fixed;*/
 	width: 100%;
