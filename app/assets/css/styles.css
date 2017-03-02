@@ -83,6 +83,10 @@
 		width: 100%;
 		max-width: 360px;
 	}
+	/*6 pix fix*/
+	body .about-section{
+		height: 5932px;
+	}
 	.about-img-container{
 		max-width: 360px;
 		overflow: hidden;
@@ -125,8 +129,39 @@
 	body .old-comment-container{
 		height: 80px;
 	}
+
+	body .main-footer-nav{
+		padding:50px 0 0 0;
+	}
+
+	.nav-list{
+		padding:50px 0 0 0;
+	}
+
 }
 /*end of 360px*/
+
+/*Tablets*/
+@media (min-width: 720px){
+	.login-push{
+		height: 545px;
+	}
+	.signup-push{
+		height: 258px;
+	}
+	.signup-input-list{
+		padding: 0px 0 0 0;
+	}
+
+	body .header-note{
+		padding:50px 0 0 0;
+	}
+
+	body .tag-title{
+		padding: 50px 0 0 0;
+	}
+
+}
 
 header{
 	/* height: 50px; */
@@ -488,7 +523,7 @@ ul.bill-data li:hover {
 }
 .login-container{
 	width: 100%;
-	height: 592px;
+	/*height: 592px;*/
 	background-image: url("../img/login-section-bg.png");
 	background-position: center;
 	background-size: cover;
