@@ -144,7 +144,7 @@
 /*Tablets*/
 @media (min-width: 720px){
 	.login-push{
-		height: 545px;
+		height: 438px;
 	}
 	.signup-push{
 		height: 258px;
@@ -159,6 +159,19 @@
 
 	body .tag-title{
 		padding: 50px 0 0 0;
+	}
+
+	body .login-head-tag{
+		padding: 50px 0 0 0;
+	}
+
+	body .login-form-tag{
+		padding: 100px 0 0 0;
+	}
+
+	body .login-header-note{
+		max-width: 320px;
+		padding: 0px 0 0 0;
 	}
 
 }
