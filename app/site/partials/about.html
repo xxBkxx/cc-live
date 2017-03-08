@@ -1,15 +1,13 @@
-    <header class="header ng-scope">
-        <div class="vertical-centre">
-            <a ng-click="ctrl.toMainPage()"> 
-                  <img class="logo horizontal-centre" alt="Citizens Of Canada Logo" src="assets/img/logo.png">
+<header class="header ng-scope">
+            <a ng-click="ctrl.toMainPage()">     
+            <img class="logo" alt="Citizens Of Canada Logo" src="assets/img/logo.png">  
+ 
+                 
             </a>
-        </div>
-    </header>
-    <nav>
         <ul class="nav-links centre-text">
         <li>
             <a>
-            <div class="dropdown">
+            <div class="dropdown ng-binding">
                 <my-comment-picture></my-comment-picture>{{ctrl.initUser}}
             <div class="dropdown-content">
                 <ul>
@@ -18,10 +16,11 @@
                 </div>
             </div></a>
         </li>
-        <li><a ng-click='ctrl.toAboutPage()'>About</a></li>
-        <li><a ng-click='ctrl.toBillWatchPage()'>Bill Watch</a></li>
+        <li><a ng-click="ctrl.toAboutPage()">About</a></li>
+        <li><a ng-click="ctrl.toBillWatchPage()">Bill Watch</a></li>
         </ul>
-    </nav>
+        
+    </header>
     <div class="about-img-container">
     <div class="about-section about">
         <img class='about-section-img' src="assets/img/CC_about_final.png">
