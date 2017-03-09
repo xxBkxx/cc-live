@@ -24,6 +24,8 @@
 			billWatchVm.showComments    = showComments;
 			// billWatchVm.numberOfCommentsById = numberOfCommentsById;
 			$scope.user                 = initUser;
+			// $scope.comment.user_name           =  comment.user_name;
+			// console.log($scope.comment.user_name);
 			// $scope.pleaseShow = true;
 			billWatchVm.toShow          = false;
 			$scope.activeIndex;

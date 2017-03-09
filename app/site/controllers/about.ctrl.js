@@ -11,6 +11,7 @@
 		aboutVm.toPrivacyPage 	= toPrivacyPage;
 		aboutVm.toTermsPage 	= toTermsPage;
 		aboutVm.initUser        = initUser;
+		aboutVm.signOut   	    = signOut;
 		$scope.user 		= initUser;
 
 		function toMainPage(){
@@ -27,6 +28,11 @@
 
 		function toTermsPage(){
 			$location.url('/terms');
+		}
+
+		function signOut(){
+			localStorage.removeItem("auth_token");
+			console.log("here");
 		}
 	}
 })();

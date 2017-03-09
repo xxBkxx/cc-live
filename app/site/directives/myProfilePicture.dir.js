@@ -1,18 +1,10 @@
 angular.module('ccApp')
-	.directive('myCommentPicture', function(){
+	.directive('myProfilePicture', function(){
 
-		function link($scope,element,attrs){
+		function link($scope, element, attrs){
+			var user = $scope.user;
 
-				// var commVals = scope.commentsArray;
-				// var comment = scope.userComm;
-				var user    = $scope.comment.user_name;
-
-				console.log($scope.comment.user_name);
-				// angular.forEach(commVals, function(){
-				// 	console.log(commVals);
-				// });
-				
-				user = user.toLowerCase();
+							user = user.toLowerCase();
 				var first_username_letter = user.charAt(0);
 				var numberLetter = {};
 				for (var i= 0; i<27; i++){
