@@ -21,6 +21,7 @@
 				authSrv.login(credentials, function(res){
 					console.log(res);
 					if (res.status == 200){
+						$location.url('/home');
 					} else {
 						console.log('error');
 					}

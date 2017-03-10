@@ -4,7 +4,8 @@ var bodyParser 		 = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended: true});
 var jsonParser 		 = bodyParser.json();
 var users  			 = require('.././models/users');
-		
+var jwt 			 = require('jsonwebtoken');
+
 router.post('/signup',  urlencodedParser, jsonParser, function(req,res){
 	var rawPw = req.body.newPassword;
 	var user_letter = {};
@@ -29,9 +30,11 @@ router.post('/signup',  urlencodedParser, jsonParser, function(req,res){
 					picture:   picture
 					// bill_vote: undefined
 				});
-
-
-
+				var new_user_obj = {email: _newUser.email, name:_newUser.name};
+				var token = jwt.sign(new_user_obj, 'expropositovivo');
+				res.set('authentication', token);
+				res.json(new_user_obj.name);
+				console.log('authenticated');
 				_newUser.save(function(err){
 					if(err){
 						console.log('user signup err');
@@ -41,7 +44,7 @@ router.post('/signup',  urlencodedParser, jsonParser, function(req,res){
 					} else{
 						console.log('saving user');
 						// delete _newUser.password;
-						res.json(_newUser)
+						// res.json(_newUser)
 					}
 				})
 			}

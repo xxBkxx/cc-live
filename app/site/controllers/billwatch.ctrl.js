@@ -9,6 +9,7 @@
 			// billWatchVm.bills = billSrv.getBills();
 			billWatchVm.bills 			= bills;
 			billWatchVm.billComments    = billComments;
+			billWatchVm.authSrv  		= authSrv;
 			billWatchVm.toMainPage      = toMainPage;
 			billWatchVm.toAboutPage     = toAboutPage;
 			billWatchVm.toBillWatchPage = toBillWatchPage;
@@ -22,6 +23,8 @@
 			billWatchVm.commentHtml		= commentHtml;
 			billWatchVm.initUser		= initUser;
 			billWatchVm.showComments    = showComments;
+			billWatchVm.toLoginPage     = toLoginPage;
+			billWatchVm.signOut			= signOut;
 			// billWatchVm.numberOfCommentsById = numberOfCommentsById;
 			$scope.user                 = initUser;
 			// $scope.comment.user_name           =  comment.user_name;
@@ -45,6 +48,10 @@
 				$location.url('/about');
 			}
 
+			function toLoginPage(){
+				$location.url('/login');
+			}
+
 			function toBillWatchPage(){
 				$location.url('/billWatch');
 			}
@@ -55,6 +62,10 @@
 
 			function toTermsPage(){
 				$location.url('/terms');
+			}
+
+			function signOut(){
+				billWatchVm.authSrv.signOut();
 			}
 
 			function find_id(){

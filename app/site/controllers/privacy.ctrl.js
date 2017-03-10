@@ -1,7 +1,7 @@
 (function(){
 	angular
 		.module('ccApp')
-		.controller('PrivacyCtrl', function PrivacyCtrl($scope, $location, initUser){
+		.controller('PrivacyCtrl', function PrivacyCtrl($scope, $location, initUser, authSrv){
 		
 		var privacyVm = this;
 
@@ -11,6 +11,8 @@
 		privacyVm.toPrivacyPage   = toPrivacyPage;
 		privacyVm.toTermsPage     = toTermsPage;
 		privacyVm.initUser        = initUser;
+		privacyVm.authSrv		  = authSrv;
+		privacyVm.signOut		  = signOut;
 		$scope.user           = initUser;
 
 		console.log(initUser);
@@ -32,6 +34,10 @@
 
 		function toTermsPage(){
 			$location.url('/terms');
+		}
+
+		function signOut(){
+			privacyVm.authSrv.signOut();
 		}
 	})
 

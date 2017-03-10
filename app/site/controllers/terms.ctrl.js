@@ -3,9 +3,11 @@
 		.module('ccApp')
 		.controller('TermsCtrl', TermsCtrl);
 
-	function TermsCtrl($scope, $location, initUser){
+	function TermsCtrl($scope, $location, initUser, authSrv){
 		var termsVm = this;
 
+		termsVm.authSrv			= authSrv;
+		termsVm.signOut			= signOut;
 		termsVm.toMainPage      = toMainPage;
 		termsVm.toAboutPage     = toAboutPage;
 		termsVm.toBillWatchPage = toBillWatchPage;
@@ -31,6 +33,10 @@
 
 		function toTermsPage(){
 			$location.url('/terms');
+		}
+
+		function signOut(){
+			termsVm.authSrv.signOut();
 		}
 	}
 })();

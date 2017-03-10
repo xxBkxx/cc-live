@@ -3,16 +3,16 @@
 		.module('ccApp')
 		.controller('AboutCtrl', AboutCtrl);
 
-	function AboutCtrl($location, $scope, initUser){
+	function AboutCtrl($location, $scope, initUser, authSrv){
 		var aboutVm = this;
-		
+		aboutVm.authSrv         = authSrv;
 		aboutVm.toMainPage		= toMainPage;
 		aboutVm.toBillWatchPage = toBillWatchPage;
 		aboutVm.toPrivacyPage 	= toPrivacyPage;
 		aboutVm.toTermsPage 	= toTermsPage;
 		aboutVm.initUser        = initUser;
 		aboutVm.signOut   	    = signOut;
-		$scope.user 		= initUser;
+		$scope.user 		    = initUser;
 
 		function toMainPage(){
 			$location.url('/home');
@@ -31,8 +31,7 @@
 		}
 
 		function signOut(){
-			localStorage.removeItem("auth_token");
-			console.log("here");
+			aboutVm.authSrv.signOut();
 		}
 	}
 })();
