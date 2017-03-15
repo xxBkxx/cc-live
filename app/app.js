@@ -102,6 +102,7 @@
 			$httpProvider.interceptors.push(function(jwtHelper){
 				return {
 					request: function(config){
+						$('.processing').show();
 						if (localStorage.auth_token != undefined){
 							// $window.username= jwtHelper.decodeToken(localStorage.auth_token);
 							// console.log(this.username);
@@ -111,6 +112,7 @@
 					},
 					response: function(response){
 						var auth_token = response.headers('authentication');
+						$(".processing").hide();
 						if (auth_token){
 							var decrypt_token = jwtHelper.decodeToken(auth_token);
 							console.log(decrypt_token.email);
