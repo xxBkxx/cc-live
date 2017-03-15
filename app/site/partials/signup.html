@@ -9,15 +9,17 @@
             </p>
         </div>
         <div class="form-container">
-            <div>
+            <div class="form-div">
                 <h1 class=" tag-title centre-text">Be heard.</h1>
                 <form name='frm'  class="signup-form horizontal-centre">
                     <div>
                     <ul class="signup-input-list">
                         <li>
-                            <input class="horizontal-centre" name='uname' ng-model='ctrl.uname' type="text" placeholder="User Name" ng-minlength ="5" ng-maxlength ="20" required 
+                            <input class="horizontal-centre" name='uname' ng-model='ctrl.uname' type="text" placeholder="User Name" ng-minlength ="2" ng-maxlength ="20" required 
                             />
-                            <span ng-messages="frm.uname.$dirty && frm.uname.$error">
+                        </li>
+                        <li>
+                            <span class="form-messages" ng-messages="frm.uname.$dirty && frm.uname.$error">
                                 <span ng-message="required">Required</span>
                                 <span ng-message="minlength">Not enough characters (2)</span>
                                 <span ng-message='maxlength'>Too many characters (20)</span>

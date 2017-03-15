@@ -21,6 +21,7 @@ var jsonParser 		 = bodyParser.json();
 				.json({err:err});
 		} 
 		else{
+			console.log(_user.password + " " + user.password);
 			bcrypt.compare(_user.password, user.password, function(err,result){
 				// console.log(err);	
 				// console.log(_user.password);

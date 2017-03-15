@@ -1,7 +1,7 @@
 <header class="header ng-scope">
-     <img class="logo" alt="Citizens Of Canada Logo" src="assets/img/logo.png">  
+   
             <a ng-click="ctrl.toMainPage()"> 
-                 
+                <img class="logo" alt="Citizens Of Canada Logo" src="assets/img/logo.png">     
             </a>
         <ul class="nav-links centre-text">
         <li>
@@ -42,7 +42,7 @@
             <h1 class="bill-title"><span class="bill-element-content">{{bill.number}}:&nbsp{{bill.title}}</span></h1>
 
             <ul class="vote-unordered-list bill-link-font">
-                <li class='comment-section-height'><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-up.png'/>&nbspYea</a>:&nbsp{{bill.yea}} |<b> <a ng-click='bill.nay = bill.nay + 1; ctrl.vdoteYea(0, bill.id,bill.nay)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-down.png'/>&nbspNay</a>:&nbsp{{bill.nay}} | <a ng-click="showComments()"><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/comment.png'/> Comments</a> {{filtered.length}}
+                <li class='comment-section-height'><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-up.png'/>&nbspYea</a>:&nbsp{{bill.yea}} |<b> <a ng-click='bill.nay = bill.nay + 1; ctrl.vdoteYea(0, bill.id,bill.nay)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-down.png'/>&nbspNay</a>:&nbsp{{bill.nay}} | <a ng-click="showComments()"><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/comment.png'/>Comments</a> {{filtered.length}}
                 </li>
             </ul>
 
@@ -50,7 +50,7 @@
 
                 <div class="comment-input-container">
                     <div class="comment-profile-picture">   
-                        <my-comment-picture></my-comment-picture>
+                        <my-profile-picture></my-profile-picture>
                     </div>
 
                     <!-- TODO #∞: Add swear filter to this thing -->
@@ -119,7 +119,7 @@
         </div>
     </div>
 <footer>
-    <div class="vertical-centre">
+    <div class="vertical-centre-bwFooter">
         <nav>
             <ul class="centre-text nav-list">
                 <a ng-click='ctrl.toAboutPage()'>
