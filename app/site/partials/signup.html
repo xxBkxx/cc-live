@@ -40,14 +40,15 @@
                                 <span ng-message="minlength">Not enough characters (8)</span>
                             </span>
                         </li>
-                        <li>   
-                            <input class="horizontal-centre" name='pwMatch' ng-model='ctrl.password_two' type="Password" placeholder="Re-Enter Password" ng-minlength='8' required/>
                             <span ng-messages='frm.pwMatch.$dirty && frm.pwMatch.$error'>
+                        <!-- <li>   
+                            <input class="horizontal-centre" name='pwMatch' ng-model='ctrl.password_two' type="Password" placeholder="Re-Enter Password" ng-minlength='8' required/>
                                 <span ng-message="required">Required</span>
                                 <span ng-message="minlength">Not enough characters (8)</span>
                             </span>
-                        </li>  
-                        <li><button class="horizontal-centre" ng-disabled='frm.$invalid' ng-click='ctrl.signup(frm.$valid)'>Sign-Up</button></li>                  
+                        </li>   -->
+                        <li><button class="horizontal-centre" ng-disabled='frm.$invalid' ng-click='ctrl.signup(frm.$valid)'>Sign-Up</button></li> 
+                        <li>Already have an account? <a ng-click="ctrl.toLoginPage()" class="login-link">Login</a> </li>                 
                     </ul>
                 </div>
                 </form>

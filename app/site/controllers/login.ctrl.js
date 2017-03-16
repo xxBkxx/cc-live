@@ -6,7 +6,12 @@
 		function LoginCtrl(apiSrv, $location, authSrv, $rootScope){
 			var loginVm = this;
 
-			loginVm.login = login;
+			loginVm.login           = login;
+			loginVm.toAboutPage     = toAboutPage;
+			loginVm.toBillWatchPage = toBillWatchPage;
+			loginVm.toPrivacyPage   = toPrivacyPage;
+			loginVm.toTermsPage     = toTermsPage;
+			loginVm.toSignupPage    = toSignupPage;
 
 
 			function login(){
@@ -32,5 +37,26 @@
 				// $location.url('/home');
 
 			}
+
+			function toAboutPage(){
+				$location.url('/about');
+			}
+
+			function toBillWatchPage(){
+				$location.url('/billWatch');
+			}
+
+			function toTermsPage(){
+				$location.url('/terms');
+			}
+
+			function toPrivacyPage(){
+				$location.url('/privacy');
+			}
+
+			function toSignupPage(){
+				$location.url('/signup');
+			}
+
 		}
 })();

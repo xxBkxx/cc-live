@@ -9,6 +9,29 @@
 
 	}
 
+	body .processing{
+		position: fixed;
+	    overflow: hidden;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    z-index: 1000;
+	    background-color: white;
+	    opacity: .5;
+	    display: none;
+	    /* position: fixed; */
+	}
+
+	body .loading-gif{
+    /*position: absolute;*/
+    position: relative;
+    top:50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    max-width: 320px;
+}
+
 	.logo{
 		padding: 17px 0 10px 0;
 		display: block;
@@ -63,7 +86,11 @@
 		height: 100px;
 	}
 
+/*	.login-form{
+		background-color: lightgrey;
 
+	}
+*/
 	.login-form input{
 		width: 100%;
 		margin-bottom: 10px;
@@ -73,6 +100,7 @@
 	}
 	.login-form button{
 		width: 100%;
+		margin-bottom: 10px;
 		max-width: 332px;
 		padding: 5px;
 		border: 1px solid grey;
@@ -299,14 +327,23 @@ a{
 	background-color: beige;
 }
 
-.signup-form input{
+	.signup-form input{
+			width: 100%;
+			margin-bottom: 10px;
+			max-width: 400px;
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid grey;
+	}
+
+	.signup-form button{
 		width: 100%;
+		max-width: 330px;
 		margin-bottom: 10px;
-		max-width: 400px;
 		padding: 5px;
-		border-radius: 5px;
 		border: 1px solid grey;
-}
+
+	}
 
 	.login-form input{
 		width: 100%;
@@ -315,6 +352,15 @@ a{
 	    padding: 5px;
 	    border-radius: 5px;
 	    border: 1px solid grey;
+	}
+	
+	.login-link{
+	
+		color:white;
+	}
+
+	.login-link:hover{
+		text-decoration: underline;
 	}
 
 	.form-container{
@@ -449,24 +495,24 @@ footer div li{
 }
 
 .processing{
-	position: absolute;
+	position: fixed;
+	overflow: hidden;
 	top:0;
 	left:0;
 	width: 100%;
 	height: 100%;
 	z-index: 1000;
-	background-color: grey;
-	opacity:6;
-
+	background-color: white;
+	opacity:.5;
 	display: none;
 	/*position: fixed;*/
 }
 
 .loading-gif{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    display: block;
+    /*position: absolute;*/
+    position: relative;
+    top:50%;
+    transform: translateY(-50%);
 }
 
 
@@ -558,7 +604,7 @@ ul.bill-data li:hover {
 
 .comments-container{ 
 	background-color: #f0f0f0;
-	/*visibility: hidden; */
+	visibility: hidden; 
 	text-align: left;
 }
 
@@ -680,6 +726,15 @@ ul.bill-data li:hover {
 	background-image: url("../img/signup-bg.png");
 	background-position: center;
 	background-size: cover;
+}
+
+.signup-link, .signup-link:hover{
+	
+	color:darkred;
+}
+
+.signup-link:hover{
+	text-decoration: underline;
 }
 .login-container{
 	width: 100%;

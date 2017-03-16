@@ -11,9 +11,31 @@
 					templateUrl: "site/partials/main.html",
 					controller: "MainCtrl as ctrl",
 					resolve: {
-							initUser: function(authSrv){
-							return authSrv.initUser();
+						initUser: function(authSrv,$location){
+							console.log(authSrv.initUser());
+							userName = authSrv.initUser();
+							if(userName == undefined
+								|| userName == ''){
+
+								userName = "guest";
+								// window.alert('please signup or login');
+
+								// $location.url('/signup');
+							}
+
+							return userName;
+						},
+
+
+						user:  function($location){
+							if (localStorage.auth_token == ''
+								|| localStorage == undefined){
+								window.alert("please login");
+								$lcation('login');
+							}
 						}
+
+
 					}
 				})
 				.when('/billWatch', {
@@ -45,8 +67,19 @@
 							return billSrv.getBills();
 
 						},
-						initUser:    function(authSrv){
-							return authSrv.initUser();
+						initUser: function(authSrv,$location){
+							console.log(authSrv.initUser());
+							userName = authSrv.initUser();
+							if(userName == undefined
+								|| userName == ''){
+
+								userName = "guest";
+								// window.alert('please signup or login');
+
+								// $location.url('/signup');
+							}
+
+							return userName;
 						}
 					}
 				})
@@ -54,8 +87,19 @@
 					templateUrl: 'site/partials/about.html',
 					controller: "AboutCtrl as ctrl",
 					resolve: {
-							initUser: function(authSrv){
-							return authSrv.initUser();
+						initUser: function(authSrv,$location){
+							console.log(authSrv.initUser());
+							userName = authSrv.initUser();
+							if(userName == undefined
+								|| userName == ''){
+
+								userName = "guest";
+								// window.alert('please signup or login');
+
+								// $location.url('/signup');
+							}
+
+							return userName;
 						}
 					}
 				})
@@ -63,8 +107,19 @@
 					templateUrl: 'site/partials/privacy.html',
 					controller: "PrivacyCtrl as ctrl",
 					resolve: {
-							initUser: function(authSrv){
-							return authSrv.initUser();
+						initUser: function(authSrv,$location){
+							console.log(authSrv.initUser());
+							userName = authSrv.initUser();
+							if(userName == undefined
+								|| userName == ''){
+
+								userName = "guest";
+								// window.alert('please signup or login');
+
+								// $location.url('/signup');
+							}
+
+							return userName;
 						}
 					}
 				})
@@ -72,8 +127,19 @@
 					templateUrl: 'site/partials/terms.html',
 					controller: "TermsCtrl as ctrl",
 					resolve: {
-							initUser: function(authSrv){
-							return authSrv.initUser();
+						initUser: function(authSrv,$location){
+							console.log(authSrv.initUser());
+							userName = authSrv.initUser();
+							if(userName == undefined
+								|| userName == ''){
+
+								userName = "guest";
+								// window.alert('please signup or login');
+
+								// $location.url('/signup');
+							}
+
+							return userName;
 						}
 					}
 				})
@@ -99,7 +165,7 @@
 					redirectTo: '/home'
 				});
 
-			$httpProvider.interceptors.push(function(jwtHelper){
+			$httpProvider.interceptors.push(function($q,jwtHelper){
 				return {
 					request: function(config){
 						$('.processing').show();
@@ -108,11 +174,11 @@
 							// console.log(this.username);
 							config.headers.authentication = localStorage.auth_token;
 						}
+						console.log(config);
 						return config;
 					},
 					response: function(response){
 						var auth_token = response.headers('authentication');
-						$(".processing").hide();
 						if (auth_token){
 							var decrypt_token = jwtHelper.decodeToken(auth_token);
 							console.log(decrypt_token.email);
@@ -120,6 +186,11 @@
 								localStorage.auth_token = auth_token;
 							}
 						}
+						
+						if (response.status == 200 && response.data.length == 153){
+							$('.processing').hide();
+						}
+						console.log(response);
 						return response;
 					}
 				}

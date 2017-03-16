@@ -3,7 +3,7 @@
 
     </header>
     <div class="login-container">
-
+        <div class="processing"><img class="loading-gif horizontal-centre" src="assets/img/loading.gif"></div>
         <div class="form-container">
             <div class="centre">
                 <h1 class="login-form-tag centre-text" >Welcome back.</h1>
@@ -25,7 +25,9 @@
                                 <span ng-message='minlength'>Not enough characters(8)</span>
                             </span>
                         </li>
-                        <li><button class="horizontal-centre"  ng-click='ctrl.login()'>Log in</button></li>       
+
+                        <li><button class="horizontal-centre"  ng-click='ctrl.login()'>Log in</button></li>
+                        <li>New to Citizens of Canada? <a ng-click="ctrl.toSignupPage()" class="signup-link">Sign-Up</a> </li>    
                     </ul>
                 </div>
                 </form>

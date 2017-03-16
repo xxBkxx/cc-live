@@ -5,8 +5,15 @@
 
 	function SignUpCtrl ($location, apiSrv, authSrv){
 		var signUpVm = this;
+
 		signUpVm.signup  = signup;
 		signUpVm.authSrv = authSrv;
+		signUpVm.toLoginPage = toLoginPage;
+		signUpVm.toAboutPage = toAboutPage;
+		signUpVm.toBillWatchPage = toBillWatchPage;
+		signUpVm.toPrivacyPage   = toPrivacyPage; 
+		signUpVm.toTermsPage     = toTermsPage;
+
 
 		function signup(isValid){
 			if(!isValid) return;
@@ -28,6 +35,26 @@
 
 			});
 			// $location.url('/home');
+		}
+
+		function toAboutPage(){
+			$location.url('/about');
+		}
+
+		function toBillWatchPage(){
+			$location.url('/billWatch');
+		}
+
+		function toTermsPage(){
+			$location.url('/terms');
+		}
+
+		function toPrivacyPage(){
+			$location.url('/privacy');
+		}
+
+		function toLoginPage(){
+			$location.url('/login');
 		}
 	}
 })();

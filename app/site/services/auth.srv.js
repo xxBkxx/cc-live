@@ -33,8 +33,12 @@
 				var token = localStorage.auth_token;
 				console.log('token');
 				console.log(token);
+				if(token == undefined || token == '' ){
+					return
+				} else{
 				var decrypt_token = jwtHelper.decodeToken(token);
 				return decrypt_token.name;
+				}
 			}
 
 			function signOut(){
