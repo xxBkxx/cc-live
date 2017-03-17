@@ -89,7 +89,7 @@ var bill     = require('.././models/bill');
 router.get('/billWatch', function(req,res){
 	bill.find({}, function(err, bills){
 		if (err){
-			console.log(err);
+			// console.log(err);
 			res.status(400)
 				.json({err:err});
  		} else{

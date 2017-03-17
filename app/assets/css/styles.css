@@ -170,6 +170,11 @@
 		text-align: left;
 
 	}
+
+/*	body .message-container{
+		display: none;
+	}
+*/
 	body .new-comment-container{
 		
 	}
@@ -267,8 +272,26 @@
 	}
 
 	body .comments-container{
-
 		max-width: 400px;
+	}
+
+	body .vote-message-container, .comment-message-container {
+		position: fixed;
+		top:100px;
+		right: 0;
+		left: 0;
+		visibility:hidden;
+		z-index: 10000;
+		width: 320px;
+		/*min-width: 320px;*/
+		height:25px;
+		background-color:#ffaaaa;
+		border: 1px solid #000;
+		margin: 0 auto 20px auto;
+	}
+
+	body .vote-message-container:hover, .comment-message-container:hover, {
+		cursor: pointer;
 	}
 	body .new-comment-container{
 		max-width: 400px;

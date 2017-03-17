@@ -2,13 +2,14 @@
 	
 	angular
 		.module('ccApp')
-		.controller('BillWatchCtrl', function BillWatchCtrl($scope, $rootScope, $sce, $location, billSrv, billComments, bills, initUser, $http, commentSrv, authSrv){
+		.controller('BillWatchCtrl', function BillWatchCtrl($scope, $rootScope, $location, billSrv, billComments, bills, initUser, initVotes, $http, commentSrv, authSrv){
 		 	
 		 	var billWatchVm = this;
 		 	// console.log(bills);
 			// billWatchVm.bills = billSrv.getBills();
 			billWatchVm.bills 			= bills;
 			billWatchVm.billComments    = billComments;
+			billWatchVm.initVotes  		= initVotes;
 			billWatchVm.authSrv  		= authSrv;
 			billWatchVm.toMainPage      = toMainPage;
 			billWatchVm.toAboutPage     = toAboutPage;
@@ -25,6 +26,7 @@
 			billWatchVm.showComments    = showComments;
 			billWatchVm.toLoginPage     = toLoginPage;
 			billWatchVm.signOut			= signOut;
+			billWatchVm.removeMessage   = removeMessage;
 			// billWatchVm.numberOfCommentsById = numberOfCommentsById;
 			$scope.user                 = initUser;
 			// $scope.comment.user_name           =  comment.user_name;
@@ -40,6 +42,19 @@
 			// console.log(billWatchVm.billComments[0].user_name);
 			// console.log(billWatchVm.commentUSerName);
 			//Link Pages
+			console.log(initVotes[0].yea);
+					if( localStorage.auth_token =='' || 
+						localStorage.auth_token == undefined || 
+						localStorage.auth_token == 'guest'){
+						console.log('here');
+						// $('.message-container').css('visibility', 'visible');
+						
+						// $('.icon').css('visibility', 'hidden');
+						// $('.vote-up').css('visibility', 'hidden ');
+						// $('.vote-down').css('visibility', 'hidden ');						
+						// $('.icon').css('visibility', 'visible');
+						this.loggedin = false;
+					}
 			
 			function toMainPage(){
 				$location.url('/home');
@@ -112,6 +127,18 @@
 			}
 
 			function comment(bill_id){
+
+				if( localStorage.auth_token =='' || 
+					localStorage.auth_token == undefined || 
+					localStorage.auth_token == 'guest'){
+						$('.comment-message-container').css('visibility','visible');
+						return;
+						// window.alert("Please login to vote, you'll be redirected");
+						// $location.url('/login');
+					// $location.url('/login');
+					// $('.message-container').show();
+					// window.alert("please login to vote");
+				}
 				var comment = billWatchVm.billComment;
 				billWatchVm.billComment = '';
 				 var token = localStorage.getItem('auth_token');
@@ -153,7 +180,13 @@
 				// billWatchVm.userName 	= billSrv.updateCommentName();
 			}	
 
-			function voteYea(decision, bill_id, billVote){
+			function removeMessage(){
+				// $('.message-container').remove();
+				$('.vote-message-container').css('visibility','hidden');
+				$('.comment-message-container').css('visibility','hidden');
+			}
+
+			function voteYea(decision, bill_id, billVote, index){
 				// for (var i = 0; billWatchVm.bills.length; i++){
 				// 		console.log(billWatchVm.bills.length);
 				// 	if (billWatchVm.bills[i].id == bill_id){
@@ -161,17 +194,32 @@
 				// 	}
 
 				// }
+				// $('.message-container').hide();
 				if( localStorage.auth_token =='' || 
-					localStorage.auth_token == undefined){
-						$location.url('/login');
+					localStorage.auth_token == undefined || 
+					localStorage.auth_token == 'guest'){
 
-					window.alert("please login to vote")
+						$('.vote-message-container').css('visibility', 'visible');
+
+						// $location.url('/login');
+						
+						// $('.icon').css('visibility', 'hidden');
+						// $('.vote-up').css('visibility', 'hidden ');
+						// $('.vote-down').css('visibility', 'hidden ');						
+						// $('.icon').css('visibility', 'visible');
+						// this.loggedin = false;
+						// window.alert("Please login to vote, you'll be redirected");
+						// $location.url('/login');
+						
 					} else{
 						if(decision == 1){
-							console.log(billVote);
 
+							var vote_count = billVote;
+							vote_count = vote_count +1;
+							billWatchVm.initVotes[index].yea = vote_count;
+							console.log(vote_count);
 							var vote  = { 
-								yea: billVote,
+								yea: billWatchVm.initVotes[index].yea,
 								bill_id: bill_id 
 							};
 
@@ -179,9 +227,11 @@
 
 						} else if(decision == 0){
 							console.log(billVote);
-
+							var vote_count = billVote;
+							vote_count = vote_count +1;
+							billWatchVm.initVotes[index].nay = vote_count;
 							var vote = {
-								nay: billVote,
+								nay: billWatchVm.initVotes[index].nay,
 								bill_id: bill_id
 							};
 

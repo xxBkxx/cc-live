@@ -19,14 +19,17 @@ router.post('/vote', urlencodedParser,jsonParser, function(req,res){
 	if (decision == 'yea'){
 
 		var currYea = req.body.vote.yea;
-
+		console.log(req.body);
+		console.log("currYea");
 	} else if (decision == 'nay'){
 
 		var currYea = req.body.vote.nay;
+		console.log(currYea);
 	}
 	//var newYea = currYea + 1;
 	// var userVote   = req.body.yea;
     var voteBillId = req.body.vote.bill_id;
+    console.log(voteBillId);
 	// console.log(voteBillId);
 	// var yeaUp = 2;
 	// var currVal =0;

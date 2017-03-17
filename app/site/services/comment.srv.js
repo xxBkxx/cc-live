@@ -26,7 +26,6 @@
 			function initBillComments(){
 				return apiSrv.request('/initComments', {}, "GET")
 				.then(function(res){
-					// console.log(res.data);
 					return res.data;
 				});
 			}

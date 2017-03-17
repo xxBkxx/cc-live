@@ -54,6 +54,9 @@
 			// 			console.log(self.updatedUserName);
 			// 		})
 			// }
+			function initVote(){
+				
+			}
 			function vote(decision, vote){
 				// console.log(vote);
 				 apiSrv.request('/vote', {decision, vote}, 'POST')

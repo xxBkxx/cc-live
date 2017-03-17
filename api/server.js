@@ -22,6 +22,7 @@ var user_routes    	   	   = require('./routes/user_routes');
 var auth_routes    	   	   = require('./routes/auth_routes');
 var billComment_routes 	   = require('./routes/billComment_routes');
 var initBillComment_routes = require('./routes/initComments_routes');
+var init_votes			   = require('./routes/init_votes');
 
 app.use('/', initBillComment_routes);
 app.use('/', bill_init_routes);
@@ -30,6 +31,7 @@ app.use('/', vote_routes);
 app.use('/', bill_routes);
 app.use('/', auth_routes);
 app.use('/', billComment_routes);
+app.use('/', init_votes);
 
 //app.use('/vote', authentication, );
 // app.use(bodyParser.urlencoded({extended: true}));
@@ -438,7 +440,7 @@ app.delete('/delete', function(req,res){
 	bill.findOne({'id':req.params.billId}, function(err,bills){
 		bill.remove(function(err){
 			if(err){
-				console.log(err);
+				// console.log(err);
 				res.status(400)
 					.json({err:err})
 			} else {

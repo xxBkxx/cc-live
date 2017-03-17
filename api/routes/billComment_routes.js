@@ -18,56 +18,36 @@ router.post('/billComment', urlencodedParser, jsonParser, function (req,res) {
 
 	jwt.verify(token, 'expropositovivo', function(err, decoded){
 		// console.log(decoded.email);
-		var userEmail = decoded.email;
+		if (decoded == undefined || decoded == ''){
+			
+			return
+		}
+			else{
+				var userEmail = decoded.email;
 
-		user.findOne({"email": userEmail}, 'name', function(err, name){
-			// console.log(name);
+				user.findOne({"email": userEmail}, 'name', function(err, name){
 
-			// var _billComment={
-			// 	comment: comment,
-			// 	bill_id: bill_id,
-			// 	user_email: userEmail,
-			// 	user_name:  name.name
-			// };
-
-			// bill.findOneAndUpdate({"id":bill_id}, {$set:{comments: _billComment}}, {new:true}, function(err, item){
-			// 	console.log(item);
-			// 	if (err){
-			// 		return console.log(err);
-			// 	} else{
-			// 		// console.log(item)
-			// 		res.status(200);
-			// 		// console.log("___");
-			// 		// console.log(item);
-			// 		// return  res.send(item);
-			// 	}
-			// });
-
-			var _billComment = billComment({
-				comment:    comment,
-				bill_id:    bill_id,
-				user_email: userEmail,
-				user_name:  name.name
-			});
-			// console.log(_billComment);
-
-			_billComment.save(function(err){
-				if(err){
-					console.log(err);
-					res.status(400)
-						.json({err:err})
-				} else{
-					res.send(_billComment);
-				}
-			})
-				
-
+					var _billComment = billComment({
+						comment:    comment,
+						bill_id:    bill_id,
+						user_email: userEmail,
+						user_name:  name.name
+					});
+						
+						_billComment.save(function(err){
+							if(err){
+								// console.log(err);
+								res.status(400)
+									.json({err:err})
+							} else{
+								res.send(_billComment);
+							}
+						})
+				})
+			}
 		})
 
 
 	})
-
-
-})
 
 module.exports = router;

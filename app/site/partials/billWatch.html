@@ -22,11 +22,24 @@
     </header>
 
 <div class='main-container'>
-<div class="processing"><img class="loading-gif horizontal-centre" src="assets/img/loading.gif"></div>
+    <div class="processing"><img class="loading-gif horizontal-centre" src="assets/img/loading.gif"></div>
+
     <div class="page-header">
-    <img class="horizontal-centre img-responsive" src="assets/img/page-header-bill-watch.png">
+        <img class="horizontal-centre img-responsive" src="assets/img/page-header-bill-watch.png">
     </div>
-    <div ng-repeat='bill in ctrl.bills' class='bill-container'>
+
+
+    <div ng-click='ctrl.removeMessage()' class="vote-message-container horizontal-centre centre-text">
+        <div class="login-meassage">
+            <p>Please <a ng-click="ctrl.toLoginPage()" class="signup-link">login</a> to vote</p>
+        </div>
+    </div>
+        <div ng-click='ctrl.removeMessage()' class="comment-message-container horizontal-centre centre-text">
+        <div class="login-meassage">
+            <p>Please <a ng-click="ctrl.toLoginPage()" class="signup-link">login</a> to comment.</p>
+        </div>
+    </div>
+    <div ng-repeat='bill in ctrl.bills track by $index' class='bill-container'>
         <div class='bill-data-container'>
             <ul class="bill-data horizontal-centre">
                 <li><span class="bill-element-title">Bill ID:</span><span class="bill-element-content">&nbsp{{bill.id}}</span></li> |
@@ -43,7 +56,17 @@
             <h1 class="bill-title"><span class="bill-element-content">{{bill.number}}:&nbsp{{bill.title}}</span></h1>
 
             <ul class="vote-unordered-list bill-link-font">
-                <li class='comment-section-height'><a ng-click='bill.yea = bill.yea + 1;ctrl.voteYea(1, bill.id, bill.yea)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-up.png'/>&nbspYea</a>:&nbsp{{bill.yea}} |<b> <a ng-click='bill.nay = bill.nay + 1; ctrl.vdoteYea(0, bill.id,bill.nay)'><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-down.png'/>&nbspNay</a>:&nbsp{{bill.nay}} | <a ng-click="showComments()"><img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/comment.png'/>Comments</a> {{filtered.length}}
+                <li class='comment-section-height'>
+                   <a class="vote-up" ng-click='ctrl.voteYea(1, bill.id, ctrl.initVotes[$index].yea,$index)'>
+                        <img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-up.png'/>&nbspYea
+                    </a>:&nbsp{{ctrl.initVotes[$index].yea}} |<b>
+
+                    <a class="vote-down" ng-click='ctrl.voteYea(0, bill.id, ctrl.initVotes[$index].nay, $index)'>
+                    <!-- bill.nay = bill.nay + 1; -->
+                        <img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/vote-down.png'/>&nbspNay</a>:&nbsp{{ctrl.initVotes[$index].nay}} | 
+                    <a ng-click="showComments()">
+                        <img class='icon' height='12px' width='12px' alt='vote up png' src='assets/img/comment.png'/>&nbspComments
+                    </a>{{filtered.length}}
                 </li>
             </ul>
 
@@ -65,7 +88,7 @@
                         ng-pattern='regex'
                         ></textarea>
 
-                        <button ng-disabled='frmComment.txtAreaComment.$invalid || frmComment.txtAreaComment.$pristine || !ctrl.billComment' class='commentBtn' ng-click='ctrl.comment(bill.id);updateComments()'>Send</button>
+                        <button class="comment-send-btn" ng-disabled='frmComment.txtAreaComment.$invalid || frmComment.txtAreaComment.$pristine || !ctrl.billComment' class='commentBtn' ng-click='ctrl.comment(bill.id);updateComments()'>Send</button>
 
                         <span ng-messages='frmComment.txtAreaComment.$dirty && frmComment.txtAreaComment.$error '>
                      

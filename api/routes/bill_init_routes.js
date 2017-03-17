@@ -80,7 +80,7 @@ var event 				='';
 
 		newBill.save(function(err) {
 		    if (err) {
-		        console.log(err);
+		        // console.log(err);
 		    } else {
 		    	// res.send(newBill);
 		        // console.log('new Bill created!');

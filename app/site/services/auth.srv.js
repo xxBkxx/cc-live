@@ -31,8 +31,7 @@
 			function initUser(){
 				// if (localStorage.)
 				var token = localStorage.auth_token;
-				console.log('token');
-				console.log(token);
+
 				if(token == undefined || token == '' ){
 					return
 				} else{
@@ -40,6 +39,8 @@
 				return decrypt_token.name;
 				}
 			}
+
+
 
 			function signOut(){
 				localStorage.removeItem("auth_token");

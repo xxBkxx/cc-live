@@ -43,6 +43,17 @@
 					controller: "BillWatchCtrl as ctrl",
 					resolve: {
 
+						// loggedin: function(authSrv){
+						// 	userName = authSrv.initUser();
+						// 	if(userName == undefined
+						// 		|| userName == ''){
+						// 	$('.vote-unordered-list').remove();
+						// 		// window.alert('please signup or login');
+
+						// 		// $location.url('/signup');
+						// 	}
+						// },
+
 						billComments: function(commentSrv){
 							return commentSrv.initBillComments();
 						},
@@ -67,20 +78,24 @@
 							return billSrv.getBills();
 
 						},
-						initUser: function(authSrv,$location){
+						initUser: function(authSrv){
 							console.log(authSrv.initUser());
 							userName = authSrv.initUser();
 							if(userName == undefined
 								|| userName == ''){
-
 								userName = "guest";
+							// $('.vote-up').css('visibility', 'hidden');
 								// window.alert('please signup or login');
 
 								// $location.url('/signup');
 							}
 
 							return userName;
+						},
+						initVotes: function(voteSrv){
+							return voteSrv.initVotes()
 						}
+
 					}
 				})
 				.when('/about', {
@@ -95,7 +110,8 @@
 
 								userName = "guest";
 								// window.alert('please signup or login');
-
+								$('.vote-up').css('visibility', 'hidden ');
+								$('.icon').css('visibility', 'visible');
 								// $location.url('/signup');
 							}
 
@@ -108,7 +124,7 @@
 					controller: "PrivacyCtrl as ctrl",
 					resolve: {
 						initUser: function(authSrv,$location){
-							console.log(authSrv.initUser());
+							// console.log(authSrv.initUser());
 							userName = authSrv.initUser();
 							if(userName == undefined
 								|| userName == ''){
@@ -151,9 +167,21 @@
 					templateUrl: 'site/partials/login.html',
 					controller: 'LoginCtrl as ctrl'	
 				})
-				.when('/vote', {
-					templateUrl: 'site/partials/billWatch.html'
+				.when('/initVotes', {
+					templateUrl: 'site/partials/billWatch.html',
 
+				})
+				.when('/vote', {
+					templateUrl: 'site/partials/billWatch.html',
+					// resolve: { 
+					// 	initVotes: function (authSrv, $location){
+					// 		userName = authSrv.initUser();
+					// 		if(userName == undefined || username == '' || userName == 'guest'){
+					// 			$('.vote-up').css('visibility', 'hidden');
+					// 			alert('please log in to vote');
+					// 		}
+					// 	}
+					// }
 				})
 				.when('/billComment', {
 					templateUrl: 'site/partials/billWatch.html'
@@ -168,13 +196,13 @@
 			$httpProvider.interceptors.push(function($q,jwtHelper){
 				return {
 					request: function(config){
-						$('.processing').show();
+						// $('.processing').show();
 						if (localStorage.auth_token != undefined){
 							// $window.username= jwtHelper.decodeToken(localStorage.auth_token);
 							// console.log(this.username);
 							config.headers.authentication = localStorage.auth_token;
 						}
-						console.log(config);
+						// console.log(config);
 						return config;
 					},
 					response: function(response){
@@ -187,8 +215,16 @@
 							}
 						}
 						
-						if (response.status == 200 && response.data.length == 153){
-							$('.processing').hide();
+						if (response.status == 200){
+							var deferred = $q.defer();
+							var promise  = deferred.promise;
+
+							promise
+								.then(function (){
+									$('.processing').hide();
+								})
+
+							
 						}
 						console.log(response);
 						return response;
