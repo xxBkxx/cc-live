@@ -196,7 +196,7 @@
 			$httpProvider.interceptors.push(function($q,jwtHelper){
 				return {
 					request: function(config){
-						// $('.processing').show();
+						$('.processing').show();
 						if (localStorage.auth_token != undefined){
 							// $window.username= jwtHelper.decodeToken(localStorage.auth_token);
 							// console.log(this.username);

@@ -201,7 +201,7 @@
 /*Tablets*/
 @media (min-width: 720px){
 	.login-push{
-		height: 438px;
+		height: 0px;
 	}
 	.signup-push{
 		height: 258px;
@@ -388,7 +388,15 @@ a{
 
 	.form-container{
 		text-align: center;
+		height: 100%;
 	}
+
+	.form-contents{
+		position: relative;
+	    top: calc(50% - 100px);
+	    transform: translateY(-50%);
+	}
+
 
 .nav-links img{
 	position: relative;
@@ -761,7 +769,7 @@ ul.bill-data li:hover {
 }
 .login-container{
 	width: 100%;
-	/*height: 592px;*/
+	height: 592px;
 	background-image: url("../img/login-section-bg.png");
 	background-position: center;
 	background-size: cover;
