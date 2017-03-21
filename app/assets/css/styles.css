@@ -2,11 +2,30 @@
 	
 	body .header{
 		width: 100%;
-		height: 262px;
+		height: 200px;
+	}
 
+	body .login-header, .signup-header{
+		width: 100%;
+		height: 50px;
 	}
 	body .ccLogo{
 
+	}
+
+		body .vote-message-container, .comment-message-container {
+		position: fixed;
+		top:100px;
+		right: 0;
+		left: 0;
+		visibility:hidden;
+		z-index: 10000;
+		width: 320px;
+		/*min-width: 320px;*/
+		height:25px;
+		background-color:#ffaaaa;
+		border: 1px solid #000;
+		margin: 0 auto 20px auto;
 	}
 
 	body .processing{
@@ -192,7 +211,7 @@
 	}
 
 	.nav-list{
-		padding:50px 0 0 0;
+		padding:0px 0 0 0;
 	}
 
 }
@@ -324,6 +343,7 @@ header ul li{
 
 a{
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .privacy{
@@ -350,14 +370,14 @@ a{
 	background-color: beige;
 }
 
-	.signup-form input{
-			width: 100%;
-			margin-bottom: 10px;
-			max-width: 400px;
-			padding: 5px;
-			border-radius: 5px;
-			border: 1px solid grey;
-	}
+.signup-form input{
+		width: 100%;
+		margin-bottom: 10px;
+		max-width: 320px;
+		padding: 5px;
+		border-radius: 5px;
+		border: 1px solid grey;
+}
 
 	.signup-form button{
 		width: 100%;
@@ -371,10 +391,17 @@ a{
 	.login-form input{
 		width: 100%;
 	    margin-bottom: 10px;
-	    max-width: 400px;
+	    max-width: 320px;
 	    padding: 5px;
 	    border-radius: 5px;
 	    border: 1px solid grey;
+	    background-color: #eee;
+	}
+
+	.login-form button{
+		margin-bottom:20px;
+		width: 100%;
+		max-width: 330px;
 	}
 	
 	.login-link{
@@ -770,7 +797,7 @@ ul.bill-data li:hover {
 .login-container{
 	width: 100%;
 	height: 592px;
-	background-image: url("../img/login-section-bg.png");
+	/*background-image: url("../img/login-section-bg.png");*/
 	background-position: center;
 	background-size: cover;
 	align:;

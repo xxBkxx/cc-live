@@ -14,6 +14,7 @@
 				if (method == 'GET'){
 					data = JSON.stringify(data);
 					return $http.get(endpoint, data)
+
 				}
 
 				if (method == "POST"){
@@ -21,6 +22,7 @@
 					return $http.post(endpoint, data)
 				}
 			}
+
 
 	        function formatGetData(data){
 	            var data_string = '?';

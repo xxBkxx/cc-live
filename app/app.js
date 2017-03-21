@@ -202,31 +202,44 @@
 							// console.log(this.username);
 							config.headers.authentication = localStorage.auth_token;
 						}
-						// console.log(config);
+						console.log(config);
 						return config;
 					},
 					response: function(response){
+						var deferred = $q.defer();
+						var promise  = deferred.promise;
 						var auth_token = response.headers('authentication');
 						if (auth_token){
 							var decrypt_token = jwtHelper.decodeToken(auth_token);
-							console.log(decrypt_token.email);
 							if (decrypt_token.email){
 								localStorage.auth_token = auth_token;
 							}
 						}
+						console.log(response.data);
 						
-						if (response.status == 200){
-							var deferred = $q.defer();
-							var promise  = deferred.promise;
+ 
+						if(response.status == 200 && response.data.length == 153 || response.data.yea
+								|| response.data.comment ){$('.processing').hide();}
+					 	// setTimeout(function(){
+						// 	$('.processing').hide();
 
-							promise
-								.then(function (){
-									$('.processing').hide();
-								})
-
-							
-						}
-						console.log(response);
+						// })
+							// promise.
+							// 	then(function(response){
+							// 		console.log('then');
+							// 		$('.processing').hide();								
+							// 	}, function(response){
+							// 		console.log('then');
+							// 		$('.processing').hide();	
+							// 	})
+							// 	.catch(function(err){
+							// 		console.log(err);
+							// 		$('.processing').hide();
+							// 	})
+							// 	.finally(function(response){
+							// 		console.log('finally')
+							// 		$('.processing').hide();
+							// 	}, function(){console.log(done);})
 						return response;
 					}
 				}

@@ -128,9 +128,10 @@
 
 			function comment(bill_id){
 
-				if( localStorage.auth_token =='' || 
+				if( localStorage.auth_token ==''         || 
 					localStorage.auth_token == undefined || 
 					localStorage.auth_token == 'guest'){
+
 						$('.comment-message-container').css('visibility','visible');
 						return;
 						// window.alert("Please login to vote, you'll be redirected");
@@ -138,47 +139,50 @@
 					// $location.url('/login');
 					// $('.message-container').show();
 					// window.alert("please login to vote");
-				}
-				var comment = billWatchVm.billComment;
-				billWatchVm.billComment = '';
-				 var token = localStorage.getItem('auth_token');
+				}else{
+					var comment = billWatchVm.billComment;
 
-				var commentPkg = {
+					billWatchVm.billComment = '';
 
-					billId:  bill_id,
-					comment: comment,
-					token:   token
-				}
+					var token = localStorage.getItem('auth_token');
 
-				// $scope.commentsArray.push(comment);
-				// console.log($scope.commentsArray);
+					var commentPkg = {
 
-				$scope.userComm = comment;
-			
-				// var nameLetter = $scope.user.charAt(0);
-				// for (var i = 1; i<27 ; i++){
-				// 	console.log('---nameLetter---');
-				// 	console.log(nameLetter);
-				// 	user_letter = {fileNumber:i, letter:String.fromCharCode(96+i)}
-					
-				// 	if(user_letter.letter == nameLetter){
-				// 		$scope.picture = user_letter.fileNumber;
-				// 		console.log('---------- match -----');
-				// 		console.log($scope.picture);
-				// 	}
+						billId:  bill_id,
+						comment: comment,
+						token:   token
+					}
 
-				// 	console.log('---------------user-------------');
-				// 	console.log(user_letter);
-				// }
+					// $scope.commentsArray.push(comment);
+					// console.log($scope.commentsArray);
 
-				// console.log(billWatchVm.billComment);
-				var comm = commentSrv.billComment(commentPkg);
-				billWatchVm.content 	= billWatchVm.billComment;
-				// billWatchVm.rawComment  = billWatchVm.billComment;
-				//billWatchVm.commentHtml = "<p>paragraph</p>";///$sce.trustAsHtml("<p>paragraph</p>");
-				//console.log(billWatchVm.commentHtml);
-				// billWatchVm.userName 	= billSrv.updateCommentName();
-			}	
+					$scope.userComm = comment;
+				
+					// var nameLetter = $scope.user.charAt(0);
+					// for (var i = 1; i<27 ; i++){
+					// 	console.log('---nameLetter---');
+					// 	console.log(nameLetter);
+					// 	user_letter = {fileNumber:i, letter:String.fromCharCode(96+i)}
+						
+					// 	if(user_letter.letter == nameLetter){
+					// 		$scope.picture = user_letter.fileNumber;
+					// 		console.log('---------- match -----');
+					// 		console.log($scope.picture);
+					// 	}
+
+					// 	console.log('---------------user-------------');
+					// 	console.log(user_letter);
+					// }
+
+					// console.log(billWatchVm.billComment);
+					var comm = commentSrv.billComment(commentPkg);
+					billWatchVm.content 	= billWatchVm.billComment;
+					// billWatchVm.rawComment  = billWatchVm.billComment;
+					//billWatchVm.commentHtml = "<p>paragraph</p>";///$sce.trustAsHtml("<p>paragraph</p>");
+					//console.log(billWatchVm.commentHtml);
+					// billWatchVm.userName 	= billSrv.updateCommentName();
+						}
+				}	
 
 			function removeMessage(){
 				// $('.message-container').remove();

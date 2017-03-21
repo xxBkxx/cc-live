@@ -39,7 +39,7 @@
             <p>Please <a ng-click="ctrl.toLoginPage()" class="signup-link">login</a> to comment.</p>
         </div>
     </div>
-    <div ng-repeat='bill in ctrl.bills track by $index' class='bill-container'>
+    <a><div ng-repeat='bill in ctrl.bills track by $index' class='bill-container'>
         <div class='bill-data-container'>
             <ul class="bill-data horizontal-centre">
                 <li><span class="bill-element-title">Bill ID:</span><span class="bill-element-content">&nbsp{{bill.id}}</span></li> |
@@ -100,8 +100,6 @@
                         </span>
                         </form>
                     </div>
-<!--                     <div class="comment-button">
-                    </div> -->
                 </div>
 
                     <div class="new-comment-container">
@@ -135,7 +133,7 @@
                                     <my-comment></my-comment>
                                 </li>
                             </ul> -->
-                        </div>
+                        </div></a>
                     </div>
                 </div>
 

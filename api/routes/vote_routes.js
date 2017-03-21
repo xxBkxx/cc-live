@@ -14,17 +14,17 @@ router.post('/vote', urlencodedParser,jsonParser, function(req,res){
 
 	var decision = req.body.decision == 1 ? 'yea' : 'nay';
 
-	console.log(decision);
+	// console.log(decision);
 
 	if (decision == 'yea'){
 
 		var currYea = req.body.vote.yea;
-		console.log(req.body);
-		console.log("currYea");
+		// console.log(req.body);
+		// console.log("currYea");
 	} else if (decision == 'nay'){
 
 		var currYea = req.body.vote.nay;
-		console.log(currYea);
+		// console.log(currYea);
 	}
 	//var newYea = currYea + 1;
 	// var userVote   = req.body.yea;
@@ -52,7 +52,7 @@ router.post('/vote', urlencodedParser,jsonParser, function(req,res){
 			res.status(200);
 			// console.log("___");
 			// console.log(item);
-			return  res.send(item);
+			return  res.json(item);
 		}
 	})
 	// bill.findOne({id: voteBillId}, function(err, item){
