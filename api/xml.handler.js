@@ -16,44 +16,47 @@
 
 
 $.ajax({
-	url:'download.xml',
+	url:'http://www.parl.gc.ca/LEGISINFO/Home.aspx?ParliamentSession=42-1&Language=E&Mode=1&download=xml',
 	dataType:"xml",
 
 	success: function(xml){
-		xmlDoc = $.parseXML( xml ),
-  		$xml = $( xmlDoc ),
-		console.log(typeof $xml);
-		console.log(xml);
-
-		var bills = $(xml).find("Bills");
+		console.log("getting download.xml");
 
 
-		// <Bill> with attrivutes
-		// console.log(bills.children("Bill"));
-		// console.log(bills.children("Bill")[0].attributes[0]);
-		// console.log(bills.children("Bill")[1].attributes[1]);
+		// xmlDoc = $.parseXML( xml ),
+  // 		$xml = $( xmlDoc ),
+		// console.log(typeof $xml);
+		// console.log(xml);
+
+		// var bills = $(xml).find("Bills");
+
+
+		// // <Bill> with attrivutes
+		// // console.log(bills.children("Bill"));
+		// // console.log(bills.children("Bill")[0].attributes[0]);
+		// // console.log(bills.children("Bill")[1].attributes[1]);
 		
-		// console.log(bills.children("Bill").children("BillIntroducedDate").text());
+		// // console.log(bills.children("Bill").children("BillIntroducedDate").text());
 
-		// // <BIll><Children>
-		// console.log(bills.children("Bill").children("BillIntroducedDate"));
+		// // // <BIll><Children>
+		// // console.log(bills.children("Bill").children("BillIntroducedDate"));
 
-		bills.children("Bill").each(function(index, element){
-			console.log($(element).children());
-		});
+		// bills.children("Bill").each(function(index, element){
+		// 	console.log($(element).children());
+		// });
 
-		console.log(bills.children("Bill").children("BillIntroducedDate")[0].attributes[0]);
-		console.log(bills.children("Bill").children("BillIntroducedDate")[1].attributes[1]);
+		// console.log(bills.children("Bill").children("BillIntroducedDate")[0].attributes[0]);
+		// console.log(bills.children("Bill").children("BillIntroducedDate")[1].attributes[1]);
 
 
 
-		console.log(bills.children("Bill").children("ParliamentSession"));
-		console.log(bills.children("Bill").children("ParliamentSession")[0].attributes[0]);
-		console.log(bills.children("Bill").children("ParliamentSession")[1].attributes[1]);
+		// console.log(bills.children("Bill").children("ParliamentSession"));
+		// console.log(bills.children("Bill").children("ParliamentSession")[0].attributes[0]);
+		// console.log(bills.children("Bill").children("ParliamentSession")[1].attributes[1]);
 
-		console.log(bills.children("Bill").children("BillNumber"));
-		console.log(bills.children("Bill").children("BillNumber")[0].attributes[0]);
-		console.log(bills.children("Bill").children("BillNumber")[1].attributes[1]);
+		// console.log(bills.children("Bill").children("BillNumber"));
+		// console.log(bills.children("Bill").children("BillNumber")[0].attributes[0]);
+		// console.log(bills.children("Bill").children("BillNumber")[1].attributes[1]);
 
 		// console.log(bills.children("Bill").children("BillTitle"));
 		// console.log(bills.children("Bill").children("BillTitle").children("Title").text());
@@ -67,20 +70,20 @@ $.ajax({
 		// console.log(bills.children("Bill").children("BillType").children("Title").text());
 		// console.log(bills.children("Bill").children("BillType").children("Title")[0].attributes[0]);
 
-		console.log(bills.children("Bill").children("SponsorAffiliation"));
-		console.log(bills.children("Bill").children("SponsorAffiliation").children("Title"));
-		console.log(bills.children("Bill").children("SponsorAffiliation").children("Person"));
-		console.log(bills.children("Bill").children("SponsorAffiliation").children("Person")[0].attributes[0]);
-		console.log(bills.children("Bill").children("SponsorAffiliation").children("Person")[1].attributes[1]);
-		console.log(bills.children("Bill").children("SponsorAffiliation").children("Person").children("FullName"));		
-		// console.log(bills.children("Bill").children("SponsorAffiliation").children("Title")[0].attributes[0]);
+		// console.log(bills.children("Bill").children("SponsorAffiliation"));
+		// console.log(bills.children("Bill").children("SponsorAffiliation").children("Title"));
+		// console.log(bills.children("Bill").children("SponsorAffiliation").children("Person"));
+		// console.log(bills.children("Bill").children("SponsorAffiliation").children("Person")[0].attributes[0]);
+		// console.log(bills.children("Bill").children("SponsorAffiliation").children("Person")[1].attributes[1]);
+		// console.log(bills.children("Bill").children("SponsorAffiliation").children("Person").children("FullName"));		
+		// // console.log(bills.children("Bill").children("SponsorAffiliation").children("Title")[0].attributes[0]);
 
-		console.log(bills.children("Bill").children("SponsorAffiliation").children("PoliticalParty"));
-		console.log(bills.children("Bill").children("SponsorAffiliation").children("PoliticalParty").children("Title").text());
-		console.log(bills.children("Bill").children("SponsorAffiliation").children("PoliticalParty").children("Title")[0].attributes[0]);
+		// console.log(bills.children("Bill").children("SponsorAffiliation").children("PoliticalParty"));
+		// console.log(bills.children("Bill").children("SponsorAffiliation").children("PoliticalParty").children("Title").text());
+		// console.log(bills.children("Bill").children("SponsorAffiliation").children("PoliticalParty").children("Title")[0].attributes[0]);
 
-		console.log(bills.children("Bill").children("Publications"));
-		console.log(bills.children("Bill").children("Events")[0].attributes[0]);
+		// console.log(bills.children("Bill").children("Publications"));
+		// console.log(bills.children("Bill").children("Events")[0].attributes[0]);
 		
 
 
@@ -94,6 +97,10 @@ $.ajax({
 		// 		var value = atttrib.value;
 		// 	});
 		// })
+	},
+
+	error: function(err){
+		console.log(err);
 	}
 });
 	// header:
