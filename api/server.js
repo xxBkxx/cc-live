@@ -381,7 +381,7 @@ db.once('open', function(){
 // Was 8080 or 80
 var port = process.env.PORT || 8080;
 app.listen(port, function(){
-	console.log('Listening on Port 8080');
+	console.log('Listening on Port' + port);
 	console.log('Press CTRL + C to stop server');
 });
 
