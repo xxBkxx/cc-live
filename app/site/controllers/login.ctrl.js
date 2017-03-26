@@ -12,7 +12,7 @@
 			loginVm.toPrivacyPage   = toPrivacyPage;
 			loginVm.toTermsPage     = toTermsPage;
 			loginVm.toSignupPage    = toSignupPage;
-
+			loginVm.toHomePage		= toHomePage;
 
 			function login(){
 
@@ -56,6 +56,10 @@
 
 			function toSignupPage(){
 				$location.url('/signup');
+			}
+
+			function toHomePage(){
+				$location.url('/home');
 			}
 
 		}

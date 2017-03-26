@@ -377,14 +377,14 @@ db.once('open', function(){
 // });
 
 // Was 8080 or 80
-// app.listen(8080, function(){
-// 	console.log('Listening on Port 80');
-// 	console.log('Press CTRL + C to stop server');
-// });
-
-app.listen(80, function(){
-	console.log("Listening on port 80, Stop with ctrl+c");
+app.listen(8080, function(){
+	console.log('Listening on Port 80');
+	console.log('Press CTRL + C to stop server');
 });
+
+// app.listen(80, function(){
+// 	console.log("Listening on port 80, Stop with ctrl+c");
+// });
 
 
 // app.get('/:billId', function(req,res){

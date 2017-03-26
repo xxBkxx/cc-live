@@ -14,7 +14,6 @@
 		signUpVm.toPrivacyPage   = toPrivacyPage; 
 		signUpVm.toTermsPage     = toTermsPage;
 
-
 		function signup(isValid){
 			if(!isValid) return;
 			
@@ -56,5 +55,6 @@
 		function toLoginPage(){
 			$location.url('/login');
 		}
+
 	}
 })();
