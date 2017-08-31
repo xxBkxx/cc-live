@@ -1,7 +1,7 @@
 var router 	 = require('express').Router();
 var fs 		 = require('fs');
 var parse    = require('xml-parser');
-var xml 	 = fs.readFileSync('download.xml', 'utf8');
+var xml 	 = fs.readFileSync('api/download.xml', 'utf8');
 var bill     = require('.././models/bill');
 
 router.post('/init', function(req,res){

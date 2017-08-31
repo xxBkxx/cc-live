@@ -3,6 +3,7 @@ var bcrypt 	   = require('bcrypt-nodejs');
 var bodyParser = require('body-parser');
 var users      = require('.././models/users');
 var jwt		   = require('jsonwebtoken');
+
 var urlencodedParser = bodyParser.urlencoded({extended: true});
 var jsonParser 		 = bodyParser.json();
 
@@ -19,7 +20,9 @@ var jsonParser 		 = bodyParser.json();
 			console.log(err)
 			res.status(400)
 				.json({err:err});
-		} 
+		} else if (!user){
+			return 	res.status(401).send({message:'Are you sure you belong here?'});
+		}
 		else{
 			console.log(_user.password + " " + user.password);
 			bcrypt.compare(_user.password, user.password, function(err,result){
@@ -38,9 +41,9 @@ var jsonParser 		 = bodyParser.json();
 					res.set('authentication', token);
 					res.json(user_obj.name);
 					console.log('youre in! :-)');
-				} else{  
+				} else if (!result){  
 					res.status(403)
-						.json({err:'youre not allowed in!'});
+						.send({message:'youre not allowed in!'});
 					console.log('something went wrong');
 				}
 			});

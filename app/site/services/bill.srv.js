@@ -34,7 +34,7 @@
 						.then(function(res){
 							console.log(res.data);
 							return res.data
-					})
+					});
 			}
 
 			// function initBillComments(){

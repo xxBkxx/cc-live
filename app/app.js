@@ -1,18 +1,39 @@
 (function(){
 
 	angular
-		.module('ccApp', ['ngRoute','angular-jwt', 'ngMessages', 'ngSanitize']);
+		.module('ccApp', ['ngRoute','angular-jwt', 'ngMessages', 'ngSanitize'])
+		.constant("AUTH_EVENTS", {
+
+			loginSuccess: 'login-success',
+			loginFail:    'login-fail'
+		})
 
 	angular
 		.module('ccApp')
-		.config(function($routeProvider, $httpProvider){
+		.run(function($rootScope, AUTH_EVENTS, $location){
+			console.log('run');
+
+			$rootScope.$on(AUTH_EVENTS.loginFail, function(event, next){
+				$('.processing').hide();
+			});
+
+			$rootScope.$on(AUTH_EVENTS.loginSuccess, function(event,nect){
+				$location.url('/main');
+			});
+
+
+		})
+
+	angular
+		.module('ccApp')
+		.config(function($routeProvider, $httpProvider, $locationProvider){
 			$routeProvider
 				.when('/home', {
 					templateUrl: "site/partials/main.html",
 					controller: "MainCtrl as ctrl",
 					resolve: {
 						initUser: function(authSrv,$location){
-							console.log(authSrv.initUser());
+							// console.log(authSrv.initUser());
 							userName = authSrv.initUser();
 							if(userName == undefined
 								|| userName == ''){
@@ -61,25 +82,25 @@
 
 							// TODO#1: Don't allow the function to run twice
 							// /////////////////////////////////////////////
-							// var bills = billSrv.getBills();
-							// billSrv.getBills().then(function(data){
-							// 	console.log(data.length);
+							var bills = billSrv.getBills();
+							billSrv.getBills().then(function(data){
+								console.log(data.length);
 
-							// 	if (data.length == 0){
-							// 		console.log('zero');
-							// 		billSrv.initBills();
-							// 	}
-							// })
-							// 	.then(function(){
-							// 		console.log('getting Bills');
-							// 		return billSrv.getBills();
-							// 	});
+								if (data.length == 0){
+									console.log('zero');
+									billSrv.initBills();
+								}
+							})
+								.then(function(){
+									console.log('getting Bills');
+									return billSrv.getBills();
+								});
 							billSrv.initBills();
 							return billSrv.getBills();
 
 						},
 						initUser: function(authSrv){
-							console.log(authSrv.initUser());
+							// console.log(authSrv.initUser());
 							userName = authSrv.initUser();
 							if(userName == undefined
 								|| userName == ''){
@@ -193,6 +214,9 @@
 					redirectTo: '/home'
 				});
 
+			// $locationProvider.html5Mode(true);
+			// $locationProvider.hashPrefix = '!';
+
 			$httpProvider.interceptors.push(function($q,jwtHelper){
 				return {
 					request: function(config){
@@ -202,10 +226,11 @@
 							// console.log(this.username);
 							config.headers.authentication = localStorage.auth_token;
 						}
-						console.log(config);
+						// console.log(config);
 						return config;
 					},
 					response: function(response){
+						$('.processing').hide();
 						var deferred = $q.defer();
 						var promise  = deferred.promise;
 						var auth_token = response.headers('authentication');
@@ -215,7 +240,7 @@
 								localStorage.auth_token = auth_token;
 							}
 						}
-						console.log(response.data);
+						// console.log(response.data);
 						
  
 						if(response.status == 200 && response.data.length == 153 || response.data.yea

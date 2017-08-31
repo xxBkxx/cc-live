@@ -21,10 +21,10 @@
 					});
 			}
 
-			function login(credentials, callback){
-				apiSrv.request("/login", credentials, "POST")
+			function login(credentials){
+				return apiSrv.request("/login", credentials, "POST")
 					.then (function(res){
-						callback(res);
+						// console.log("res");
 						return res;
 					});
 			}

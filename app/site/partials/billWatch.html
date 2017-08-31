@@ -1,25 +1,23 @@
 <header class="header ng-scope">
-   
-            <a ng-click="ctrl.toMainPage()"> 
-                <img class="logo" alt="Citizens Of Canada Logo" src="assets/img/logo.png">     
-            </a>
-        <ul class="nav-links centre-text">
-        <li>
-            <a>
-            <div class="dropdown ng-binding">
-                <my-profile-picture></my-profile-picture>{{ctrl.initUser}}
-            <div class="dropdown-content">
-                <ul>
-            <li ng-click='ctrl.signOut()'>Sign-out</li>
-        </ul>
-                </div>
-            </div></a>
-        </li>
-        <li><a ng-click="ctrl.toAboutPage()">About</a></li>
-        <li><a ng-click="ctrl.toBillWatchPage()">Bill Watch</a></li>
-        </ul>
-        
-    </header>
+        <a ng-click="ctrl.toMainPage()"> 
+            <img class="logo" alt="Citizens Of Canada Logo" src="assets/img/logo.png">     
+        </a>
+    <ul class="nav-links centre-text">
+    <li>
+        <a>
+        <div class="dropdown ng-binding">
+            <my-profile-picture></my-profile-picture>{{ctrl.initUser}}
+        <div class="dropdown-content">
+            <ul>
+        <li ng-click='ctrl.signOut()'>Sign-out</li>
+    </ul>
+            </div>
+        </div></a>
+    </li>
+    <li><a ng-click="ctrl.toAboutPage()">About</a></li>
+    <li><a ng-click="ctrl.toBillWatchPage()">Bill Watch</a></li>
+    </ul>
+</header>
 
 <div class='main-container'>
     <div class="processing"><img class="loading-gif horizontal-centre" src="assets/img/loading.gif"></div>

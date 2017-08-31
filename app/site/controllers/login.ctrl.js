@@ -3,7 +3,7 @@
 		.module('ccApp')
 		.controller('LoginCtrl', LoginCtrl);
 
-		function LoginCtrl(apiSrv, $location, authSrv, $rootScope){
+		function LoginCtrl(apiSrv, $location, authSrv, $rootScope, AUTH_EVENTS){
 			var loginVm = this;
 
 			loginVm.login           = login;
@@ -23,13 +23,21 @@
 					email:    loginVm.email,
 					password: loginVm.password    
 				}
-				authSrv.login(credentials, function(res){
+				authSrv.login(credentials).then(function(res)   {
+					
+					$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
 					console.log(res);
-					if (res.status == 200){
-						$location.url('/home');
-					} else {
-						console.log('error');
-					}
+
+
+					// if (res.status == 200){
+					// 	$location.url('/home');
+					// } else {
+					// 	console.log('error');
+					// }
+				}, function(){
+
+					$rootScope.$broadcast(AUTH_EVENTS.loginFail)
+					console.log("fail");
 				});
 				// credentials = JSON.stringify(credentials)
 				// apiSrv.request("/login", credentials, "POST");

@@ -24,9 +24,7 @@
 				//console.log(jwtHelper);
 				// console.log($window.username);
 			}
-
-
-
+			
 			function initUser(){
 				return apiSrv.request('/initUser', {}, "GET")
 				.then(function(res){
