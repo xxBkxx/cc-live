@@ -59,7 +59,7 @@ const OPTIONS = {
 	cert: fs.readFileSync('blast.crt')
 }
 
-var insecureServer = http.createServer(app).listen(8080);
+var insecureServer = http.createServer(app).listen(3000);
 var sercureServer  = https.createServer(OPTIONS,app).listen(8443);
 
 mongoose.connect('localhost/data/db');
