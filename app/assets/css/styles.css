@@ -493,12 +493,11 @@ a{
 	 /*padding-top: 262px; */
 }
 
-	.charter-pic{
-		padding: 0px 0 0 0;
-		width: 50%;
-		height: 50%;
-	}
-
+.charter-pic{
+	padding: 0px 0 0 0;
+	width: 50%;
+	height: 50%;
+}
 
 /*#section-img-caption {
     width: 20%;
@@ -666,7 +665,6 @@ ul.bill-data li:hover {
 
 .comments-container{ 
 	background-color: #f0f0f0;
-	visibility: visible; 
 	text-align: left;
 }
 
