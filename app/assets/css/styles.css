@@ -665,6 +665,7 @@ ul.bill-data li:hover {
 
 .comments-container{ 
 	background-color: #f0f0f0;
+	visibility: hidden; 
 	text-align: left;
 }
 
